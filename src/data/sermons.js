@@ -1,0 +1,127 @@
+export const sermons = [
+  {
+    id: 1,
+    title: 'The Power of Grace Renewed',
+    speaker: 'Pastor Emmanuel Golani',
+    date: '2024-11-09',
+    duration: '52:14',
+    topic: 'Grace & Salvation',
+    scripture: 'Ephesians 2:8-10',
+    description: 'An inspiring message on the transformative power of God\'s grace and how it renews us daily. Pastor Emmanuel walks us through Paul\'s letter to the Ephesians and explores what it means to be saved by faith and not works.',
+    thumbnail: '/assets/sermons/sermon-1.jpg',
+    // Recommended: 800x450px, JPG/WebP
+    audioUrl: '/assets/audio/sermon-2024-11-09.mp3',
+    videoUrl: 'https://www.youtube.com/embed/placeholder1',
+    views: 1248,
+    downloads: 312,
+    featured: true,
+    tags: ['grace', 'salvation', 'faith', 'ephesians']
+  },
+  {
+    id: 2,
+    title: 'Sabbath: A Gift for Eternity',
+    speaker: 'Pastor Emmanuel Golani',
+    date: '2024-11-02',
+    duration: '48:30',
+    topic: 'Sabbath',
+    scripture: 'Genesis 2:1-3; Mark 2:27',
+    description: 'Understanding the Sabbath as God\'s gift to humanity — a holy rest that points forward to eternal rest in His kingdom.',
+    thumbnail: '/assets/sermons/sermon-2.jpg',
+    audioUrl: '/assets/audio/sermon-2024-11-02.mp3',
+    videoUrl: 'https://www.youtube.com/embed/placeholder2',
+    views: 987,
+    downloads: 201,
+    featured: true,
+    tags: ['sabbath', 'rest', 'creation', 'worship']
+  },
+  {
+    id: 3,
+    title: 'Daniel\'s Vision and End Times',
+    speaker: 'Elder David Mwaura',
+    date: '2024-10-26',
+    duration: '58:42',
+    topic: 'Prophecy',
+    scripture: 'Daniel 7:9-14',
+    description: 'A deep dive into the prophetic visions of Daniel and what they reveal about the time we live in.',
+    thumbnail: '/assets/sermons/sermon-3.jpg',
+    audioUrl: '/assets/audio/sermon-2024-10-26.mp3',
+    videoUrl: 'https://www.youtube.com/embed/placeholder3',
+    views: 2103,
+    downloads: 445,
+    featured: false,
+    tags: ['prophecy', 'end times', 'daniel', 'second coming']
+  },
+  {
+    id: 4,
+    title: 'Whole-Life Stewardship',
+    speaker: 'Deaconess Sarah Nkirote',
+    date: '2024-10-19',
+    duration: '41:17',
+    topic: 'Stewardship',
+    scripture: 'Malachi 3:10; 1 Corinthians 6:19-20',
+    description: 'How biblical stewardship encompasses our time, talents, bodies, and finances for God\'s glory.',
+    thumbnail: '/assets/sermons/sermon-4.jpg',
+    audioUrl: '/assets/audio/sermon-2024-10-19.mp3',
+    videoUrl: 'https://www.youtube.com/embed/placeholder4',
+    views: 756,
+    downloads: 134,
+    featured: false,
+    tags: ['stewardship', 'tithe', 'health', 'lifestyle']
+  },
+  {
+    id: 5,
+    title: 'Hope Beyond the Grave',
+    speaker: 'Pastor Emmanuel Golani',
+    date: '2024-10-12',
+    duration: '55:09',
+    topic: 'Second Coming',
+    scripture: '1 Thessalonians 4:13-18; John 5:28-29',
+    description: 'The blessed hope of resurrection — Christ\'s return and the promise of eternal life for the righteous.',
+    thumbnail: '/assets/sermons/sermon-5.jpg',
+    audioUrl: '/assets/audio/sermon-2024-10-12.mp3',
+    videoUrl: 'https://www.youtube.com/embed/placeholder5',
+    views: 1876,
+    downloads: 389,
+    featured: false,
+    tags: ['second coming', 'resurrection', 'hope', 'eternal life']
+  },
+  {
+    id: 6,
+    title: 'The Three Angels\' Message Today',
+    speaker: 'Elder James Omondi',
+    date: '2024-10-05',
+    duration: '60:23',
+    topic: 'Prophecy',
+    scripture: 'Revelation 14:6-12',
+    description: 'Understanding God\'s final message to the world before Jesus returns — relevance and urgency for our generation.',
+    thumbnail: '/assets/sermons/sermon-6.jpg',
+    audioUrl: '/assets/audio/sermon-2024-10-05.mp3',
+    videoUrl: 'https://www.youtube.com/embed/placeholder6',
+    views: 3241,
+    downloads: 701,
+    featured: false,
+    tags: ['three angels', 'revelation', 'prophecy', 'judgment']
+  }
+]
+
+export const sermonTopics = [
+  'All Topics',
+  'Grace & Salvation',
+  'Sabbath',
+  'Prophecy',
+  'Stewardship',
+  'Second Coming',
+  'Family',
+  'Health',
+  'Prayer',
+  'Holy Spirit'
+]
+
+export const sermonSpeakers = [
+  'All Speakers',
+  'Pastor Emmanuel Golani',
+  'Elder David Mwaura',
+  'Elder James Omondi',
+  'Deaconess Sarah Nkirote',
+  'Youth Pastor Peter Kamau'
+]
