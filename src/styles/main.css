@@ -1,0 +1,109 @@
+@import "./variables.css";
+@import "./typography.css";
+@import "./components.css";
+@import "./responsive.css";
+@import "./animations.css";
+@import "./shared.css";
+
+/*
+ * Tailwind was configured (tailwind.config.js, postcss.config.js) but never
+ * actually imported into the build — every dark:, grid-cols-*, rounded-2xl
+ * etc. class used across ~50 page/components files was rendering as nothing.
+ * This is the fix.
+ */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  background: var(--color-bg);
+}
+
+body {
+  min-width: 320px;
+  margin: 0;
+  background: var(--color-bg);
+  color: var(--color-text-main);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  transition: background-color var(--duration-standard) var(--ease-standard),
+    color var(--duration-standard) var(--ease-standard);
+}
+
+body.menu-open {
+  overflow: hidden;
+}
+
+img,
+svg,
+video {
+  display: block;
+  max-width: 100%;
+}
+
+img {
+  height: auto;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  border: 0;
+}
+
+:focus-visible {
+  outline: 3px solid var(--color-gold);
+  outline-offset: 3px;
+}
+
+::selection {
+  background: var(--color-gold);
+  color: var(--color-navy-deep);
+}
+
+/* ── Dark theme base coverage ──────────────────────────────────────────
+   Pages that use plain elements (not Tailwind dark: classes) still need
+   readable text/backgrounds when .dark is active. */
+.dark {
+  color-scheme: dark;
+}
+
+.dark h1,
+.dark h2,
+.dark h3,
+.dark h4,
+.dark h5,
+.dark h6 {
+  color: var(--color-text-main);
+}
+
+.dark a {
+  color: inherit;
+}
+
+.dark ::selection {
+  background: var(--color-gold);
+  color: var(--color-navy-deep);
+}

@@ -1,0 +1,80 @@
+:root {
+  /*
+   * Golani SDA brand — the strict 3-color system: navy, gold/yellow, white.
+   * #0d2137 / #f4d03f are the canonical brand values (used across Events,
+   * Sermons, Announcements already). Everything below is a restrained ramp
+   * built from those two anchors so the rest of the app can keep using
+   * var(--color-navy) / var(--color-gold) without a full rewrite.
+   */
+  --color-navy-deep: #0d2137;   /* darkest — header, footer, hero backgrounds */
+  --color-navy: #16324a;        /* primary navy — section backgrounds, buttons */
+  --color-navy-dark: #0a1a2c;   /* deeper still — gradients, hover states */
+  --color-navy-soft: #2c4a63;   /* soft navy — borders, secondary surfaces */
+
+  --color-gold: #f4d03f;
+  --color-gold-dark: #d4af1f;
+  --color-gold-soft: #f7dd6d;
+
+  --color-white: #ffffff;
+
+  /* Same brand hues, used as restrained UI surfaces. */
+  --color-navy-05: rgba(13, 33, 55, 0.05);
+  --color-navy-10: rgba(13, 33, 55, 0.10);
+  --color-navy-20: rgba(13, 33, 55, 0.20);
+  --color-gold-10: rgba(244, 208, 63, 0.10);
+  --color-gold-20: rgba(244, 208, 63, 0.20);
+
+  /* ── Semantic / theme-aware tokens ──────────────────────────────────────
+     Components should prefer these over the raw brand tokens above so
+     light/dark mode "just works" without per-component overrides. */
+  --color-bg: #ffffff;
+  --color-bg-alt: #f7f9fa;      /* light gray surface, per spec */
+  --color-surface: #ffffff;     /* cards */
+  --color-surface-alt: #f2f4f6;
+  --color-text-main: #0d2137;
+  --color-text-muted: rgba(13, 33, 55, 0.65);
+  --color-text-faint: rgba(13, 33, 55, 0.45);
+  --color-border: rgba(13, 33, 55, 0.10);
+  --color-border-strong: rgba(13, 33, 55, 0.18);
+
+  --font-sans: "Poppins", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+
+  --container-width: 1200px;
+  --gutter: clamp(1rem, 3vw, 2rem);
+
+  --radius-sm: 0.4rem;
+  --radius-md: 0.65rem;
+  --radius-lg: 0.85rem;
+  --radius-xl: 1.1rem;
+
+  --shadow-soft: 0 12px 35px rgba(13, 33, 55, 0.08);
+  --shadow-lift: 0 18px 50px rgba(13, 33, 55, 0.14);
+
+  --nav-height: 76px;
+
+  --ease-standard: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --duration-fast: 180ms;
+  --duration-standard: 300ms;
+
+  /* Referenced via inline style="background: var(--gradient-card-dark)" in a
+     couple of pages — was previously undefined. */
+  --gradient-card-dark: linear-gradient(135deg, var(--color-navy-deep) 0%, var(--color-navy) 100%);
+}
+
+/* ── Dark theme ────────────────────────────────────────────────────────────
+   Toggled by adding `.dark` to <html> (see stores/app.js). We don't invert
+   colors — every surface gets an intentional dark value. */
+:root.dark {
+  --color-bg: #0a1622;
+  --color-bg-alt: #0d1f30;
+  --color-surface: #0f2233;
+  --color-surface-alt: #132a3d;
+  --color-text-main: #f4f6f8;
+  --color-text-muted: rgba(244, 246, 248, 0.72);
+  --color-text-faint: rgba(244, 246, 248, 0.5);
+  --color-border: rgba(255, 255, 255, 0.10);
+  --color-border-strong: rgba(255, 255, 255, 0.18);
+
+  --shadow-soft: 0 12px 35px rgba(0, 0, 0, 0.35);
+  --shadow-lift: 0 18px 50px rgba(0, 0, 0, 0.45);
+}
