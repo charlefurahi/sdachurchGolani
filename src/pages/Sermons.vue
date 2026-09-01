@@ -83,185 +83,6 @@
       </div>
     </section>
 
-<!-- Featured / Upcoming Sermon -->
-<section v-if="featuredSermon" class="featured-sermon-section">
-  <div class="container-custom">
-
-    <p class="section-tag mb-4">
-      {{ isUpcoming(featuredSermon) ? 'Coming Soon' : 'Featured Message' }}
-    </p>
-
-    <div class="featured-sermon-card-wrap">
-      <div class="featured-sermon-card">
-      <!-- Content -->
-      <div class="featured-sermon-card__content">
-
-        <span class="featured-sermon-card__category">
-          {{ categoryName(featuredSermon) }}
-        </span>
-
-        <h2>
-          {{ featuredSermon.title }}
-        </h2>
-
-        <p
-          v-if="featuredSermon.scripture_reference || featuredSermon.scripture"
-          class="featured-sermon-card__scripture"
-        >
-          {{ featuredSermon.scripture_reference || featuredSermon.scripture }}
-        </p>
-
-        <div class="featured-sermon-card__meta">
-          <span>{{ speakerName(featuredSermon.speaker) }}</span>
-
-          <span
-            v-if="featuredSermon.preach_date || featuredSermon.sermon_date || featuredSermon.date"
-          >
-            {{ fmt(featuredSermon.preach_date || featuredSermon.sermon_date || featuredSermon.date) }}
-          </span>
-        </div>
-
-        <p
-          v-if="featuredSermon.description"
-          class="featured-sermon-card__description"
-        >
-          {{ featuredSermon.description }}
-        </p>
-
-        <div class="featured-sermon-card__actions">
-
-          <button
-            v-if="featuredSermon.audio_file_url || featuredSermon.audio_file"
-            @click="openPlayer(featuredSermon)"
-            class="btn-primary"
-          >
-            Listen Now
-          </button>
-
-          <button
-            v-if="featuredSermon.video_url"
-            @click="openVideo(featuredSermon)"
-            class="btn-outline-white"
-          >
-            Watch Video
-          </button>
-
-          <RouterLink
-            :to="`/sermons/${featuredSermon.id}`"
-            class="featured-sermon-card__details"
-          >
-            View Details
-          </RouterLink>
-
-        </div>
-
-      </div>
-
-      <!-- Media -->
-      <div class="featured-sermon-card__media">
-
-        <img
-          v-if="getMediaUrl(featuredSermon.thumbnail_url || featuredSermon.thumbnail)"
-          :src="getMediaUrl(featuredSermon.thumbnail_url || featuredSermon.thumbnail)"
-          :alt="featuredSermon.title"
-        />
-
-        <div
-          v-else-if="featuredSermon.speaker_photo"
-          class="featured-sermon-card__speaker"
-        >
-          <img
-            :src="getMediaUrl(featuredSermon.speaker_photo)"
-            :alt="speakerName(featuredSermon.speaker)"
-          />
-        </div>
-
-        <div
-          v-else
-          class="featured-sermon-card__placeholder"
-          aria-hidden="true"
-        >
-          <svg
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="1.5"
-          >
-            <rect x="9" y="3" width="6" height="12" rx="3" />
-            <path d="M5 11a7 7 0 0 0 14 0M12 18v3M8 21h8" />
-          </svg>
-        </div>
-
-        <span
-          v-if="featuredSermon.duration || featuredSermon.duration_display"
-          class="featured-sermon-card__duration"
-        >
-          {{ featuredSermon.duration_display || featuredSermon.duration }}
-        </span>
-
-      </div>
-
-      </div>
-
-      <div
-        v-if="featuredDate"
-        class="featured-sermon-card__date-badge"
-        aria-hidden="true"
-      >
-        <span class="featured-sermon-card__date-badge-day">
-          {{ featuredDate.day }}
-        </span>
-        <span class="featured-sermon-card__date-badge-month">
-          {{ featuredDate.month }}
-        </span>
-        <span class="featured-sermon-card__date-badge-year">
-          {{ featuredDate.year }}
-        </span>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- Featured Sermon — loading skeleton -->
-<section
-  v-else-if="loading"
-  class="featured-sermon-section"
->
-  <div class="container-custom">
-
-    <p class="section-tag mb-4">
-      Featured Message
-    </p>
-
-    <div class="featured-sermon-card-wrap">
-      <div class="featured-sermon-card featured-sermon-card--skeleton">
-
-        <div class="featured-sermon-card__content">
-          <span class="featured-skeleton-line featured-skeleton-line--tag"></span>
-          <span class="featured-skeleton-line featured-skeleton-line--title-1"></span>
-          <span class="featured-skeleton-line featured-skeleton-line--title-2"></span>
-          <span class="featured-skeleton-line featured-skeleton-line--scripture"></span>
-          <span class="featured-skeleton-line featured-skeleton-line--meta"></span>
-          <span class="featured-skeleton-line featured-skeleton-line--desc-1"></span>
-          <span class="featured-skeleton-line featured-skeleton-line--desc-2"></span>
-
-          <div class="featured-skeleton-actions">
-            <span class="featured-skeleton-btn"></span>
-            <span class="featured-skeleton-btn featured-skeleton-btn--outline"></span>
-          </div>
-        </div>
-
-        <div class="featured-sermon-card__media featured-skeleton-media"></div>
-
-      </div>
-
-      <div class="featured-sermon-card__date-badge featured-skeleton-badge"></div>
-
-    </div>
-  </div>
-</section>
-
 
     <!-- Sermon Library -->
     <section class="sermon-library-section">
@@ -446,13 +267,6 @@
                 class="sermon-card__status"
               >
                 Upcoming
-              </span>
-
-              <span
-                v-else-if="sermon.is_featured || sermon.featured"
-                class="sermon-card__status sermon-card__status--featured"
-              >
-                Featured
               </span>
 
 
@@ -953,51 +767,14 @@ const current = ref(null)
 const viewCountMap = ref({})
 
 
-const featuredSermon = computed(() => {
-  return (
-    allSermons.value.find(
-      sermon => sermon.is_featured || sermon.featured
-    ) ||
-    allSermons.value.find(
-      sermon => isUpcoming(sermon)
-    ) ||
-    allSermons.value[0] ||
-    null
-  )
-})
-
-
-const featuredDate = computed(() => {
-  const sermon = featuredSermon.value
-
-  const raw = sermon && (
-    sermon.preach_date ||
-    sermon.sermon_date ||
-    sermon.date
-  )
-
-  if (!raw) return null
-
-  const parsed = new Date(`${raw}T00:00:00`)
-
-  if (Number.isNaN(parsed.getTime())) return null
-
-  return {
-    day: parsed.getDate(),
-    month: parsed.toLocaleDateString('en-GB', { month: 'long' }),
-    year: parsed.getFullYear()
-  }
-})
-
-
+// All sermons are shown as equal cards — there's no more special
+// "featured" card. The list is simply displayed in the order the
+// backend returns it, so make sure the Django sermons endpoint orders
+// newest-first (e.g. `ordering = ['-created_at']` on the model, or
+// `.order_by('-created_at')` in the view/queryset) so the most recently
+// uploaded sermon appears first in the grid.
 const sermonGrid = computed(() => {
-  if (!featuredSermon.value) {
-    return allSermons.value
-  }
-
-  return allSermons.value.filter(
-    sermon => sermon.id !== featuredSermon.value.id
-  )
+  return allSermons.value
 })
 
 
@@ -1304,6 +1081,21 @@ function speakerName(speaker) {
     )
   }
 
+  // The backend sometimes sends just the speaker's raw ID (their
+  // registration number) instead of the expanded speaker object.
+  // Look the name up from the speakers list already loaded for the
+  // filter dropdown instead of showing that ID on the card.
+  const match = speakers.value.find(
+    entry => typeof entry === 'object' && entry.id === speaker
+  )
+
+  if (match) {
+    return (
+      match.full_name ||
+      `${match.first_name || ''} ${match.last_name || ''}`.trim()
+    )
+  }
+
   return speaker
 }
 
@@ -1333,9 +1125,17 @@ function categoryName(sermon) {
 function fmt(date) {
   if (!date) return ''
 
-  return new Date(
-    `${date}T00:00:00`
-  ).toLocaleDateString(
+  // Backend may send either a plain "YYYY-MM-DD" date or a full ISO
+  // datetime string (with a time/timezone already attached). Only
+  // append a time portion when the value doesn't already have one —
+  // otherwise parsing breaks and produces "Invalid Date".
+  const hasTime = typeof date === 'string' && date.includes('T')
+
+  const parsed = new Date(hasTime ? date : `${date}T00:00:00`)
+
+  if (Number.isNaN(parsed.getTime())) return ''
+
+  return parsed.toLocaleDateString(
     'en-GB',
     {
       day: 'numeric',
@@ -1466,496 +1266,6 @@ watch(
   color: var(--color-gold, #c9a227);
 }
 
-
-/* =========================================================
-   FEATURED SERMON
-========================================================= */
-
-.featured-sermon-section {
-  padding: 3.5rem 0 4rem;
-  background: linear-gradient(180deg, #faf7ee 0%, #f6f0df 100%);
-  border-top: 1px solid rgba(201, 162, 39, 0.18);
-  border-bottom: 1px solid rgba(201, 162, 39, 0.18);
-}
-
-.featured-sermon-card-wrap {
-  position: relative;
-}
-
-.featured-sermon-card__date-badge {
-  position: absolute;
-  right: clamp(1.5rem, 4vw, 3rem);
-  bottom: -30px;
-  z-index: 10;
-
-  width: 104px;
-  height: 104px;
-  border-radius: 50%;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 0.05rem;
-
-  background: var(--color-navy-deep, #0d2137);
-  border: 4px solid var(--color-white, #ffffff);
-
-  box-shadow: 0 14px 32px rgba(13, 33, 55, 0.35);
-
-  transition:
-    transform 0.4s cubic-bezier(0.2, 0.7, 0.2, 1),
-    box-shadow 0.4s ease;
-}
-
-.featured-sermon-card-wrap:hover .featured-sermon-card__date-badge {
-  transform: translateY(-5px) scale(1.05);
-  box-shadow: 0 20px 42px rgba(13, 33, 55, 0.42);
-}
-
-.featured-sermon-card__date-badge-day {
-  color: #ffffff;
-
-  font-family:
-    var(
-      --font-heading,
-      'Cormorant Garamond',
-      Georgia,
-      serif
-    );
-
-  font-size: 2rem;
-  font-weight: 700;
-  line-height: 1;
-}
-
-.featured-sermon-card__date-badge-month {
-  color: var(--color-gold, #f4d03f);
-
-  font-size: 0.7rem;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-}
-
-.featured-sermon-card__date-badge-year {
-  color: rgba(255, 255, 255, 0.6);
-
-  font-size: 0.66rem;
-  font-weight: 500;
-}
-
-.featured-sermon-card {
-  position: relative;
-
-  display: grid;
-  grid-template-columns: minmax(0, 1.05fr) minmax(280px, 0.95fr);
-  min-height: 310px;
-
-  overflow: hidden;
-
-  background: var(--color-navy-deep, #0d2137);
-  border-radius: 16px;
-  border: 1px solid transparent;
-
-  box-shadow: 0 12px 35px rgba(13, 33, 55, 0.12);
-
-  transition:
-    transform 0.45s cubic-bezier(0.2, 0.7, 0.2, 1),
-    box-shadow 0.45s ease,
-    border-color 0.45s ease;
-}
-
-/* Thin gold accent line that grows outward from center on hover */
-.featured-sermon-card::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 50%;
-  z-index: 6;
-
-  width: 0;
-  height: 3px;
-
-  background: linear-gradient(
-    90deg,
-    transparent,
-    var(--color-gold, #f4d03f),
-    transparent
-  );
-
-  transform: translateX(-50%);
-  transition: width 0.55s cubic-bezier(0.2, 0.7, 0.2, 1);
-
-  pointer-events: none;
-}
-
-.featured-sermon-card:hover {
-  transform: translateY(-8px);
-  border-color: rgba(244, 208, 63, 0.4);
-  box-shadow:
-    0 28px 60px rgba(13, 33, 55, 0.28),
-    0 0 0 1px rgba(244, 208, 63, 0.12);
-}
-
-.featured-sermon-card:hover::before {
-  width: 100%;
-}
-
-/* LEFT CONTENT */
-
-.featured-sermon-card__content {
-  padding: clamp(1.5rem, 3vw, 2.5rem);
-
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-}
-
-.featured-sermon-card__category {
-  display: inline-flex;
-  align-items: center;
-
-  margin-bottom: 0.85rem;
-
-  color: var(--color-gold, #f4d03f);
-
-  font-size: 0.68rem;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  line-height: 1.4;
-  text-transform: uppercase;
-}
-
-.featured-sermon-card__content h2 {
-  max-width: 520px;
-
-  margin: 0;
-
-  color: var(--color-white, #ffffff);
-
-  font-family: var(
-    --font-heading,
-    "Cormorant Garamond",
-    Georgia,
-    serif
-  );
-
-  font-size: clamp(1.65rem, 2.5vw, 2.35rem);
-  font-weight: 700;
-  line-height: 1.12;
-  letter-spacing: -0.025em;
-}
-
-.featured-sermon-card__scripture {
-  margin: 0.75rem 0 0;
-
-  color: var(--color-gold, #f4d03f);
-
-  font-size: 0.9rem;
-  font-style: italic;
-  font-weight: 600;
-}
-
-.featured-sermon-card__meta {
-  display: flex;
-  flex-wrap: wrap;
-
-  gap: 0.5rem 1.25rem;
-
-  margin-top: 1rem;
-
-  color: rgba(255, 255, 255, 0.65);
-
-  font-size: 0.8rem;
-  line-height: 1.5;
-}
-
-.featured-sermon-card__meta span + span::before {
-  content: "•";
-
-  margin-right: 1.25rem;
-
-  color: var(--color-gold, #f4d03f);
-}
-
-.featured-sermon-card__description {
-  max-width: 600px;
-
-  margin: 1rem 0 0;
-
-  color: rgba(255, 255, 255, 0.72);
-
-  font-size: 0.9rem;
-  line-height: 1.7;
-}
-
-/* Prevent the featured card from becoming too tall */
-.featured-sermon-card__description {
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-
-  -webkit-line-clamp: 3;
-  line-clamp: 3;
-}
-
-.featured-sermon-card__actions {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-
-  gap: 0.75rem;
-
-  margin-top: 1.5rem;
-}
-
-/* RIGHT MEDIA */
-
-.featured-sermon-card__media {
-  position: relative;
-
-  min-height: 310px;
-
-  overflow: hidden;
-
-  background:
-    linear-gradient(
-      135deg,
-      rgba(21, 50, 78, 0.96),
-      rgba(13, 33, 55, 1)
-    );
-}
-
-.featured-sermon-card__media > img {
-  width: 100%;
-  height: 100%;
-
-  position: absolute;
-  inset: 0;
-
-  object-fit: cover;
-
-  opacity: 0.68;
-
-  transition:
-    transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1),
-    opacity 0.45s ease;
-}
-
-.featured-sermon-card:hover .featured-sermon-card__media > img {
-  transform: scale(1.06);
-  opacity: 0.52;
-}
-
-/*
- * Slide-up color fill on the image area only, same technique as
- * the ministry/sermon cards. This card had no hover state at all
- * before, so the trigger below is new; everything else (content,
- * layout) is untouched. Explicit z-index here because the photo,
- * overlay, speaker circle/placeholder and duration badge all need
- * a clear order: photo < wash < overlay < speaker/placeholder <
- * duration.
- */
-.featured-sermon-card__media::before {
-  content: "";
-
-  position: absolute;
-  inset: 0;
-
-  z-index: 1;
-
-  background:
-    linear-gradient(
-      160deg,
-      rgba(21, 50, 78, 0.85),
-      rgba(13, 33, 55, 0.92)
-    );
-
-  transform: translateY(100%);
-
-  transition:
-    transform 0.5s cubic-bezier(0.2, 0.7, 0.2, 1);
-
-  pointer-events: none;
-}
-
-.featured-sermon-card:hover .featured-sermon-card__media::before {
-  transform: translateY(0);
-}
-
-.featured-sermon-card__media::after {
-  content: "";
-
-  position: absolute;
-  inset: 0;
-
-  z-index: 2;
-
-  background: linear-gradient(
-    90deg,
-    rgba(13, 33, 55, 0.35),
-    rgba(13, 33, 55, 0.05)
-  );
-
-  pointer-events: none;
-}
-
-.featured-sermon-card__speaker {
-  position: absolute;
-  inset: 0;
-
-  z-index: 3;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.featured-sermon-card__speaker img {
-  width: 105px;
-  height: 105px;
-
-  border: 3px solid rgba(244, 208, 63, 0.55);
-  border-radius: 50%;
-
-  object-fit: cover;
-
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-
-  transition: transform 0.4s ease, border-color 0.4s ease;
-}
-
-.featured-sermon-card:hover .featured-sermon-card__speaker img {
-  transform: scale(1.06);
-  border-color: rgba(244, 208, 63, 0.85);
-}
-
-.featured-sermon-card__placeholder {
-  position: absolute;
-  inset: 0;
-
-  z-index: 3;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  color: rgba(255, 255, 255, 0.12);
-}
-
-.featured-sermon-card__placeholder svg {
-  width: 70px;
-  height: 70px;
-}
-
-.featured-sermon-card__duration {
-  position: absolute;
-  right: 1rem;
-  bottom: 1rem;
-
-  z-index: 4;
-
-  padding: 0.45rem 0.7rem;
-
-  background: rgba(8, 24, 40, 0.85);
-
-  color: rgba(255, 255, 255, 0.85);
-
-  font-size: 0.78rem;
-  font-weight: 700;
-
-  border: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-/* DETAILS LINK */
-
-.featured-sermon-card__details {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-
-  padding-bottom: 0.2rem;
-
-  color: var(--color-white, #ffffff);
-
-  font-size: 0.82rem;
-  font-weight: 600;
-
-  text-decoration: none;
-
-  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
-
-  transition:
-    color 0.2s ease,
-    border-color 0.2s ease;
-}
-
-.featured-sermon-card__details::after {
-  content: "\2192";
-  transition: transform 0.25s ease;
-}
-
-.featured-sermon-card__details:hover {
-  color: var(--color-gold, #f4d03f);
-  border-color: var(--color-gold, #f4d03f);
-}
-
-.featured-sermon-card__details:hover::after {
-  transform: translateX(4px);
-}
-
-/* =========================================================
-   MOBILE
-========================================================= */
-
-@media (max-width: 760px) {
-  .featured-sermon-section {
-    padding: 2rem 0 2.5rem;
-  }
-
-  .featured-sermon-card {
-    grid-template-columns: 1fr;
-  }
-
-  .featured-sermon-card__content {
-    padding: 1.5rem;
-  }
-
-  .featured-sermon-card__content h2 {
-    font-size: 1.8rem;
-  }
-
-  .featured-sermon-card__media {
-    min-height: 220px;
-    order: -1;
-  }
-
-  .featured-sermon-card__description {
-    font-size: 0.88rem;
-  }
-
-  .featured-sermon-card__date-badge {
-    width: 78px;
-    height: 78px;
-    right: 1.25rem;
-    bottom: auto;
-    top: 182px;
-    border-width: 3px;
-  }
-
-  .featured-sermon-card__date-badge-day {
-    font-size: 1.5rem;
-  }
-
-  .featured-sermon-card__date-badge-month {
-    font-size: 0.6rem;
-  }
-
-  .featured-sermon-card__date-badge-year {
-    font-size: 0.56rem;
-  }
-}
 
 /* =========================================================
    LIBRARY
@@ -2097,35 +1407,44 @@ watch(
 .sermon-grid {
   display: grid;
   grid-template-columns:
-    repeat(3, minmax(0, 1fr));
+    repeat(2, minmax(0, 1fr));
 
-  gap: clamp(1.2rem, 2vw, 1.75rem);
+  gap: 1.5rem;
 }
 
+/*
+ * Same row-card shape as .ministry-item (MinistryRow.vue): fixed-width
+ * image column + flexible content column, a min-height floor, and
+ * line-clamped text below so every card in the grid settles at the
+ * same height instead of following its own content length.
+ */
 .sermon-card {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns:
+    170px minmax(0, 1fr);
+
+  min-height: 240px;
 
   overflow: hidden;
 
-  border: 1px solid rgba(13, 33, 55, 0.1);
+  background: var(--color-surface);
 
-  background: #ffffff;
+  border: 1px solid var(--color-border);
+
+  box-shadow: none;
 
   transition:
-    transform 0.3s ease,
-    box-shadow 0.3s ease,
-    border-color 0.3s ease;
+    transform var(--duration-standard) var(--ease-standard),
+    box-shadow var(--duration-standard) var(--ease-standard),
+    border-color var(--duration-fast) var(--ease-standard);
 }
 
 .sermon-card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-3px);
 
-  border-color: rgba(201, 162, 39, 0.45);
+  border-color: var(--color-border-strong);
 
-  box-shadow:
-    0 18px 45px
-    rgba(13, 33, 55, 0.1);
+  box-shadow: var(--shadow-soft);
 }
 
 
@@ -2137,7 +1456,9 @@ watch(
   position: relative;
 
   width: 100%;
-  height: 220px;
+  height: 100%;
+
+  min-height: 240px;
 
   border: 0;
   padding: 0;
@@ -2234,19 +1555,19 @@ watch(
 
 .sermon-card__status {
   position: absolute;
-  top: 1rem;
-  left: 1rem;
+  top: 0.6rem;
+  left: 0.6rem;
   z-index: 2;
 
-  padding: 0.4rem 0.7rem;
+  padding: 0.3rem 0.55rem;
 
   background: var(--color-gold, #c9a227);
 
   color: var(--color-navy-deep, #0d2137);
 
-  font-size: 0.65rem;
+  font-size: 0.56rem;
   font-weight: 700;
-  letter-spacing: 0.07em;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
 }
 
@@ -2256,17 +1577,17 @@ watch(
 
 .sermon-card__duration {
   position: absolute;
-  right: 1rem;
-  bottom: 1rem;
+  right: 0.6rem;
+  bottom: 0.6rem;
   z-index: 2;
 
-  padding: 0.35rem 0.6rem;
+  padding: 0.28rem 0.5rem;
 
   background: rgba(13, 33, 55, 0.88);
 
   color: #ffffff;
 
-  font-size: 0.68rem;
+  font-size: 0.6rem;
   font-weight: 600;
 }
 
@@ -2276,8 +1597,8 @@ watch(
   top: 50%;
   z-index: 3;
 
-  width: 52px;
-  height: 52px;
+  width: 40px;
+  height: 40px;
 
   display: grid;
   place-items: center;
@@ -2300,8 +1621,8 @@ watch(
 }
 
 .sermon-card__play svg {
-  width: 19px;
-  height: 19px;
+  width: 15px;
+  height: 15px;
 
   margin-left: 2px;
 }
@@ -2324,7 +1645,7 @@ watch(
   flex-direction: column;
   flex: 1;
 
-  padding: 1.35rem;
+  padding: 1.25rem;
 }
 
 .sermon-card__category {
@@ -2332,11 +1653,11 @@ watch(
 
   width: fit-content;
 
-  margin-bottom: 0.85rem;
+  margin-bottom: 0.4rem;
 
-  color: var(--color-gold, #a67c00);
+  color: var(--color-gold-dark, #a67c00);
 
-  font-size: 0.66rem;
+  font-size: 0.62rem;
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -2345,11 +1666,11 @@ watch(
 .sermon-card h3 {
   margin: 0;
 
-  color: var(--color-navy-deep, #0d2137);
+  color: var(--color-text-main, #0d2137);
 
-  font-size: 1rem;
+  font-size: 0.98rem;
   font-weight: 700;
-  line-height: 1.45;
+  line-height: 1.3;
 
   display: -webkit-box;
   overflow: hidden;
@@ -2359,29 +1680,36 @@ watch(
 }
 
 .sermon-card__speaker {
-  margin: 0.8rem 0 0;
+  margin: 0.5rem 0 0;
 
-  color: rgba(13, 33, 55, 0.65);
+  overflow: hidden;
 
-  font-size: 0.82rem;
+  color: var(--color-text-muted, rgba(13, 33, 55, 0.65));
+
+  font-size: 0.78rem;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 .sermon-card__scripture {
-  margin: 0.45rem 0 0;
+  margin: 0.35rem 0 0;
 
-  color: var(--color-gold, #a67c00);
+  overflow: hidden;
 
-  font-size: 0.78rem;
+  color: var(--color-gold-dark, #a67c00);
+
+  font-size: 0.74rem;
   font-style: italic;
-  line-height: 1.5;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 .sermon-card__date {
-  margin: 0.6rem 0 1.2rem;
+  margin: 0.5rem 0 1rem;
 
-  color: rgba(13, 33, 55, 0.45);
+  color: var(--color-text-faint, rgba(13, 33, 55, 0.45));
 
-  font-size: 0.72rem;
+  font-size: 0.7rem;
 }
 
 
@@ -2399,7 +1727,7 @@ watch(
   padding-top: 1rem;
 
   border-top:
-    1px solid rgba(13, 33, 55, 0.08);
+    1px solid var(--color-border, rgba(13, 33, 55, 0.08));
 }
 
 .sermon-card__views {
@@ -2407,7 +1735,7 @@ watch(
   align-items: center;
   gap: 0.35rem;
 
-  color: rgba(13, 33, 55, 0.45);
+  color: var(--color-text-faint, rgba(13, 33, 55, 0.45));
 
   font-size: 0.72rem;
 }
@@ -2434,6 +1762,7 @@ watch(
   padding: 0 0.75rem;
 
   border: 1px solid transparent;
+  border-radius: var(--radius-sm);
 
   font-family: inherit;
   font-size: 0.7rem;
@@ -2518,7 +1847,6 @@ watch(
   height: 15px;
 }
 
-.btn-featured-secondary,
 .btn-outline {
   min-height: 46px;
 
@@ -2547,46 +1875,10 @@ watch(
     background 0.2s ease;
 }
 
-.btn-featured-secondary {
-  border-color: rgba(255, 255, 255, 0.35);
-
-  color: #ffffff;
-}
-
-.btn-featured-secondary:hover {
-  border-color: var(--color-gold, #c9a227);
-
-  color: var(--color-gold, #c9a227);
-}
-
 .btn-outline:hover {
   border-color: var(--color-gold, #c9a227);
 
   color: var(--color-gold, #a67c00);
-}
-
-.featured-sermon__details {
-  padding-bottom: 3px;
-
-  border-bottom:
-    1px solid rgba(255, 255, 255, 0.35);
-
-  color: #ffffff;
-
-  font-size: 0.8rem;
-  font-weight: 600;
-
-  text-decoration: none;
-
-  transition:
-    color 0.2s ease,
-    border-color 0.2s ease;
-}
-
-.featured-sermon__details:hover {
-  border-color: var(--color-gold, #c9a227);
-
-  color: var(--color-gold, #c9a227);
 }
 
 
@@ -2595,16 +1887,23 @@ watch(
 ========================================================= */
 
 .sermon-skeleton {
+  display: grid;
+  grid-template-columns:
+    170px minmax(0, 1fr);
+
+  min-height: 240px;
+
   overflow: hidden;
 
   border:
-    1px solid rgba(13, 33, 55, 0.08);
+    1px solid var(--color-border, rgba(13, 33, 55, 0.08));
 
-  background: #ffffff;
+  background: var(--color-surface, #ffffff);
 }
 
 .sermon-skeleton__image {
-  height: 220px;
+  height: 100%;
+  min-height: 240px;
 
   background:
     linear-gradient(
@@ -2620,7 +1919,11 @@ watch(
 }
 
 .sermon-skeleton__content {
-  padding: 1.35rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  padding: 1.25rem;
 }
 
 .sermon-skeleton__content span {
@@ -2659,131 +1962,6 @@ watch(
   to {
     background-position: -200% 0;
   }
-}
-
-
-/* =========================================================
-   FEATURED SKELETON
-========================================================= */
-
-.featured-sermon-card--skeleton {
-  box-shadow: 0 12px 35px rgba(13, 33, 55, 0.12);
-}
-
-.featured-sermon-card--skeleton:hover {
-  transform: none;
-  box-shadow: 0 12px 35px rgba(13, 33, 55, 0.12);
-}
-
-.featured-skeleton-line {
-  display: block;
-
-  height: 12px;
-  margin-bottom: 0.85rem;
-
-  border-radius: 2px;
-
-  background:
-    linear-gradient(
-      90deg,
-      rgba(255, 255, 255, 0.08) 25%,
-      rgba(255, 255, 255, 0.16) 50%,
-      rgba(255, 255, 255, 0.08) 75%
-    );
-
-  background-size: 200% 100%;
-
-  animation: shimmer 1.5s infinite;
-}
-
-.featured-skeleton-line--tag {
-  width: 30%;
-  height: 10px;
-  margin-bottom: 1.1rem;
-}
-
-.featured-skeleton-line--title-1 {
-  width: 88%;
-  height: 26px;
-}
-
-.featured-skeleton-line--title-2 {
-  width: 62%;
-  height: 26px;
-  margin-bottom: 1.1rem;
-}
-
-.featured-skeleton-line--scripture {
-  width: 40%;
-  margin-bottom: 1.3rem;
-}
-
-.featured-skeleton-line--meta {
-  width: 50%;
-  margin-bottom: 1.3rem;
-}
-
-.featured-skeleton-line--desc-1 {
-  width: 95%;
-}
-
-.featured-skeleton-line--desc-2 {
-  width: 70%;
-  margin-bottom: 1.6rem;
-}
-
-.featured-skeleton-actions {
-  display: flex;
-  gap: 0.75rem;
-}
-
-.featured-skeleton-btn {
-  width: 140px;
-  height: 44px;
-
-  background:
-    linear-gradient(
-      90deg,
-      rgba(255, 255, 255, 0.08) 25%,
-      rgba(255, 255, 255, 0.16) 50%,
-      rgba(255, 255, 255, 0.08) 75%
-    );
-
-  background-size: 200% 100%;
-
-  animation: shimmer 1.5s infinite;
-}
-
-.featured-skeleton-btn--outline {
-  width: 130px;
-}
-
-.featured-skeleton-media {
-  background:
-    linear-gradient(
-      90deg,
-      rgba(255, 255, 255, 0.05) 25%,
-      rgba(255, 255, 255, 0.12) 50%,
-      rgba(255, 255, 255, 0.05) 75%
-    );
-
-  background-size: 200% 100%;
-
-  animation: shimmer 1.8s infinite;
-}
-
-.featured-skeleton-badge {
-  background:
-    linear-gradient(
-      90deg,
-      #16375a 25%,
-      #1d4670 50%,
-      #16375a 75%
-    );
-
-  background-size: 200% 100%;
-
-  animation: shimmer 1.8s infinite;
 }
 
 
@@ -3072,18 +2250,17 @@ watch(
 ========================================================= */
 
 @media (max-width: 1000px) {
-  .featured-sermon {
-    grid-template-columns: 1fr;
-  }
-
-  .featured-sermon__media {
-    min-height: 360px;
-    order: -1;
-  }
-
-  .sermon-grid {
+  .sermon-card,
+  .sermon-skeleton {
     grid-template-columns:
-      repeat(2, minmax(0, 1fr));
+      145px minmax(0, 1fr);
+  }
+
+  .sermon-card,
+  .sermon-card__media,
+  .sermon-skeleton,
+  .sermon-skeleton__image {
+    min-height: 220px;
   }
 
   .sermon-filters {
@@ -3115,10 +2292,6 @@ watch(
     padding: 3.5rem 0;
   }
 
-  .featured-sermon__media {
-    min-height: 280px;
-  }
-
   .sermon-grid {
     grid-template-columns: 1fr;
   }
@@ -3131,26 +2304,33 @@ watch(
     grid-column: auto;
   }
 
-  .sermon-card__media {
-    height: 230px;
+  .sermon-card,
+  .sermon-skeleton {
+    grid-template-columns:
+      120px minmax(0, 1fr);
+  }
+
+  .sermon-card,
+  .sermon-card__media,
+  .sermon-skeleton {
+    min-height: 200px;
+  }
+
+  .sermon-skeleton__image {
+    min-height: 200px;
+  }
+
+  .sermon-card__content {
+    padding: 1rem;
+  }
+
+  .sermon-card h3 {
+    font-size: 0.86rem;
   }
 
   .sermon-card__footer {
     align-items: flex-start;
     flex-direction: column;
-  }
-
-  .featured-sermon__actions {
-    align-items: stretch;
-  }
-
-  .featured-sermon__actions .btn-primary,
-  .featured-sermon__actions .btn-featured-secondary {
-    width: 100%;
-  }
-
-  .featured-sermon__details {
-    width: fit-content;
   }
 
   .sermon-player__actions {

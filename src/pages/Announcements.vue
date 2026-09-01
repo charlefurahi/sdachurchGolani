@@ -40,7 +40,7 @@
 
           <!-- Loading -->
           <div v-if="loading" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <div v-for="n in 6" :key="n" class="announcement-card animate-pulse">
+            <div v-for="n in 6" :key="n" class="announcement-skeleton animate-pulse">
               <div class="h-44 bg-gray-200 dark:bg-navy-700"></div>
               <div class="p-5 space-y-3">
                 <div class="h-3 bg-gray-200 dark:bg-navy-700 rounded w-1/3"></div>
@@ -51,50 +51,14 @@
           </div>
 
           <!-- Announcements -->
-          <div v-else-if="filteredAnnouncements.length" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <article
+          <div v-else-if="filteredAnnouncements.length" class="announcements-grid">
+            <AnnouncementCard
               v-for="item in filteredAnnouncements"
               :key="item.id"
-              class="announcement-card group"
-            >
-              <div class="announcement-card__preview">
-                <div class="announcement-card__badges">
-                  <span v-if="item.category" class="badge-primary">{{ item.category }}</span>
-                  <span v-if="item.priority === 'urgent'" class="ad-badge ad-badge--urgent">Urgent</span>
-                  <span v-if="item.is_pinned" class="ad-badge ad-badge--pinned">Pinned</span>
-                </div>
-              </div>
-
-              <div class="p-5 flex flex-col h-full">
-                <p class="text-xs text-gray-500 dark:text-gray-400 mb-2">
-                  {{ formatDate(item.announcement_date || item.created_at) }}
-                </p>
-
-                <h2 class="font-heading text-xl font-bold text-navy-800 dark:text-white leading-snug mb-3">
-                  {{ item.title }}
-                </h2>
-
-                <p class="text-sm text-gray-500 dark:text-gray-400 leading-relaxed line-clamp-3 flex-1">
-                  {{ item.content || item.summary || 'View the attached announcement for full details.' }}
-                </p>
-
-                <div class="mt-5 flex items-center gap-2">
-                  <RouterLink :to="`/announcements/${item.id}`" class="btn-primary btn-sm flex-1 text-center">
-                    View Announcement
-                  </RouterLink>
-                  <a
-                    v-if="getPdfUrl(item)"
-                    :href="getPdfUrl(item)"
-                    target="_blank"
-                    rel="noopener"
-                    class="btn-secondary btn-sm"
-                    aria-label="Open PDF"
-                  >
-                    PDF ↗
-                  </a>
-                </div>
-              </div>
-            </article>
+              :announcement="item"
+              :link-to="`/announcements/${item.id}`"
+              :pdf-url="getPdfUrl(item)"
+            />
           </div>
 
           <!-- Empty -->
@@ -118,11 +82,9 @@
 
 <script setup>
 import { computed, onMounted, ref } from 'vue'
-import { RouterLink } from 'vue-router'
-import { formatDate } from '@/utils/index.js'
+import AnnouncementCard from '@/components/home/AnnouncementCard.vue'
 import announcementService from '@/services/announcementService'
 import { announcements as demoAnnouncements, announcementCategories } from '@/data/announcements.js'
-import pdfLogo from '@/assets/logos/pdf.png'
 
 const loading = ref(true)
 const announcements = ref([])
@@ -198,9 +160,7 @@ onMounted(loadAnnouncements)
   gap: 0.75rem;
 }
 
-.announcement-search {
-  position: relative;
-}
+.announcement-search { position: relative; }
 
 .announcement-search svg {
   position: absolute;
@@ -226,9 +186,7 @@ onMounted(loadAnnouncements)
   font: inherit;
 }
 
-.announcement-search input {
-  padding-left: 2.75rem;
-}
+.announcement-search input { padding-left: 2.75rem; }
 
 .announcement-search input:focus,
 .announcement-select:focus {
@@ -243,89 +201,41 @@ onMounted(loadAnnouncements)
   color: #fff;
 }
 
-.announcement-card {
-  display: flex;
-  flex-direction: column;
+.announcement-skeleton {
+  min-height: 470px;
   overflow: hidden;
-  min-height: 430px;
-  background: #fff;
   border: 1px solid #e8edf2;
-  border-radius: 1rem;
-  box-shadow: 0 5px 22px rgba(13, 33, 55, 0.06);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  border-radius: 1.2rem;
+  background: #fff;
 }
 
-.announcement-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 14px 32px rgba(13, 33, 55, 0.11);
+.announcement-skeleton > :first-child {
+  height: 190px;
 }
 
-:global(.dark) .announcement-card {
-  background: #0f2233;
+:global(.dark) .announcement-skeleton {
   border-color: rgba(255, 255, 255, 0.07);
+  background: #0f2233;
 }
 
-.announcement-card__preview {
-  position: relative;
-  height: 175px;
+.announcements-grid {
   display: grid;
-  place-items: center;
-  background: linear-gradient(135deg, #10283f, #0d2137);
-  overflow: hidden;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: stretch;
+  gap: 1.25rem;
 }
 
-.announcement-card__preview::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(circle at 80% 20%, rgba(201, 162, 39, 0.2), transparent 42%);
+.announcements-grid > * {
+  min-width: 0;
+  height: 100%;
 }
 
-.announcement-card__pdf img {
-  width: 58px;
-  height: 58px;
-  object-fit: contain;
+@media (max-width: 900px) {
+  .announcement-toolbar { grid-template-columns: 1fr; }
+  .announcements-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
-.announcement-card__badges {
-  position: absolute;
-  z-index: 2;
-  top: 0.75rem;
-  left: 0.75rem;
-  right: 0.75rem;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.4rem;
-}
-
-.ad-badge {
-  display: inline-flex;
-  align-items: center;
-  padding: 0.25rem 0.6rem;
-  border-radius: 999px;
-  font-size: 0.65rem;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-}
-
-.ad-badge--urgent {
-  background: #fee2e2;
-  color: #b91c1c;
-}
-
-.ad-badge--pinned {
-  background: #fdf3c4;
-  color: #8c6f1a;
-}
-
-@media (max-width: 700px) {
-  .announcement-toolbar {
-    grid-template-columns: 1fr;
-  }
-
-  .announcement-card {
-    min-height: 0;
-  }
+@media (max-width: 640px) {
+  .announcements-grid { grid-template-columns: 1fr; }
 }
 </style>

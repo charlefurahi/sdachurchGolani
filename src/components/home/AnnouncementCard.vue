@@ -1,4 +1,3 @@
-```vue
 <template>
   <article class="announcement-card group">
     <!-- Preview -->
@@ -96,31 +95,57 @@
       </p>
 
       <!-- Bottom button -->
-      <button
-        type="button"
-        class="announcement-card__bottom-button"
-        @click="$emit('read-more', announcement)"
-      >
-        <span>Read More</span>
-
-        <span
-          class="announcement-card__bottom-arrow"
-          aria-hidden="true"
+      <div class="announcement-card__bottom-actions">
+        <RouterLink
+          v-if="props.linkTo"
+          :to="props.linkTo"
+          class="announcement-card__bottom-button"
         >
-          →
-        </span>
-      </button>
+          <span>Read More</span>
+          <span class="announcement-card__bottom-arrow" aria-hidden="true">→</span>
+        </RouterLink>
+
+        <button
+          v-else
+          type="button"
+          class="announcement-card__bottom-button"
+          @click="$emit('read-more', announcement)"
+        >
+          <span>Read More</span>
+          <span class="announcement-card__bottom-arrow" aria-hidden="true">→</span>
+        </button>
+
+        <a
+          v-if="props.pdfUrl"
+          :href="props.pdfUrl"
+          target="_blank"
+          rel="noopener"
+          class="announcement-card__pdf-button"
+          aria-label="Open announcement PDF"
+        >
+          PDF ↗
+        </a>
+      </div>
     </div>
   </article>
 </template>
 
 <script setup>
+import { RouterLink } from 'vue-router'
 import { formatDate } from '@/utils/index.js'
 
-defineProps({
+const props = defineProps({
   announcement: {
     type: Object,
     required: true,
+  },
+  linkTo: {
+    type: [String, Object],
+    default: null,
+  },
+  pdfUrl: {
+    type: String,
+    default: null,
   },
 })
 
@@ -150,6 +175,7 @@ defineEmits(['read-more'])
   flex-direction: column;
 
   height: 100%;
+  min-height: 470px;
   overflow: hidden;
 
   background: var(--color-surface, #ffffff);
@@ -181,6 +207,36 @@ defineEmits(['read-more'])
 }
 
 
+
+.announcement-card__pdf-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 0 0.85rem;
+  border: 1px solid rgba(13, 33, 55, 0.10);
+  border-radius: 0.75rem;
+  background: rgba(13, 33, 55, 0.035);
+  color: var(--navy);
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background 180ms ease, color 180ms ease, border-color 180ms ease;
+}
+
+.announcement-card__pdf-button:hover {
+  border-color: var(--gold-dark);
+  background: var(--gold);
+  color: var(--navy);
+}
+
+:global(.dark) .announcement-card__pdf-button {
+  border-color: rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.04);
+  color: #fff;
+}
+
 /* =========================================================
    DARK MODE
 ========================================================= */
@@ -210,6 +266,7 @@ defineEmits(['read-more'])
   position: relative;
 
   height: 190px;
+  flex: 0 0 190px;
 
   display: grid;
   place-items: center;
@@ -697,9 +754,17 @@ defineEmits(['read-more'])
    BOTTOM BUTTON
 ========================================================= */
 
+.announcement-card__bottom-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  margin-top: 1.1rem;
+}
+
 .announcement-card__bottom-button {
   position: relative;
 
+  flex: 1;
   display: inline-flex;
 
   align-items: center;
@@ -708,9 +773,7 @@ defineEmits(['read-more'])
 
   gap: 0.5rem;
 
-  min-height: 35px;
-
-  margin-top: 1.1rem;
+  min-height: 44px;
 
   padding: 0.55rem 0.85rem;
 
@@ -833,8 +896,13 @@ defineEmits(['read-more'])
 
 @media (max-width: 640px) {
 
+  .announcement-card {
+    min-height: 450px;
+  }
+
   .announcement-card__preview {
     height: 165px;
+    flex-basis: 165px;
   }
 
 
@@ -877,6 +945,7 @@ defineEmits(['read-more'])
 
   .announcement-card__preview {
     height: 155px;
+    flex-basis: 155px;
   }
 
 
@@ -931,4 +1000,3 @@ defineEmits(['read-more'])
   }
 }
 </style>
-```

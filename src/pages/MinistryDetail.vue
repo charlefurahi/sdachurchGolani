@@ -15,45 +15,11 @@
           ← All Ministries
         </RouterLink>
 
-
-        <!-- HERO SKELETON -->
-        <div
-          v-if="loading"
-          class="mt-8"
-        >
-          <div class="hero-skeleton hero-skeleton--small"></div>
-
-          <div class="hero-skeleton hero-skeleton--title"></div>
-
-          <div class="hero-skeleton hero-skeleton--text"></div>
-
-          <div class="hero-skeleton hero-skeleton--text hero-skeleton--text-short"></div>
+        <div class="page-hero__context">
+          <span>Ministries</span>
+          <span aria-hidden="true">/</span>
+          <span>{{ ministry?.name || 'Ministry' }}</span>
         </div>
-
-
-        <!-- HERO CONTENT -->
-        <template v-else-if="ministry">
-
-          <p class="section-tag text-blue-200 mt-8">
-            {{ parentLabel }}
-          </p>
-
-          <h1
-            class="font-heading text-4xl md:text-6xl font-bold text-white mt-2"
-          >
-            {{ ministry.name }}
-          </h1>
-
-          <div class="divider-blue mt-5"></div>
-
-          <p
-            v-if="ministry.description"
-            class="max-w-3xl mt-5 text-blue-100/85 leading-7"
-          >
-            {{ ministry.description }}
-          </p>
-
-        </template>
 
       </div>
 
@@ -67,89 +33,67 @@
       v-if="loading"
       class="section"
     >
-
       <div class="container-custom">
 
-        <div class="detail-layout">
+        <div class="leader-first leader-first--loading">
 
-          <!-- Main skeleton -->
-          <div>
-
-            <div class="detail-image-skeleton skeleton"></div>
-
-            <div class="mt-8">
-
-              <div class="skeleton skeleton-heading"></div>
-
-              <div class="space-y-3 mt-5">
-                <div class="skeleton skeleton-line"></div>
-                <div class="skeleton skeleton-line"></div>
-                <div class="skeleton skeleton-line"></div>
-                <div class="skeleton skeleton-line skeleton-line--short"></div>
-              </div>
-
-            </div>
-
+          <div class="leader-first__intro">
+            <div class="skeleton skeleton-tag"></div>
+            <div class="skeleton skeleton-title"></div>
+            <div class="skeleton skeleton-line skeleton-line--short"></div>
           </div>
 
-
-          <!-- Leader skeleton -->
-          <aside>
-
-            <div class="leader-card">
-
+          <div class="leader-card leader-card--featured">
+            <div class="leader-profile">
               <div class="skeleton leader-skeleton-photo"></div>
 
-              <div class="skeleton leader-skeleton-label"></div>
-
-              <div class="skeleton leader-skeleton-name"></div>
-
-              <div class="skeleton leader-skeleton-role"></div>
-
+              <div>
+                <div class="skeleton leader-skeleton-label"></div>
+                <div class="skeleton leader-skeleton-name"></div>
+                <div class="skeleton leader-skeleton-role"></div>
+              </div>
             </div>
-
-          </aside>
+          </div>
 
         </div>
 
+        <div class="ministry-introduction ministry-introduction--loading">
+          <div class="skeleton skeleton-title skeleton-title--medium"></div>
 
-        <!-- Child skeletons -->
+          <div class="ministry-introduction__body">
+            <div class="skeleton detail-image-skeleton"></div>
+
+            <div>
+              <div class="skeleton skeleton-line"></div>
+              <div class="skeleton skeleton-line"></div>
+              <div class="skeleton skeleton-line"></div>
+              <div class="skeleton skeleton-line skeleton-line--short"></div>
+            </div>
+          </div>
+        </div>
+
         <div class="mt-16">
-
           <div class="skeleton skeleton-subtitle"></div>
 
           <div class="children-grid">
-
             <div
               v-for="n in 3"
               :key="n"
               class="child-card"
             >
-
               <div class="skeleton child-skeleton-image"></div>
 
               <div class="child-card__content">
-
                 <div class="skeleton child-skeleton-category"></div>
-
                 <div class="skeleton child-skeleton-title"></div>
-
                 <div class="skeleton child-skeleton-line"></div>
-
                 <div class="skeleton child-skeleton-line child-skeleton-line--short"></div>
-
-                <div class="skeleton child-skeleton-button"></div>
-
               </div>
-
             </div>
-
           </div>
-
         </div>
 
       </div>
-
     </section>
 
 
@@ -165,202 +109,200 @@
 
 
         <!-- =================================================
-             MINISTRY CONTENT
+             LEADER FIRST
         ================================================== -->
-        <div class="detail-layout">
+        <section class="leader-first">
+
+          <div class="leader-first__intro">
+            <p class="section-tag">Ministry Leadership</p>
+            <h2>Meet the Ministry Leader</h2>
+            <p>
+              Get to know the person serving and guiding this ministry.
+            </p>
+          </div>
+
+          <div class="leader-card leader-card--featured">
+
+            <template v-if="leader">
+
+              <RouterLink
+                v-if="leader.id"
+                :to="{
+                  name: 'LeaderDetail',
+                  params: { id: leader.id }
+                }"
+                class="leader-profile__link"
+              >
+                <div class="leader-profile">
+
+                  <div class="leader-photo">
+                    <img
+                      v-if="leaderPhoto"
+                      :src="leaderPhoto"
+                      :alt="leaderName"
+                      class="leader-photo__img"
+                      @error="handleLeaderImageError"
+                    />
+
+                    <div
+                      v-else
+                      class="leader-photo__placeholder"
+                    >
+                      <span>{{ initials(leaderName) }}</span>
+                    </div>
+                  </div>
+
+                  <div class="leader-profile__content">
+                    <span class="leader-profile__eyebrow">Ministry Leader</span>
+
+                    <h3>{{ leaderName || 'Ministry Leader' }}</h3>
+
+                    <p class="leader-role">
+                      {{
+                        leader.display_role ||
+                        leader.role_title ||
+                        leader.roleTitle ||
+                        leader.role ||
+                        'Ministry Leader'
+                      }}
+                    </p>
+
+                    <span class="leader-profile__details">
+                      View leader profile
+                      <span aria-hidden="true">→</span>
+                    </span>
+                  </div>
+
+                </div>
+              </RouterLink>
+
+              <div
+                v-else
+                class="leader-profile"
+              >
+                <div class="leader-photo">
+                  <img
+                    v-if="leaderPhoto"
+                    :src="leaderPhoto"
+                    :alt="leaderName"
+                    class="leader-photo__img"
+                    @error="handleLeaderImageError"
+                  />
+
+                  <div
+                    v-else
+                    class="leader-photo__placeholder"
+                  >
+                    <span>{{ initials(leaderName) }}</span>
+                  </div>
+                </div>
+
+                <div class="leader-profile__content">
+                  <span class="leader-profile__eyebrow">Ministry Leader</span>
+
+                  <h3>{{ leaderName || 'Ministry Leader' }}</h3>
+
+                  <p class="leader-role">
+                    {{
+                      leader.display_role ||
+                      leader.role_title ||
+                      leader.roleTitle ||
+                      leader.role ||
+                      'Ministry Leader'
+                    }}
+                  </p>
+                </div>
+              </div>
+
+            </template>
+
+            <div
+              v-else
+              class="leader-empty"
+            >
+              <div class="leader-empty__icon" aria-hidden="true">
+                👤
+              </div>
+
+              <h3>Leader information unavailable</h3>
+
+              <p>
+                The current ministry leader will appear here when the
+                leadership record is connected to this ministry.
+              </p>
+            </div>
+
+          </div>
+
+        </section>
 
 
-          <!-- =================================================
-               LEFT
-          ================================================== -->
-          <div>
+        <!-- =================================================
+             MINISTRY TITLE + DESCRIPTION
+        ================================================== -->
+        <section class="ministry-introduction">
 
-            <!-- Image -->
-            <div class="detail-image">
+          <div class="ministry-introduction__heading">
 
+            <p class="section-tag">
+              About this ministry
+            </p>
+
+            <h2>
+              {{ ministry.name }}
+            </h2>
+
+          </div>
+
+          <div class="ministry-introduction__body">
+
+            <div
+              v-if="ministryImage"
+              class="detail-image"
+            >
               <img
-                v-if="ministryImage"
                 :src="ministryImage"
                 :alt="ministry.name"
                 class="detail-image__img"
                 @error="handleImageError"
               />
+            </div>
+
+            <div
+              v-else
+              class="detail-image detail-image--placeholder"
+            >
+              <div class="detail-image__placeholder">
+                <span>{{ initials(ministry.name) }}</span>
+              </div>
+            </div>
+
+            <div class="detail-description">
+
+              <p class="detail-description__lead">
+                {{
+                  ministry.long_description ||
+                  ministry.description ||
+                  'Learn more about this ministry and the work it does within the church and community.'
+                }}
+              </p>
 
               <div
-                v-else
-                class="detail-image__placeholder"
+                v-if="
+                  ministry.description &&
+                  ministry.long_description &&
+                  ministry.description !== ministry.long_description
+                "
+                class="detail-description__body"
               >
-                <span>
-                  {{ initials(ministry.name) }}
-                </span>
+                {{ ministry.long_description }}
               </div>
 
             </div>
-
-
-            <!-- Description -->
-            <article class="detail-description">
-
-              <p class="section-tag">
-                About this ministry
-              </p>
-
-              <h2>
-                {{ ministry.name }}
-              </h2>
-
-              <div class="detail-description__body">
-
-                {{
-                  ministry.description ||
-                  ministry.long_description ||
-                  'The ministry description will be available from the church database.'
-                }}
-
-              </div>
-
-            </article>
 
           </div>
 
-
-          <!-- =================================================
-               RIGHT: LEADER
-          ================================================== -->
-          <aside>
-
-            <div class="leader-card">
-
-              <p class="section-tag">
-                Ministry Leader
-              </p>
-
-
-              <!-- Leader exists -->
-              <div
-                v-if="leader"
-                class="leader-profile"
-              >
-
-                <RouterLink
-                  v-if="leader.id"
-                  :to="{
-                    name: 'LeaderDetail',
-                    params: { id: leader.id }
-                  }"
-                  class="leader-profile__link"
-                >
-
-                  <div class="leader-photo">
-
-                    <img
-                      v-if="leaderPhoto"
-                      :src="leaderPhoto"
-                      :alt="leaderName"
-                      class="leader-photo__img"
-                    />
-
-                    <div
-                      v-else
-                      class="leader-photo__placeholder"
-                    >
-                      <span>
-                        {{ initials(leaderName) }}
-                      </span>
-                    </div>
-
-                  </div>
-
-
-                  <h3>
-                    {{ leaderName }}
-                  </h3>
-
-
-                  <p class="leader-role">
-                    {{
-                      leader.display_role ||
-                      leader.role_title ||
-                      leader.role ||
-                      'Ministry Leader'
-                    }}
-                  </p>
-
-
-                  <span class="leader-profile__details">
-                    View leader profile →
-                  </span>
-
-                </RouterLink>
-
-
-                <!-- Leader without profile route -->
-                <div
-                  v-else
-                  class="leader-profile"
-                >
-
-                  <div class="leader-photo">
-
-                    <img
-                      v-if="leaderPhoto"
-                      :src="leaderPhoto"
-                      :alt="leaderName"
-                      class="leader-photo__img"
-                    />
-
-                    <div
-                      v-else
-                      class="leader-photo__placeholder"
-                    >
-                      <span>
-                        {{ initials(leaderName) }}
-                      </span>
-                    </div>
-
-                  </div>
-
-                  <h3>
-                    {{ leaderName }}
-                  </h3>
-
-                  <p class="leader-role">
-                    {{
-                      leader.display_role ||
-                      leader.role_title ||
-                      leader.role ||
-                      'Ministry Leader'
-                    }}
-                  </p>
-
-                </div>
-
-              </div>
-
-
-              <!-- No leader -->
-              <div
-                v-else
-                class="leader-empty"
-              >
-
-                <div class="leader-empty__icon">
-                  👤
-                </div>
-
-                <p>
-                  The current ministry leader will appear here when
-                  the ministry and leadership records are connected
-                  in the database.
-                </p>
-
-              </div>
-
-            </div>
-
-          </aside>
-
-        </div>
+        </section>
 
 
         <!-- =====================================================
@@ -588,6 +530,7 @@ import {
 
 import ministryService from '@/services/ministryService'
 import leadershipService from '@/services/leadershipService'
+import { resolveMedia } from '@/services/api'
 
 import {
   ministryCatalog
@@ -651,23 +594,71 @@ function initials(name = '') {
    IMAGE
 ========================================================= */
 
+function mediaValue(value) {
+
+  if (!value) return ''
+
+  if (typeof value === 'string') {
+    return value.trim()
+  }
+
+  if (typeof value === 'object') {
+
+    return (
+      mediaValue(value.url) ||
+      mediaValue(value.file) ||
+      mediaValue(value.path) ||
+      mediaValue(value.src)
+    )
+
+  }
+
+  return ''
+
+}
+
+
 function getImage(record) {
 
   if (!record) return ''
 
-  return (
-    record.photo_url ||
-    record.image_url ||
-    record.image ||
-    record.photo ||
-    ''
-  )
+  const candidates = [
+    record.photo_url,
+    record.photoUrl,
+    record.image_url,
+    record.imageUrl,
+    record.profile_picture_url,
+    record.profilePictureUrl,
+    record.avatar_url,
+    record.avatarUrl,
+    record.photo,
+    record.image,
+    record.profile_picture,
+    record.profilePicture,
+  ]
+
+  const value = candidates
+    .map(mediaValue)
+    .find(Boolean)
+
+  return resolveMedia(value) || ''
 
 }
 
 
 function handleImageError(event) {
 
+  event.target.style.display = 'none'
+
+}
+
+
+const leaderPhotoFailed = ref(false)
+
+
+function handleLeaderImageError(event) {
+
+  leaderPhotoFailed.value = true
   event.target.style.display = 'none'
 
 }
@@ -681,9 +672,16 @@ const leaderName = computed(() => {
 
   if (!leader.value) return ''
 
+  if (typeof leader.value === 'string') {
+    return leader.value
+  }
+
   return (
     leader.value.full_name ||
+    leader.value.fullName ||
     leader.value.name ||
+    leader.value.display_name ||
+    leader.value.displayName ||
     `${leader.value.first_name || ''} ${leader.value.last_name || ''}`.trim()
   )
 
@@ -692,15 +690,9 @@ const leaderName = computed(() => {
 
 const leaderPhoto = computed(() => {
 
-  if (!leader.value) return ''
+  if (!leader.value || leaderPhotoFailed.value) return ''
 
-  return (
-    leader.value.photo_url ||
-    leader.value.photoUrl ||
-    leader.value.photo ||
-    leader.value.image ||
-    ''
-  )
+  return getImage(leader.value)
 
 })
 
@@ -709,28 +701,124 @@ function extractLeader(record) {
 
   if (!record) return null
 
-  if (
-    record.leader &&
-    typeof record.leader === 'object'
-  ) {
-    return record.leader
-  }
+  const candidates = [
+    record.leader,
+    record.leader_detail,
+    record.leader_details,
+    record.leader_data,
+    record.leaderDetails,
+    record.leader_profile,
+    record.leaderProfile,
+  ]
 
-  if (
-    record.leader_detail &&
-    typeof record.leader_detail === 'object'
-  ) {
-    return record.leader_detail
-  }
+  for (const candidate of candidates) {
 
-  if (
-    record.leader_data &&
-    typeof record.leader_data === 'object'
-  ) {
-    return record.leader_data
+    if (candidate && typeof candidate === 'object') {
+      return candidate
+    }
+
   }
 
   return null
+
+}
+
+
+function leaderIdFrom(record) {
+
+  if (!record) return null
+
+  const direct =
+    record.leader_id ??
+    record.leaderId
+
+  if (direct) return direct
+
+  const leaderValue = record.leader
+
+  if (
+    typeof leaderValue === 'number' ||
+    typeof leaderValue === 'string'
+  ) {
+    return leaderValue
+  }
+
+  return (
+    record.leader_detail_id ??
+    record.leaderDetailId ??
+    null
+  )
+
+}
+
+
+function matchesMinistry(candidate, ministryRecord) {
+
+  if (!candidate || !ministryRecord) return false
+
+  const ministryId = String(ministryRecord.id ?? '')
+  const ministrySlug = normalise(ministryRecord.slug)
+  const ministryName = normalise(ministryRecord.name)
+
+  const relation = [
+    candidate.ministry,
+    candidate.ministry_detail,
+    candidate.ministry_details,
+    candidate.department,
+    candidate.department_detail,
+  ]
+
+  for (const item of relation) {
+
+    if (!item) continue
+
+    if (typeof item === 'object') {
+
+      if (
+        ministryId &&
+        String(item.id ?? '') === ministryId
+      ) {
+        return true
+      }
+
+      if (
+        ministrySlug &&
+        normalise(item.slug) === ministrySlug
+      ) {
+        return true
+      }
+
+      if (
+        ministryName &&
+        normalise(item.name) === ministryName
+      ) {
+        return true
+      }
+
+    } else if (
+      ministryId &&
+      String(item) === ministryId
+    ) {
+      return true
+    }
+
+  }
+
+  const candidateMinistryId =
+    candidate.ministry_id ??
+    candidate.ministryId ??
+    candidate.department_id ??
+    candidate.departmentId
+
+  if (
+    candidateMinistryId &&
+    ministryId &&
+    String(candidateMinistryId) === ministryId
+  ) {
+    return true
+  }
+
+  return false
 
 }
 
@@ -942,42 +1030,84 @@ function findDemoChildren(record) {
 
 async function loadLeader(record) {
 
+  leaderPhotoFailed.value = false
+
   const embeddedLeader = extractLeader(record)
 
   if (embeddedLeader) {
-
     leader.value = embeddedLeader
-
     return
+  }
+
+  const leaderId = leaderIdFrom(record)
+
+  if (leaderId) {
+
+    try {
+
+      const response =
+        await leadershipService.getById(leaderId)
+
+      leader.value =
+        response?.data ??
+        response ??
+        null
+
+      if (leader.value) return
+
+    } catch (error) {
+
+      console.warn(
+        'Could not load ministry leader by ID.',
+        error
+      )
+
+    }
 
   }
 
 
-  const leaderId =
-    record?.leader_id ||
-    record?.leaderId
-
-
-  if (!leaderId) {
-
-    leader.value = null
-
-    return
-
-  }
-
-
+  /*
+   * Some backend serializers expose only the ministry relation on
+   * the leader record. If the ministry has no embedded leader/ID,
+   * search the leadership endpoint and match that relation.
+   */
   try {
 
+    if (typeof leadershipService.getAll !== 'function') {
+      leader.value = null
+      return
+    }
+
     const response =
-      await leadershipService.getById(leaderId)
+      await leadershipService.getAll({
+        page_size: 100
+      })
 
-    leader.value =
+    const list =
+      response?.results ??
+      response?.data?.results ??
       response?.data ??
-      response ??
-      null
+      response
 
-  } catch {
+    if (!Array.isArray(list)) {
+      leader.value = null
+      return
+    }
+
+    const match = list.find(
+      (candidate) =>
+        matchesMinistry(candidate, record)
+    )
+
+    leader.value = match || null
+
+  } catch (error) {
+
+    console.warn(
+      'Could not find ministry leader from leadership records.',
+      error
+    )
 
     leader.value = null
 
@@ -1341,176 +1471,97 @@ onMounted(() => {
 
 <style scoped>
 
-/* =========================================================
-   BACK LINK
-========================================================= */
-
 .back-link {
-
   display: inline-flex;
-
   align-items: center;
-
   gap: 0.5rem;
-
   color: rgba(255,255,255,0.82);
-
   font-size: 0.78rem;
-
   font-weight: 600;
-
   text-decoration: none;
-
-  transition:
-    color 0.2s ease,
-    transform 0.2s ease;
-
+  transition: color 0.2s ease, transform 0.2s ease;
 }
 
 .back-link:hover {
-
   color: #ffffff;
-
   transform: translateX(-3px);
-
 }
 
 
 /* =========================================================
-   DETAIL LAYOUT
+   PAGE HERO CONTEXT
 ========================================================= */
 
-.detail-layout {
+.page-hero__context {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1.25rem;
+  color: rgba(255,255,255,0.68);
+  font-size: 0.68rem;
+  font-weight: 600;
+}
 
+.page-hero__context span:last-child {
+  color: rgba(255,255,255,0.95);
+}
+
+
+/* =========================================================
+   LOADING
+========================================================= */
+
+.skeleton-tag {
+  width: 105px;
+  height: 10px;
+}
+
+.skeleton-title {
+  width: min(330px, 80%);
+  height: 34px;
+  margin-top: 0.8rem;
+}
+
+.skeleton-title--medium {
+  width: 250px;
+}
+
+.leader-first--loading,
+.ministry-introduction--loading {
+  pointer-events: none;
+}
+
+/* =========================================================
+   LEADER FIRST
+========================================================= */
+
+.leader-first {
   display: grid;
-
-  grid-template-columns:
-    minmax(0, 2fr)
-    minmax(280px, 1fr);
-
-  gap: 3rem;
-
-  align-items: start;
-
+  grid-template-columns: minmax(0, 0.72fr) minmax(320px, 1.28fr);
+  gap: clamp(2rem, 5vw, 4rem);
+  align-items: center;
+  margin-bottom: clamp(4rem, 8vw, 6rem);
 }
 
-
-/* =========================================================
-   IMAGE
-========================================================= */
-
-.detail-image {
-
-  position: relative;
-
-  overflow: hidden;
-
-  background:
-    var(--color-navy, #15324e);
-
-  border:
-    1px solid
-    var(
-      --color-border,
-      rgba(13,33,55,0.1)
-    );
-
+.leader-first__intro {
+  max-width: 420px;
 }
 
-
-.detail-image__img {
-
-  display: block;
-
-  width: 100%;
-
-  aspect-ratio: 16 / 10;
-
-  object-fit: cover;
-
-}
-
-
-.detail-image__placeholder {
-
-  aspect-ratio: 16 / 10;
-
-  display: grid;
-
-  place-items: center;
-
-  background:
-    linear-gradient(
-      135deg,
-      var(--color-navy, #15324e),
-      var(--color-navy-deep, #0d2137)
-    );
-
-}
-
-
-.detail-image__placeholder span {
-
-  color: rgba(255,255,255,0.9);
-
-  font-size: 4rem;
-
+.leader-first__intro h2 {
+  margin: 0.55rem 0 0;
+  color: var(--color-navy-deep, #0d2137);
+  font-family: var(--font-heading, inherit);
+  font-size: clamp(1.7rem, 3vw, 2.35rem);
+  line-height: 1.12;
   font-weight: 700;
-
 }
 
-
-/* =========================================================
-   DESCRIPTION
-========================================================= */
-
-.detail-description {
-
-  margin-top: 2.5rem;
-
-}
-
-
-.detail-description h2 {
-
-  margin:
-    0.55rem 0 0;
-
-  color:
-    var(
-      --color-navy-deep,
-      #0d2137
-    );
-
-  font-family:
-    var(
-      --font-heading,
-      inherit
-    );
-
-  font-size: 1.5rem;
-
-  font-weight: 700;
-
-}
-
-
-.detail-description__body {
-
-  margin-top: 1.2rem;
-
-  color:
-    var(
-      --color-text-muted,
-      rgba(13,33,55,0.68)
-    );
-
-  font-size: 0.9rem;
-
-  line-height: 1.9;
-
-  white-space: pre-line;
-
+.leader-first__intro > p:last-child {
+  margin: 1rem 0 0;
+  color: var(--color-text-muted, rgba(13,33,55,0.68));
+  font-size: 0.88rem;
+  line-height: 1.8;
 }
 
 
@@ -1519,1203 +1570,551 @@ onMounted(() => {
 ========================================================= */
 
 .leader-card {
-
-  padding: 1.5rem;
-
-  background:
-    var(
-      --color-white,
-      #ffffff
-    );
-
-  border:
-    1px solid
-    var(
-      --color-border,
-      rgba(13,33,55,0.1)
-    );
-
-  box-shadow:
-    0 8px 25px
-    rgba(13,33,55,0.05);
-
+  padding: clamp(1.2rem, 3vw, 1.65rem);
+  background: var(--color-surface, #ffffff);
+  border: 1px solid var(--color-border, rgba(13,33,55,0.1));
+  border-radius: var(--radius-lg, 1rem);
+  box-shadow: 0 14px 40px rgba(13,33,55,0.07);
 }
 
-
-.leader-profile {
-
-  margin-top: 1.3rem;
-
+.leader-card--featured {
+  min-width: 0;
 }
-
 
 .leader-profile__link {
-
   display: block;
-
   color: inherit;
-
   text-decoration: none;
-
 }
 
+.leader-profile {
+  display: grid;
+  grid-template-columns: minmax(150px, 230px) minmax(0, 1fr);
+  gap: clamp(1.25rem, 3vw, 2rem);
+  align-items: center;
+}
 
 .leader-photo {
-
   overflow: hidden;
-
   width: 100%;
-
-  max-width: 270px;
-
-  margin: 0 auto;
-
   aspect-ratio: 1;
-
-  background:
-    var(
-      --color-navy,
-      #15324e
-    );
-
+  background: var(--color-navy, #15324e);
+  border-radius: var(--radius-md, 0.85rem);
 }
 
-
-.leader-photo__img {
-
+.leader-photo__img,
+.leader-photo__placeholder {
+  display: block;
   width: 100%;
-
   height: 100%;
-
-  object-fit: cover;
-
-  object-position: top;
-
-  transition:
-    transform 0.45s ease;
-
 }
 
-
-.leader-profile__link:hover
 .leader-photo__img {
-
-  transform: scale(1.045);
-
+  object-fit: cover;
+  object-position: center top;
+  transition: transform 0.45s ease;
 }
 
+.leader-profile__link:hover .leader-photo__img {
+  transform: scale(1.045);
+}
 
 .leader-photo__placeholder {
-
-  width: 100%;
-
-  height: 100%;
-
   display: grid;
-
   place-items: center;
-
-  background:
-    linear-gradient(
-      135deg,
-      #15324e,
-      #0d2137
-    );
-
+  background: linear-gradient(135deg, #15324e, #0d2137);
 }
-
 
 .leader-photo__placeholder span {
-
   color: #ffffff;
-
   font-size: 3rem;
-
   font-weight: 700;
-
 }
 
+.leader-profile__content {
+  min-width: 0;
+}
+
+.leader-profile__eyebrow {
+  display: inline-block;
+  color: var(--color-gold-dark, #a67c00);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
 
 .leader-profile h3 {
-
-  margin-top: 1.2rem;
-
-  color:
-    var(
-      --color-navy-deep,
-      #0d2137
-    );
-
-  font-size: 1.25rem;
-
+  margin: 0.45rem 0 0;
+  color: var(--color-navy-deep, #0d2137);
+  font-size: clamp(1.2rem, 2.2vw, 1.55rem);
+  line-height: 1.2;
   font-weight: 700;
-
 }
-
 
 .leader-profile__link:hover h3 {
-
-  color:
-    var(
-      --color-gold-dark,
-      #a67c00
-    );
-
+  color: var(--color-gold-dark, #a67c00);
 }
-
 
 .leader-role {
-
-  margin-top: 0.3rem;
-
-  color:
-    var(
-      --color-gold-dark,
-      #a67c00
-    );
-
-  font-size: 0.75rem;
-
-  font-weight: 700;
-
+  margin: 0.5rem 0 0;
+  color: var(--color-text-muted, rgba(13,33,55,0.65));
+  font-size: 0.78rem;
+  line-height: 1.6;
+  font-weight: 600;
 }
-
 
 .leader-profile__details {
-
-  display: inline-block;
-
-  margin-top: 1rem;
-
-  color:
-    var(
-      --color-text-muted,
-      rgba(13,33,55,0.62)
-    );
-
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  margin-top: 1.15rem;
+  color: var(--color-navy-deep, #0d2137);
   font-size: 0.7rem;
-
   font-weight: 700;
-
 }
 
+.leader-profile__details span {
+  transition: transform 0.2s ease;
+}
+
+.leader-profile__link:hover .leader-profile__details span {
+  transform: translateX(4px);
+}
 
 .leader-empty {
-
-  margin-top: 1.3rem;
-
-  padding: 1.2rem;
-
-  background:
-    var(
-      --color-navy-05,
-      rgba(13,33,55,0.03)
-    );
-
-  border:
-    1px solid
-    var(
-      --color-border,
-      rgba(13,33,55,0.1)
-    );
-
+  display: grid;
+  place-items: center;
+  padding: 1.5rem;
+  text-align: center;
+  background: var(--color-navy-05, rgba(13,33,55,0.03));
+  border: 1px solid var(--color-border, rgba(13,33,55,0.1));
+  border-radius: var(--radius-md, 0.85rem);
 }
-
 
 .leader-empty__icon {
-
-  margin-bottom: 0.7rem;
-
-  font-size: 1.5rem;
-
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  margin-bottom: 0.8rem;
+  border-radius: 50%;
+  background: var(--color-navy-deep, #0d2137);
+  font-size: 1.15rem;
 }
 
+.leader-empty h3 {
+  margin: 0;
+  color: var(--color-text-main, #0d2137);
+  font-size: 0.95rem;
+}
 
 .leader-empty p {
-
-  color:
-    var(
-      --color-text-muted,
-      rgba(13,33,55,0.62)
-    );
-
-  font-size: 0.75rem;
-
-  line-height: 1.6;
-
+  max-width: 430px;
+  margin: 0.65rem auto 0;
+  color: var(--color-text-muted, rgba(13,33,55,0.65));
+  font-size: 0.76rem;
+  line-height: 1.7;
 }
 
 
 /* =========================================================
-   CHILDREN SECTION
+   MINISTRY INTRODUCTION
+========================================================= */
+
+.ministry-introduction {
+  padding-top: clamp(3rem, 6vw, 4.5rem);
+  border-top: 1px solid var(--color-border, rgba(13,33,55,0.1));
+}
+
+.ministry-introduction__heading h2 {
+  margin: 0.55rem 0 0;
+  color: var(--color-navy-deep, #0d2137);
+  font-family: var(--font-heading, inherit);
+  font-size: clamp(1.75rem, 3.4vw, 2.6rem);
+  line-height: 1.12;
+  font-weight: 700;
+}
+
+.ministry-introduction__body {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+  gap: clamp(2rem, 5vw, 4rem);
+  align-items: start;
+  margin-top: 2rem;
+}
+
+.detail-image {
+  position: relative;
+  overflow: hidden;
+  background: var(--color-navy, #15324e);
+  border: 1px solid var(--color-border, rgba(13,33,55,0.1));
+  border-radius: var(--radius-lg, 1rem);
+  box-shadow: 0 12px 32px rgba(13,33,55,0.06);
+}
+
+.detail-image__img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+}
+
+.detail-image__placeholder {
+  display: grid;
+  place-items: center;
+  aspect-ratio: 16 / 10;
+  background: linear-gradient(135deg, var(--color-navy, #15324e), var(--color-navy-deep, #0d2137));
+}
+
+.detail-image__placeholder span {
+  color: rgba(255,255,255,0.9);
+  font-size: 4rem;
+  font-weight: 700;
+}
+
+.detail-description {
+  padding-top: 0.25rem;
+}
+
+.detail-description__lead,
+.detail-description__body {
+  color: var(--color-text-muted, rgba(13,33,55,0.68));
+  font-size: 0.9rem;
+  line-height: 1.9;
+  white-space: pre-line;
+}
+
+.detail-description__lead {
+  margin: 0;
+}
+
+.detail-description__body {
+  margin-top: 1.25rem;
+}
+
+
+/* =========================================================
+   CHILDREN
 ========================================================= */
 
 .children-section {
-
-  margin-top: 5rem;
-
-  padding-top: 3rem;
-
-  border-top:
-    1px solid
-    var(
-      --color-border,
-      rgba(13,33,55,0.1)
-    );
-
+  margin-top: clamp(4rem, 8vw, 6rem);
+  padding-top: clamp(3rem, 6vw, 4rem);
+  border-top: 1px solid var(--color-border);
 }
-
 
 .children-heading {
-
   display: flex;
-
   align-items: flex-end;
-
   justify-content: space-between;
-
   gap: 1rem;
-
-  margin-bottom: 1.8rem;
-
+  margin-bottom: 1.75rem;
 }
-
 
 .children-heading h2 {
-
-  margin-top: 0.35rem;
-
-  color:
-    var(
-      --color-navy-deep,
-      #0d2137
-    );
-
-  font-size: 1.7rem;
-
+  margin: 0.55rem 0 0;
+  color: var(--color-navy-deep, #0d2137);
+  font-family: var(--font-heading, inherit);
+  font-size: clamp(1.45rem, 3vw, 2rem);
   font-weight: 700;
-
 }
-
 
 .children-count {
-
-  color:
-    var(
-      --color-text-muted,
-      rgba(13,33,55,0.5)
-    );
-
+  margin: 0;
+  color: var(--color-text-muted);
   font-size: 0.7rem;
-
   font-weight: 700;
-
 }
-
-
-/* =========================================================
-   CHILDREN GRID
-========================================================= */
 
 .children-grid {
-
   display: grid;
-
-  grid-template-columns:
-    repeat(3, minmax(0, 1fr));
-
-  gap: 1.5rem;
-
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.25rem;
 }
-
-
-/* =========================================================
-   CHILD CARD
-   Inspired by SermonCard visual system
-========================================================= */
 
 .child-card {
-
-  display: flex;
-
-  flex-direction: column;
-
   overflow: hidden;
-
-  background:
-    var(
-      --color-white,
-      #ffffff
-    );
-
-  border:
-    1px solid
-    var(
-      --color-border,
-      rgba(13,33,55,0.1)
-    );
-
-  color: inherit;
-
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md, 0.85rem);
   text-decoration: none;
-
-  transition:
-    transform 0.25s ease,
-    box-shadow 0.25s ease,
-    border-color 0.25s ease;
-
+  box-shadow: 0 8px 24px rgba(13,33,55,0.04);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
 }
-
 
 .child-card:hover {
-
-  transform:
-    translateY(-4px);
-
-  border-color:
-    rgba(201,162,39,0.45);
-
-  box-shadow:
-    0 16px 38px
-    rgba(13,33,55,0.1);
-
+  transform: translateY(-4px);
+  border-color: var(--color-border-strong);
+  box-shadow: 0 16px 34px rgba(13,33,55,0.09);
 }
-
-
-/* =========================================================
-   CHILD MEDIA
-========================================================= */
 
 .child-card__media {
-
   position: relative;
-
   height: 210px;
-
   overflow: hidden;
-
-  background:
-    linear-gradient(
-      135deg,
-      var(--color-navy, #15324e),
-      var(--color-navy-deep, #0d2137)
-    );
-
+  background: var(--color-navy);
 }
 
-
-/*
- * Slide-up color fill on the image area only, same technique as
- * the icon-button example: a full-size layer starts translated
- * below the box and slides up to cover it on hover.
- */
-.child-card__media::before {
-
-  content: "";
-
-  position: absolute;
-
-  inset: 0;
-
-  z-index: 1;
-
-  background:
-    linear-gradient(
-      160deg,
-      rgba(21, 50, 78, 0.85),
-      rgba(13, 33, 55, 0.92)
-    );
-
-  transform:
-    translateY(100%);
-
-  transition:
-    transform 0.5s
-    cubic-bezier(0.2, 0.7, 0.2, 1);
-
-  pointer-events: none;
-
-}
-
-
-.child-card:hover
-.child-card__media::before {
-
-  transform:
-    translateY(0);
-
-}
-
-
-.child-card__image {
-
+.child-card__image,
+.child-card__placeholder {
   width: 100%;
-
   height: 100%;
-
-  object-fit: cover;
-
-  transition:
-    transform 0.45s ease,
-    filter 0.45s ease;
-
 }
 
-
-.child-card:hover
 .child-card__image {
-
-  transform:
-    scale(1.045);
-
-  filter:
-    brightness(0.86);
-
+  display: block;
+  object-fit: cover;
+  transition: transform 0.45s ease;
 }
 
+.child-card:hover .child-card__image {
+  transform: scale(1.045);
+}
 
 .child-card__placeholder {
-
-  width: 100%;
-
-  height: 100%;
-
   display: grid;
-
   place-items: center;
-
-  background:
-    linear-gradient(
-      135deg,
-      #15324e,
-      #0d2137
-    );
-
+  background: var(--gradient-card-dark, linear-gradient(135deg, #15324e, #0d2137));
 }
-
 
 .child-card__placeholder span {
-
-  color:
-    rgba(255,255,255,0.9);
-
-  font-size: 3rem;
-
+  color: #ffffff;
+  font-size: 2rem;
   font-weight: 700;
-
 }
 
-
-/* =========================================================
-   IMAGE OVERLAY
-========================================================= */
+.child-card__overlay,
+.child-card__discover {
+  position: absolute;
+  inset: 0;
+}
 
 .child-card__overlay {
-
-  position: absolute;
-
-  inset: 0;
-
-  z-index: 2;
-
-  background:
-    linear-gradient(
-      180deg,
-      rgba(13,33,55,0.03),
-      rgba(13,33,55,0.48)
-    );
-
+  background: linear-gradient(to top, rgba(13,33,55,0.82), rgba(13,33,55,0.02) 70%);
 }
-
-
-/* =========================================================
-   DISCOVER MORE
-========================================================= */
 
 .child-card__discover {
-
-  position: absolute;
-
-  left: 1rem;
-
-  right: 1rem;
-
-  bottom: 1rem;
-
-  z-index: 2;
-
   display: flex;
-
-  align-items: center;
-
+  align-items: flex-end;
   justify-content: space-between;
-
+  padding: 1rem;
   color: #ffffff;
-
-  font-size: 0.7rem;
-
+  font-size: 0.68rem;
   font-weight: 700;
-
+  opacity: 0;
+  transform: translateY(7px);
+  transition: opacity 0.25s ease, transform 0.25s ease;
 }
 
-
-.child-card__arrow {
-
-  font-size: 1rem;
-
-  transition:
-    transform 0.2s ease;
-
+.child-card:hover .child-card__discover {
+  opacity: 1;
+  transform: translateY(0);
 }
 
-
-.child-card:hover
-.child-card__arrow {
-
-  transform:
-    translateX(4px);
-
+.child-card__arrow,
+.child-card__footer-arrow {
+  transition: transform 0.2s ease;
 }
 
-
-/*
- * Diagonal gold accent behind "Discover More", mirroring the
- * ministry-card treatment (same rotate/translate technique),
- * scaled down for the smaller child-card row. Widens slightly
- * on hover as the same kind of "opening" cue.
- */
-.child-card__discover::before {
-
-  content: "";
-
-  position: absolute;
-
-  width: 110px;
-  height: 2px;
-
-  background:
-    var(--color-gold, #c9a227);
-
-  transform:
-    rotate(-45deg)
-    translateY(-9px);
-
-  opacity: 0.9;
-
-  transition:
-    width 0.35s ease;
-
+.child-card:hover .child-card__arrow {
+  transform: translateX(4px);
 }
-
-
-.child-card:hover
-.child-card__discover::before {
-
-  width: 150px;
-
-}
-
-
-.child-card__discover span {
-
-  position: relative;
-
-  z-index: 2;
-
-}
-
-
-/* =========================================================
-   CHILD CONTENT
-========================================================= */
 
 .child-card__content {
-
-  display: flex;
-
-  flex-direction: column;
-
-  flex: 1;
-
-  padding: 1.25rem;
-
+  padding: 1.1rem;
 }
-
 
 .child-card__category {
-
-  display: inline-block;
-
-  width: fit-content;
-
-  margin-bottom: 0.65rem;
-
-  color:
-    var(
-      --color-gold-dark,
-      #a67c00
-    );
-
-  font-size: 0.62rem;
-
+  color: var(--color-gold-dark);
+  font-size: 0.58rem;
   font-weight: 700;
-
-  letter-spacing: 0.08em;
-
+  letter-spacing: 0.1em;
   text-transform: uppercase;
-
 }
-
 
 .child-card h3 {
-
-  margin: 0;
-
-  color:
-    var(
-      --color-navy-deep,
-      #0d2137
-    );
-
+  margin: 0.45rem 0 0;
+  color: var(--color-text-main);
   font-size: 1rem;
-
-  font-weight: 700;
-
-  line-height: 1.45;
-
-  display: -webkit-box;
-
-  overflow: hidden;
-
-  -webkit-box-orient: vertical;
-
-  -webkit-line-clamp: 2;
-
+  line-height: 1.25;
 }
-
 
 .child-card p {
-
-  margin-top: 0.7rem;
-
-  color:
-    var(
-      --color-text-muted,
-      rgba(13,33,55,0.62)
-    );
-
-  font-size: 0.76rem;
-
-  line-height: 1.65;
-
-  display: -webkit-box;
-
-  overflow: hidden;
-
-  -webkit-box-orient: vertical;
-
-  -webkit-line-clamp: 3;
-
+  margin: 0.65rem 0 0;
+  color: var(--color-text-muted);
+  font-size: 0.73rem;
+  line-height: 1.7;
 }
-
-
-/* =========================================================
-   CHILD LEADER
-========================================================= */
 
 .child-card__leader {
-
   display: flex;
-
-  align-items: center;
-
-  justify-content: space-between;
-
-  gap: 0.5rem;
-
-  margin-top: 1rem;
-
+  flex-direction: column;
+  gap: 0.2rem;
+  margin-top: 0.9rem;
   padding-top: 0.8rem;
-
-  border-top:
-    1px solid
-    var(
-      --color-border,
-      rgba(13,33,55,0.1)
-    );
-
+  border-top: 1px solid var(--color-border);
 }
-
 
 .child-card__leader span {
-
-  color:
-    rgba(13,33,55,0.45);
-
-  font-size: 0.63rem;
-
-  font-weight: 700;
-
+  color: var(--color-text-muted);
+  font-size: 0.58rem;
+  font-weight: 600;
   text-transform: uppercase;
-
-  letter-spacing: 0.06em;
-
 }
-
 
 .child-card__leader strong {
-
-  color:
-    var(
-      --color-navy-deep,
-      #0d2137
-    );
-
-  font-size: 0.68rem;
-
+  color: var(--color-text-main);
+  font-size: 0.72rem;
 }
-
-
-/* =========================================================
-   CHILD FOOTER
-========================================================= */
 
 .child-card__footer {
-
   display: flex;
-
   align-items: center;
-
   justify-content: space-between;
-
-  margin-top: auto;
-
-  padding-top: 1rem;
-
-  color:
-    var(
-      --color-navy-deep,
-      #0d2137
-    );
-
-  font-size: 0.68rem;
-
+  gap: 1rem;
+  margin-top: 1rem;
+  padding-top: 0.9rem;
+  border-top: 1px solid var(--color-border);
+  color: var(--color-text-main);
+  font-size: 0.65rem;
   font-weight: 700;
-
-  border-top:
-    1px solid
-    var(
-      --color-border,
-      rgba(13,33,55,0.1)
-    );
-
 }
 
-
-.child-card__footer-arrow {
-
-  transition:
-    transform 0.2s ease;
-
+.child-card:hover .child-card__footer-arrow {
+  transform: translateX(4px);
 }
-
-
-.child-card:hover
-.child-card__footer-arrow {
-
-  transform:
-    translateX(4px);
-
-}
-
-
-/* =========================================================
-   EMPTY CHILDREN
-========================================================= */
 
 .children-empty {
-
-  margin-top: 4rem;
-
-  padding:
-    3rem 1.5rem;
-
+  margin-top: clamp(4rem, 8vw, 6rem);
+  padding: 3rem 1.5rem;
   text-align: center;
-
-  border-top:
-    1px solid
-    var(
-      --color-border,
-      rgba(13,33,55,0.1)
-    );
-
+  background: var(--color-navy-05, rgba(13,33,55,0.03));
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg, 1rem);
 }
 
-
-.children-empty__icon {
-
-  width: 45px;
-
-  height: 45px;
-
+.children-empty__icon,
+.not-found-icon {
   display: grid;
-
   place-items: center;
-
+  width: 52px;
+  height: 52px;
   margin: 0 auto 1rem;
-
-  background:
-    rgba(13,33,55,0.05);
-
-  color:
-    var(
-      --color-navy-deep,
-      #0d2137
-    );
-
-  font-size: 1.4rem;
-
+  border-radius: 50%;
+  background: var(--color-navy-deep, #0d2137);
+  color: #ffffff;
+  font-weight: 700;
 }
-
 
 .children-empty h2 {
-
-  color:
-    var(
-      --color-navy-deep,
-      #0d2137
-    );
-
-  font-size: 1.2rem;
-
-  font-weight: 700;
-
+  margin: 0;
+  color: var(--color-navy-deep);
+  font-size: 1.25rem;
 }
-
 
 .children-empty p {
-
-  max-width: 500px;
-
-  margin:
-    0.6rem auto 0;
-
-  color:
-    var(
-      --color-text-muted,
-      rgba(13,33,55,0.62)
-    );
-
+  max-width: 520px;
+  margin: 0.65rem auto 0;
+  color: var(--color-text-muted);
   font-size: 0.78rem;
-
   line-height: 1.7;
-
 }
 
 
 /* =========================================================
-   SKELETON
-========================================================= */
-
-.skeleton {
-
-  position: relative;
-
-  overflow: hidden;
-
-  background:
-    rgba(13,33,55,0.08);
-
-}
-
-
-.skeleton::after,
-.hero-skeleton::after {
-
-  content: "";
-
-  position: absolute;
-
-  inset: 0;
-
-  transform:
-    translateX(-100%);
-
-  background:
-    linear-gradient(
-      90deg,
-      transparent,
-      rgba(255,255,255,0.45),
-      transparent
-    );
-
-  animation:
-    skeleton-shimmer 1.5s infinite;
-
-}
-
-
-@keyframes skeleton-shimmer {
-
-  100% {
-
-    transform:
-      translateX(100%);
-
-  }
-
-}
-
-
-/* =========================================================
-   HERO SKELETON
-========================================================= */
-
-.hero-skeleton {
-
-  position: relative;
-
-  overflow: hidden;
-
-  background:
-    rgba(255,255,255,0.1);
-
-}
-
-
-.hero-skeleton--small {
-
-  width: 100px;
-
-  height: 11px;
-
-  margin-top: 2rem;
-
-}
-
-
-.hero-skeleton--title {
-
-  width: min(550px,80%);
-
-  height: 44px;
-
-  margin-top: 1rem;
-
-}
-
-
-.hero-skeleton--text {
-
-  width: min(600px,90%);
-
-  height: 13px;
-
-  margin-top: 1.4rem;
-
-}
-
-
-.hero-skeleton--text-short {
-
-  width: min(430px,70%);
-
-  margin-top: 0.6rem;
-
-}
-
-
-/* =========================================================
-   DETAIL SKELETON
+   SKELETONS
 ========================================================= */
 
 .detail-image-skeleton {
-
   width: 100%;
-
   aspect-ratio: 16 / 10;
-
+  border-radius: var(--radius-lg, 1rem);
 }
-
 
 .skeleton-heading {
-
   width: 180px;
-
   height: 25px;
-
 }
-
 
 .skeleton-line {
-
   width: 100%;
-
   height: 13px;
-
 }
-
 
 .skeleton-line--short {
-
   width: 65%;
-
 }
-
-
-/* =========================================================
-   LEADER SKELETON
-========================================================= */
 
 .leader-skeleton-photo {
-
   width: 190px;
-
   height: 190px;
-
-  margin:
-    1.5rem auto;
-
+  margin: 1.5rem auto;
+  border-radius: var(--radius-md, 0.85rem);
 }
-
 
 .leader-skeleton-label {
-
   width: 80px;
-
   height: 10px;
-
 }
-
 
 .leader-skeleton-name {
-
   width: 160px;
-
   height: 20px;
-
   margin-top: 1rem;
-
 }
-
 
 .leader-skeleton-role {
-
   width: 110px;
-
   height: 12px;
-
   margin-top: 0.6rem;
-
 }
-
-
-/* =========================================================
-   CHILD SKELETON
-========================================================= */
 
 .skeleton-subtitle {
-
   width: 210px;
-
   height: 28px;
-
   margin-bottom: 1.5rem;
-
 }
-
 
 .child-skeleton-image {
-
   width: 100%;
-
   height: 210px;
-
+  border-radius: var(--radius-md, 0.85rem) var(--radius-md, 0.85rem) 0 0;
 }
-
 
 .child-skeleton-category {
-
   width: 80px;
-
   height: 9px;
-
 }
-
 
 .child-skeleton-title {
-
   width: 75%;
-
   height: 18px;
-
   margin-top: 0.7rem;
-
 }
-
 
 .child-skeleton-line {
-
   width: 100%;
-
   height: 10px;
-
   margin-top: 0.7rem;
-
 }
-
 
 .child-skeleton-line--short {
-
   width: 65%;
-
 }
-
 
 .child-skeleton-button {
-
   width: 110px;
-
   height: 32px;
-
   margin-top: 1rem;
-
 }
-
-
-/* =========================================================
-   NOT FOUND
-========================================================= */
 
 .not-found-icon {
-
-  width: 55px;
-
-  height: 55px;
-
-  display: grid;
-
-  place-items: center;
-
-  margin: 0 auto 1rem;
-
-  background:
-    rgba(13,33,55,0.06);
-
-  font-weight: 700;
-
+  font-size: 1rem;
 }
 
-
-.container-custom
-h1 {
-
-  color:
-    var(
-      --color-navy-deep,
-      #0d2137
-    );
-
+.container-custom h1 {
+  color: var(--color-navy-deep, #0d2137);
 }
 
 
@@ -2723,53 +2122,44 @@ h1 {
    DARK MODE
 ========================================================= */
 
-.dark .detail-description h2,
+.dark .leader-first__intro h2,
+.dark .ministry-introduction__heading h2,
 .dark .children-heading h2,
 .dark .child-card h3,
 .dark .child-card__leader strong,
 .dark .child-card__footer,
 .dark .leader-profile h3,
+.dark .leader-empty h3,
 .dark .children-empty h2,
 .dark .container-custom h1 {
-
   color: #ffffff;
-
 }
 
-
+.dark .leader-first__intro > p:last-child,
+.dark .detail-description__lead,
 .dark .detail-description__body,
 .dark .child-card p,
+.dark .leader-role,
 .dark .leader-empty p,
 .dark .children-empty p {
-
-  color:
-    rgba(255,255,255,0.62);
-
+  color: rgba(255,255,255,0.62);
 }
 
-
-.dark .child-card,
-.dark .leader-card {
-
-  background:
-    var(
-      --color-navy-900,
-      #122b43
-    );
-
-  border-color:
-    rgba(255,255,255,0.08);
-
+.dark .leader-card,
+.dark .child-card {
+  background: var(--color-navy-900, #122b43);
+  border-color: rgba(255,255,255,0.08);
 }
 
+.dark .children-section,
+.dark .ministry-introduction {
+  border-color: rgba(255,255,255,0.08);
+}
 
 .dark .child-card__leader,
 .dark .child-card__footer,
-.dark .children-section {
-
-  border-color:
-    rgba(255,255,255,0.08);
-
+.dark .leader-empty {
+  border-color: rgba(255,255,255,0.08);
 }
 
 
@@ -2779,17 +2169,21 @@ h1 {
 
 @media (max-width: 900px) {
 
-  .detail-layout {
-
+  .leader-first {
     grid-template-columns: 1fr;
+    align-items: start;
+  }
 
+  .leader-first__intro {
+    max-width: 650px;
+  }
+
+  .ministry-introduction__body {
+    grid-template-columns: 1fr;
   }
 
   .children-grid {
-
-    grid-template-columns:
-      repeat(2, minmax(0, 1fr));
-
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
 }
@@ -2801,37 +2195,35 @@ h1 {
 
 @media (max-width: 600px) {
 
-  .children-grid {
-
-    grid-template-columns: 1fr;
-
+  .leader-first {
+    gap: 1.5rem;
   }
 
-  .detail-image__img,
-  .detail-image__placeholder {
+  .leader-profile {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
 
-    aspect-ratio: 16 / 11;
+  .leader-photo {
+    max-width: 220px;
+    margin: 0 auto;
+  }
 
+  .leader-profile__details {
+    justify-content: center;
+  }
+
+  .children-grid {
+    grid-template-columns: 1fr;
   }
 
   .children-heading {
-
     align-items: flex-start;
-
     flex-direction: column;
-
   }
 
   .child-card__media {
-
     height: 230px;
-
-  }
-
-  .leader-card {
-
-    padding: 1.25rem;
-
   }
 
 }

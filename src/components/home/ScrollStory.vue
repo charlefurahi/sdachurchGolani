@@ -1,664 +1,330 @@
+```vue
 <template>
   <section
     ref="storyRef"
     class="scroll-story"
-    :style="{ '--story-image': `url(${image})` }"
+    aria-label="Golani church story"
   >
-    <div class="scroll-story__stage">
+    <div class="scroll-story__sequence">
+      <article
+        v-for="panel in visiblePanels"
+        :key="panel.key"
+        class="scroll-story__item"
+        :class="`scroll-story__item--${panel.index}`"
+      >
+        <div class="scroll-story__item-inner">
 
-      <!-- Real church image behind the story -->
-      <div
-        class="scroll-story__background"
-        :style="backgroundStyle"
-      ></div>
+          <!-- Small editorial panel number -->
+          <span
+            class="scroll-story__index"
+            aria-hidden="true"
+          >
+            {{ String(panel.index + 1).padStart(2, '0') }}
+          </span>
 
-      <!-- Keeps text readable -->
-      <div
-        class="scroll-story__overlay"
-        :style="overlayStyle"
-      ></div>
-
-      <!-- Story panels -->
-      <div class="scroll-story__content">
-
-        <div
-          v-for="(panel, index) in panels"
-          :key="index"
-          class="scroll-story__panel"
-          :class="{
-            'is-active': activePanel === index,
-            'is-past': activePanel > index,
-            'is-future': activePanel < index
-          }"
-          :style="panelStyle(index)"
-        >
-          <div class="scroll-story__panel-inner">
-            <slot :name="`panel-${index}`" />
+          <!-- Panel content -->
+          <div class="scroll-story__slot">
+            <slot :name="panel.slot"></slot>
           </div>
+
         </div>
-
-      </div>
-
+      </article>
     </div>
   </section>
 </template>
-
 
 <script setup>
 import {
   computed,
   onBeforeUnmount,
   onMounted,
-  ref
+  ref,
+  useSlots
 } from 'vue'
 
-
-const props = defineProps({
-  image: {
-    type: String,
-    required: true
-  }
-})
-
+const slots = useSlots()
 
 /*
 |--------------------------------------------------------------------------
-| Story structure
+| Scroll Story Panels
 |--------------------------------------------------------------------------
+| IMPORTANT:
+| Worship With Us / panel-2 has been removed.
 |
-| 0 = Welcome
-| 1 = Church Life
-| 2 = Worship / image reveal
+| The homepage flow is now:
 |
-| The actual content comes from Home.vue through named slots.
-|
+| Hero
+| ↓
+| Latest Sermons
+| ↓
+| Scroll Story
+|   ├── Welcome to Golani
+|   └── There is a place for you here
+| ↓
+| Upcoming Events
+| ↓
+| Worship With Us
+| ↓
+| About
+| ↓
+| Announcements
+| ↓
+| Service Hours
+| ↓
+| Explore Golani
+|--------------------------------------------------------------------------
 */
 
 const panels = [
-  'welcome',
-  'church-life',
-  'worship'
+  {
+    key: 'welcome',
+    index: 0,
+    slot: 'panel-0'
+  },
+  {
+    key: 'church-life',
+    index: 1,
+    slot: 'panel-1'
+  }
 ]
 
+/*
+|--------------------------------------------------------------------------
+| Only render panels that actually exist in the parent component.
+|--------------------------------------------------------------------------
+*/
+const visiblePanels = computed(() => {
+  return panels.filter(panel => Boolean(slots[panel.slot]))
+})
 
 const storyRef = ref(null)
 
-const scrollProgress = ref(0)
-
-const activePanel = ref(0)
-
-let ticking = false
-
-
-/*
-|--------------------------------------------------------------------------
-| Calculate scroll progress
-|--------------------------------------------------------------------------
-*/
-
-function updateStory() {
-  if (!storyRef.value) {
-    ticking = false
-    return
-  }
-
-  const rect = storyRef.value.getBoundingClientRect()
-
-  const scrollableDistance =
-    storyRef.value.offsetHeight - window.innerHeight
-
-
-  if (scrollableDistance <= 0) {
-    ticking = false
-    return
-  }
-
-
-  const distancePassed = Math.min(
-    Math.max(-rect.top, 0),
-    scrollableDistance
-  )
-
-
-  const progress =
-    distancePassed / scrollableDistance
-
-
-  scrollProgress.value = progress
-
-
-  /*
-   * Divide the story into three meaningful stages.
-   *
-   * 0.00 → 0.32   Welcome
-   * 0.32 → 0.66   Church Life
-   * 0.66 → 1.00   Worship / image
-   */
-
-  if (progress < 0.32) {
-    activePanel.value = 0
-  } else if (progress < 0.66) {
-    activePanel.value = 1
-  } else {
-    activePanel.value = 2
-  }
-
-
-  ticking = false
-}
-
-
-function handleScroll() {
-  if (!ticking) {
-    window.requestAnimationFrame(updateStory)
-
-    ticking = true
-  }
-}
-
-
-/*
-|--------------------------------------------------------------------------
-| Background image
-|--------------------------------------------------------------------------
-*/
-
-const backgroundStyle = computed(() => {
-
-  const progress = scrollProgress.value
-
-  /*
-   * Slightly enlarge the image at the beginning
-   * and settle it naturally as the image becomes visible.
-   */
-
-  const scale =
-    1.05 - (progress * 0.03)
-
-
-  return {
-    transform: `scale(${scale})`
-  }
-})
-
-
-/*
-|--------------------------------------------------------------------------
-| Overlay
-|--------------------------------------------------------------------------
-|
-| The final image stage becomes slightly clearer as the user reaches
-| the end of the story.
-|
-*/
-
-const overlayStyle = computed(() => {
-
-  const progress = scrollProgress.value
-
-
-  let opacity
-
-
-  if (progress < 0.66) {
-    opacity = 0.82
-  } else {
-
-    const imageProgress =
-      (progress - 0.66) / 0.34
-
-    opacity =
-      0.82 - (imageProgress * 0.28)
-  }
-
-
-  return {
-    opacity
-  }
-})
-
-
-/*
-|--------------------------------------------------------------------------
-| Panel animation
-|--------------------------------------------------------------------------
-*/
-
-function panelStyle(index) {
-
-  const progress =
-    scrollProgress.value
-
-
-  /*
-   * Each panel owns a section of the scroll.
-   */
-
-  const ranges = [
-    {
-      start: 0,
-      end: 0.32
-    },
-    {
-      start: 0.32,
-      end: 0.66
-    },
-    {
-      start: 0.66,
-      end: 1
-    }
-  ]
-
-
-  const range = ranges[index]
-
-
-  /*
-   * Before the panel's range.
-   */
-
-  if (progress < range.start) {
-
-    return {
-      opacity: 0,
-      transform: 'translateY(5vh)',
-      pointerEvents: 'none'
-    }
-  }
-
-
-  /*
-   * After the panel's range.
-   */
-
-  if (progress > range.end) {
-
-    return {
-      opacity: 0,
-      transform: 'translateY(-5vh)',
-      pointerEvents: 'none'
-    }
-  }
-
-
-  /*
-   * Progress inside this panel.
-   */
-
-  const localProgress =
-    (progress - range.start) /
-    (range.end - range.start)
-
-
-  /*
-   * Smooth entrance and exit.
-   */
-
-  const fadeIn =
-    Math.min(localProgress / 0.18, 1)
-
-
-  const fadeOut =
-    Math.min(
-      (1 - localProgress) / 0.18,
-      1
-    )
-
-
-  const opacity =
-    Math.min(fadeIn, fadeOut)
-
-
-  /*
-   * Very subtle movement.
-   *
-   * We don't want a dramatic animation.
-   * It should feel like a natural editorial transition.
-   */
-
-  const translate =
-    (1 - fadeIn) * 3 -
-    (1 - fadeOut) * 3
-
-
-  return {
-    opacity,
-    transform: `translateY(${translate}vh)`,
-    pointerEvents: opacity > 0.5 ? 'auto' : 'none'
-  }
-}
-
-
-/*
-|--------------------------------------------------------------------------
-| Lifecycle
-|--------------------------------------------------------------------------
-*/
+let observer = null
 
 onMounted(() => {
+  if (!storyRef.value) return
 
-  updateStory()
+  const items = storyRef.value.querySelectorAll(
+    '.scroll-story__item'
+  )
 
-  window.addEventListener(
-    'scroll',
-    handleScroll,
+  /*
+  |--------------------------------------------------------------------------
+  | Fallback for browsers without IntersectionObserver
+  |--------------------------------------------------------------------------
+  */
+  if (typeof IntersectionObserver === 'undefined') {
+    items.forEach(item => {
+      item.classList.add('is-visible')
+    })
+
+    return
+  }
+
+  /*
+  |--------------------------------------------------------------------------
+  | Reveal panels when they enter the viewport.
+  |--------------------------------------------------------------------------
+  */
+  observer = new IntersectionObserver(
+    entries => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return
+
+        entry.target.classList.add('is-visible')
+
+        /*
+        | Once revealed, stop observing this panel.
+        | This prevents unnecessary observer work.
+        */
+        observer?.unobserve(entry.target)
+      })
+    },
     {
-      passive: true
+      threshold: 0.14,
+      rootMargin: '0px 0px -8% 0px'
     }
   )
 
-  window.addEventListener(
-    'resize',
-    updateStory,
-    {
-      passive: true
-    }
-  )
+  items.forEach(item => {
+    observer.observe(item)
+  })
 })
-
 
 onBeforeUnmount(() => {
-
-  window.removeEventListener(
-    'scroll',
-    handleScroll
-  )
-
-  window.removeEventListener(
-    'resize',
-    updateStory
-  )
+  observer?.disconnect()
+  observer = null
 })
 </script>
-
 
 <style scoped>
 
 /* =========================================================
-   STORY CONTAINER
+   SCROLL STORY
+   =========================================================
+
+   The component intentionally has NO background image.
+
+   The page-wide background is controlled by Home.vue:
+
+   .home-page__bg
+
+   Therefore these panels remain transparent and allow the
+   existing page background behavior to continue.
 ========================================================= */
 
 .scroll-story {
+  --story-gutter: clamp(1.25rem, 4vw, 4rem);
+  --story-max: 1240px;
+
   position: relative;
-
   width: 100%;
 
-  /*
-   * Three viewport stages.
-   *
-   * This creates the actual scroll distance.
-   */
-  min-height: 300svh;
+  overflow: clip;
 
-  background:
-    var(--color-white);
-}
-
-
-/* =========================================================
-   STICKY VIEWPORT
-========================================================= */
-
-.scroll-story__stage {
-  position: sticky;
-
-  top: 0;
-
-  width: 100%;
-
-  height: 100svh;
-
-  min-height: 620px;
-
-  overflow: hidden;
-
-  isolation: isolate;
-
-  background:
-    var(--color-white);
-}
-
-
-/* =========================================================
-   BACKGROUND
-========================================================= */
-
-.scroll-story__background {
-  position: absolute;
-
-  inset: -3%;
-
-  z-index: 0;
-
-  background-image:
-    var(--story-image);
-
-  background-size: cover;
-
-  background-position: center;
-
-  background-repeat: no-repeat;
-
-  will-change: transform;
-
-  transition:
-    transform 120ms linear;
-}
-
-
-/* =========================================================
-   IMAGE OVERLAY
-========================================================= */
-
-.scroll-story__overlay {
-  position: absolute;
-
-  inset: 0;
-
-  z-index: 1;
-
-  pointer-events: none;
-
-  background:
-    linear-gradient(
-      90deg,
-      rgba(13, 31, 45, 0.84) 0%,
-      rgba(13, 31, 45, 0.58) 52%,
-      rgba(13, 31, 45, 0.28) 100%
-    );
-
-  transition:
-    opacity 160ms linear;
-}
-
-
-/* =========================================================
-   PANELS CONTAINER
-========================================================= */
-
-.scroll-story__content {
-  position: relative;
-
-  z-index: 2;
-
-  width: 100%;
-
-  height: 100%;
-}
-
-
-/* =========================================================
-   INDIVIDUAL PANEL
-========================================================= */
-
-.scroll-story__panel {
-  position: absolute;
-
-  inset: 0;
-
-  width: 100%;
-
-  height: 100%;
-
-  display: flex;
-
-  align-items: center;
-
-  overflow: hidden;
-
-  opacity: 0;
-
-  will-change:
-    opacity,
-    transform;
-
-  transition:
-    opacity 180ms ease-out,
-    transform 220ms ease-out;
-}
-
-
-/*
- * The actual content inside each panel.
- */
-
-.scroll-story__panel-inner {
-  width: 100%;
-}
-
-
-/* =========================================================
-   PANEL COLORS
-========================================================= */
-
-/*
- * The first two panels are opaque.
- * The last panel is transparent so the photograph can show.
- *
- * The classes below are supplied by Home.vue.
- */
-
-.scroll-story__panel :deep(.story-panel--light) {
-  background:
-    var(--color-white);
-}
-
-.scroll-story__panel :deep(.story-panel--navy) {
-  background:
-    var(--color-navy);
-}
-
-.scroll-story__panel :deep(.story-panel--image) {
-  background:
-    transparent;
-}
-
-
-/*
- * The panel itself needs to be transparent.
- * Home's actual story panel provides the visual surface.
- */
-
-.scroll-story__panel {
   background: transparent;
 }
 
+/* =========================================================
+   SEQUENCE
+========================================================= */
+
+.scroll-story__sequence {
+  width: 100%;
+}
+
+/* =========================================================
+   STORY ITEM
+========================================================= */
+
+.scroll-story__item {
+  position: relative;
+  width: 100%;
+
+  isolation: isolate;
+}
+
+.scroll-story__item-inner {
+  position: relative;
+
+  width: min(100%, var(--story-max));
+
+  margin-inline: auto;
+}
+
+.scroll-story__slot {
+  width: 100%;
+}
+
+/* =========================================================
+   PANEL NUMBER
+========================================================= */
+
+.scroll-story__index {
+  position: absolute;
+
+  top: clamp(1.25rem, 3vw, 2rem);
+  right: var(--story-gutter);
+
+  z-index: 4;
+
+  color: var(--color-white);
+
+  font-size: 0.68rem;
+  line-height: 1;
+  font-weight: 800;
+
+  letter-spacing: 0.16em;
+
+  opacity: 0.5;
+
+  pointer-events: none;
+  user-select: none;
+}
+
+/* =========================================================
+   STORY PANELS
+========================================================= */
+
+.scroll-story__item :deep(.story-panel) {
+  min-height: 0;
+  width: 100%;
+
+  background: transparent;
+}
+
+/* =========================================================
+   REVEAL ANIMATION
+========================================================= */
+
+.scroll-story__item .story-panel__inner {
+  opacity: 0;
+
+  transform: translateY(22px);
+
+  transition:
+    opacity 650ms ease,
+    transform 650ms cubic-bezier(0.22, 1, 0.36, 1);
+
+  will-change: opacity, transform;
+}
+
+/*
+|--------------------------------------------------------------------------
+| Revealed panel
+|--------------------------------------------------------------------------
+*/
+
+.scroll-story__item.is-visible .story-panel__inner {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/*
+|--------------------------------------------------------------------------
+| First panel is visible immediately.
+|--------------------------------------------------------------------------
+*/
+
+.scroll-story__item:first-child .story-panel__inner {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 900px) {
+  .scroll-story__index {
+    right: 1.25rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .scroll-story__index {
+    top: 1.1rem;
+    right: 1rem;
+
+    font-size: 0.62rem;
+  }
+}
 
 /* =========================================================
    ACCESSIBILITY
 ========================================================= */
 
 @media (prefers-reduced-motion: reduce) {
+  .scroll-story__item .story-panel__inner {
+    opacity: 1;
 
-  .scroll-story {
-    min-height: auto;
+    transform: none;
+
+    transition: none;
+
+    will-change: auto;
   }
-
-  .scroll-story__stage {
-    position: relative;
-
-    height: auto;
-
-    min-height: auto;
-  }
-
-  .scroll-story__content {
-    height: auto;
-  }
-
-  .scroll-story__panel {
-    position: relative;
-
-    inset: auto;
-
-    min-height: 70svh;
-
-    opacity: 1 !important;
-
-    transform: none !important;
-
-    pointer-events: auto !important;
-  }
-
 }
 
-
-/* =========================================================
-   TABLET
-========================================================= */
-
-@media (max-width: 900px) {
-
-  .scroll-story {
-    min-height: 300svh;
-  }
-
-  .scroll-story__stage {
-    min-height: 560px;
-  }
-
-  .scroll-story__overlay {
-    background:
-      linear-gradient(
-        90deg,
-        rgba(13, 31, 45, 0.82),
-        rgba(13, 31, 45, 0.46)
-      );
-  }
-
-}
-
-
-/* =========================================================
-   MOBILE
-========================================================= */
-
-@media (max-width: 600px) {
-
-  .scroll-story {
-    min-height: 300svh;
-  }
-
-  .scroll-story__stage {
-    height: 100svh;
-
-    min-height: 560px;
-  }
-
-  .scroll-story__background {
-    background-position:
-      58%
-      center;
-  }
-
-  .scroll-story__overlay {
-    background:
-      linear-gradient(
-        90deg,
-        rgba(13, 31, 45, 0.84),
-        rgba(13, 31, 45, 0.48)
-      );
-  }
-
-}
 </style>
+```

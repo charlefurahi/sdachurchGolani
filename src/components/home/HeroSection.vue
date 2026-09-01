@@ -159,7 +159,7 @@ function formattedTime(t) {
   align-items: flex-start;
 
   padding-top: 7rem;
-  padding-bottom: clamp(4rem, 10vh, 5.8rem);
+  padding-bottom: clamp(2rem, 6vh, 3.5rem);
 
   text-align: left;
 }
@@ -277,7 +277,7 @@ function formattedTime(t) {
     min-height: 560px;
 
     padding-top: 6.5rem;
-    padding-bottom: 4rem;
+    padding-bottom: 1.5rem;
   }
 
   .home-hero__title {
