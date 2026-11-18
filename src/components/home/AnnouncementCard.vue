@@ -158,7 +158,11 @@ defineEmits(['read-more'])
 ========================================================= */
 
 .announcement-card {
+<<<<<<< HEAD
   --navy: #16324a;
+=======
+  --navy: #0d2137;
+>>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
   --navy-light: #16324a;
   --navy-dark: #0a1a2c;
   --navy-soft: #2c4a63;
@@ -242,7 +246,11 @@ defineEmits(['read-more'])
 ========================================================= */
 
 :global(.dark) .announcement-card {
+<<<<<<< HEAD
   background: var(--color-surface);
+=======
+  background: #0a1622;
+>>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
 
   border-color: rgba(255, 255, 255, 0.07);
 
@@ -277,7 +285,11 @@ defineEmits(['read-more'])
     linear-gradient(
       135deg,
       #16324a 0%,
+<<<<<<< HEAD
       #16324a 55%,
+=======
+      #0d2137 55%,
+>>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
       #0a1a2c 100%
     );
 }
@@ -691,7 +703,11 @@ defineEmits(['read-more'])
   margin: 0;
 
   color:
+<<<<<<< HEAD
     var(--color-text-main, #16324a);
+=======
+    var(--color-text-main, #0d2137);
+>>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
 
   font-family:
     var(--font-heading, inherit);
@@ -783,7 +799,11 @@ defineEmits(['read-more'])
     rgba(13, 33, 55, 0.045);
 
   color:
+<<<<<<< HEAD
     var(--color-text-main, #16324a);
+=======
+    var(--color-text-main, #0d2137);
+>>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
 
   border:
     1px solid var(--color-border, #e5e7eb);

@@ -1113,8 +1113,13 @@ onMounted(() => {
   background:
     linear-gradient(
       135deg,
+<<<<<<< HEAD
       var(--color-navy, #16324a),
       var(--color-navy-deep, #16324a)
+=======
+      var(--color-navy, #15324e),
+      var(--color-navy-deep, #0d2137)
+>>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
     );
 }
 
@@ -1242,8 +1247,13 @@ onMounted(() => {
   background:
     linear-gradient(
       135deg,
+<<<<<<< HEAD
       var(--color-navy, #16324a),
       var(--color-navy-deep, #16324a)
+=======
+      var(--color-navy, #15324e),
+      var(--color-navy-deep, #0d2137)
+>>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
     );
 
   color:
@@ -1286,7 +1296,11 @@ onMounted(() => {
     var(--color-gold, #c9a227);
 
   color:
+<<<<<<< HEAD
     var(--color-navy-deep, #16324a);
+=======
+    var(--color-navy-deep, #0d2137);
+>>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
 
   font-size: 0.63rem;
   font-weight: 700;
@@ -1454,7 +1468,15 @@ onMounted(() => {
 .ministry-card h2 {
   margin: 0;
 
+<<<<<<< HEAD
   color: var(--color-heading);
+=======
+  color:
+    var(
+      --color-navy-deep,
+      #0d2137
+    );
+>>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
 
   font-size: 1rem;
 
@@ -1529,7 +1551,12 @@ onMounted(() => {
 
   margin-bottom: 0.45rem;
 
+<<<<<<< HEAD
   color: var(--color-text-faint);
+=======
+  color:
+    rgba(13, 33, 55, 0.45);
+>>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
 
   font-size: 0.62rem;
 
@@ -1572,7 +1599,15 @@ onMounted(() => {
     1px solid
     rgba(13, 33, 55, 0.08);
 
+<<<<<<< HEAD
   color: var(--color-heading);
+=======
+  color:
+    var(
+      --color-navy-deep,
+      #0d2137
+    );
+>>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
 
   font-size: 0.62rem;
 
@@ -1592,7 +1627,11 @@ onMounted(() => {
   background:
     var(
       --color-navy-deep,
+<<<<<<< HEAD
       #16324a
+=======
+      #0d2137
+>>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
     );
 
   color: white;
@@ -1600,7 +1639,11 @@ onMounted(() => {
   border-color:
     var(
       --color-navy-deep,
+<<<<<<< HEAD
       #16324a
+=======
+      #0d2137
+>>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
     );
 
   transform:
@@ -1699,7 +1742,12 @@ onMounted(() => {
 
 
 .ministry-card__leader-label {
+<<<<<<< HEAD
   color: var(--color-text-faint);
+=======
+  color:
+    rgba(13, 33, 55, 0.4);
+>>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
 
   font-size: 0.58rem;
 
@@ -1712,7 +1760,12 @@ onMounted(() => {
 
 
 .ministry-card__leader {
+<<<<<<< HEAD
   color: var(--color-text-muted);
+=======
+  color:
+    rgba(13, 33, 55, 0.68);
+>>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
 
   font-size: 0.7rem;
 
@@ -1748,7 +1801,11 @@ onMounted(() => {
   background:
     var(
       --color-navy-deep,
+<<<<<<< HEAD
       #16324a
+=======
+      #0d2137
+>>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
     );
 
   color: #ffffff;
@@ -1783,7 +1840,11 @@ onMounted(() => {
   color:
     var(
       --color-navy-deep,
+<<<<<<< HEAD
       #16324a
+=======
+      #0d2137
+>>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
     );
 
   transform:
@@ -1840,7 +1901,15 @@ onMounted(() => {
   background:
     #f1f5f5;
 
+<<<<<<< HEAD
   color: var(--color-heading);
+=======
+  color:
+    var(
+      --color-navy-deep,
+      #0d2137
+    );
+>>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
 
   font-size: 1rem;
 
@@ -1866,7 +1935,11 @@ onMounted(() => {
   color:
     var(
       --color-navy-deep,
+<<<<<<< HEAD
       #16324a
+=======
+      #0d2137
+>>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
     );
 
   transform:

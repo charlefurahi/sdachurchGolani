@@ -218,7 +218,11 @@ function formatDate(date) {
   display: flex;
   flex-direction: column;
   overflow: hidden;
+<<<<<<< HEAD
   background: var(--color-surface, #ffffff);
+=======
+  background: var(--color-white, #ffffff);
+>>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
   border: 1px solid var(
     --color-border,
     rgba(13, 33, 55, 0.1)
@@ -242,7 +246,15 @@ function formatDate(date) {
   height: 220px;
   overflow: hidden;
   background:
+<<<<<<< HEAD
     linear-gradient(135deg, #f4f8fb, #dde8ef);
+=======
+    linear-gradient(
+      135deg,
+      var(--color-navy, #15324e),
+      var(--color-navy-deep, #0d2137)
+    );
+>>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
 }
 
 .sermon-card__media > img {
@@ -273,8 +285,13 @@ function formatDate(date) {
   background:
     linear-gradient(
       160deg,
+<<<<<<< HEAD
       rgba(244, 208, 63, 0.88),
       rgba(247, 221, 109, 0.92)
+=======
+      rgba(21, 50, 78, 0.85),
+      rgba(13, 33, 55, 0.92)
+>>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
     );
   transform: translateY(100%);
   transition:
@@ -304,7 +321,11 @@ function formatDate(date) {
   height: 100%;
   display: grid;
   place-items: center;
+<<<<<<< HEAD
   color: var(--color-text-faint);
+=======
+  color: rgba(255, 255, 255, 0.17);
+>>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
 }
 
 .sermon-card__placeholder svg {
@@ -319,7 +340,11 @@ function formatDate(date) {
   z-index: 2;
   padding: 0.38rem 0.62rem;
   background: var(--color-gold, #c9a227);
+<<<<<<< HEAD
   color: var(--color-navy-deep, #16324a);
+=======
+  color: var(--color-navy-deep, #0d2137);
+>>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
   font-size: 0.63rem;
   font-weight: 700;
   letter-spacing: 0.07em;
@@ -332,8 +357,13 @@ function formatDate(date) {
   bottom: 0.9rem;
   z-index: 2;
   padding: 0.34rem 0.58rem;
+<<<<<<< HEAD
   background: rgba(255, 255, 255, 0.92);
   color: var(--color-heading);
+=======
+  background: rgba(13, 33, 55, 0.88);
+  color: #ffffff;
+>>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
   font-size: 0.67rem;
   font-weight: 600;
 }
@@ -353,7 +383,11 @@ function formatDate(date) {
   opacity: 0;
   border-radius: 50%;
   background: var(--color-gold, #c9a227);
+<<<<<<< HEAD
   color: var(--color-navy-deep, #16324a);
+=======
+  color: var(--color-navy-deep, #0d2137);
+>>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
   transition:
     opacity 0.25s ease,
     transform 0.25s ease;
@@ -395,7 +429,14 @@ function formatDate(date) {
 
 .sermon-card h3 {
   margin: 0;
+<<<<<<< HEAD
   color: var(--color-heading);
+=======
+  color: var(
+    --color-navy-deep,
+    #0d2137
+  );
+>>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
   font-size: 1rem;
   font-weight: 700;
   line-height: 1.45;
@@ -429,7 +470,11 @@ function formatDate(date) {
 
 .sermon-card__date {
   margin: 0.55rem 0 1.1rem;
+<<<<<<< HEAD
   color: var(--color-text-faint);
+=======
+  color: rgba(13, 33, 55, 0.45);
+>>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
   font-size: 0.7rem;
 }
 
@@ -450,7 +495,11 @@ function formatDate(date) {
   display: inline-flex;
   align-items: center;
   gap: 0.3rem;
+<<<<<<< HEAD
   color: var(--color-text-faint);
+=======
+  color: rgba(13, 33, 55, 0.45);
+>>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
   font-size: 0.7rem;
 }
 
@@ -486,7 +535,11 @@ function formatDate(date) {
 .sermon-card__listen {
   background: var(
     --color-navy-deep,
+<<<<<<< HEAD
     #16324a
+=======
+    #0d2137
+>>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
   );
   color: #ffffff;
   cursor: pointer;
@@ -499,7 +552,11 @@ function formatDate(date) {
   );
   color: var(
     --color-navy-deep,
+<<<<<<< HEAD
     #16324a
+=======
+    #0d2137
+>>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
   );
 }
 
@@ -508,7 +565,14 @@ function formatDate(date) {
     --color-border,
     rgba(13, 33, 55, 0.1)
   );
+<<<<<<< HEAD
   color: var(--color-heading);
+=======
+  color: var(
+    --color-navy-deep,
+    #0d2137
+  );
+>>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
 }
 
 .sermon-card__details:hover {

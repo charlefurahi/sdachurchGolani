@@ -194,8 +194,13 @@ const serviceTimes = [
 <style scoped>
 /* ── Poster colour tokens ──────────────────────────────────────────────── */
 .footer {
+<<<<<<< HEAD
   --f-blue:    #16324a;   /* darkest navy — poster bg base */
   --f-blue-2:  #16324a;   /* mid-blue panel */
+=======
+  --f-blue:    #0d2137;   /* darkest navy — poster bg base */
+  --f-blue-2:  #1a3a5c;   /* mid-blue panel */
+>>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
   --f-yellow:  #4a9eda;   /* bright blue accent on dark footer */
   --f-yellow-d:#3b82f6;   /* hero blue bright */
   --f-white:   #ffffff;
@@ -418,7 +423,11 @@ const serviceTimes = [
   transition: background 0.2s, transform 0.2s;
   flex-shrink: 0;
 }
+<<<<<<< HEAD
 .footer__subscribe-btn:hover { background: #16324a; transform: scale(1.05); }
+=======
+.footer__subscribe-btn:hover { background: #1a3a5c; transform: scale(1.05); }
+>>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
 
 .footer__subscribed-msg {
   font-size: 12px;

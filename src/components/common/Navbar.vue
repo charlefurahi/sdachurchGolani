@@ -8,9 +8,13 @@
   >
     <div class="site-header__inner">
       <RouterLink to="/" class="site-brand" aria-label="Golani SDA Church home">
+<<<<<<< HEAD
         <span class="site-brand__mark" aria-hidden="true">
           <img :src="logo" alt="" class="site-brand__logo" />
         </span>
+=======
+        <img :src="logo" alt="" class="site-brand__logo" />
+>>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
         <span>
           <span class="site-brand__name">GOLANI </span>
           <span class="site-brand__sub">Seventh-day Adventist Church</span>
@@ -204,9 +208,15 @@ onBeforeUnmount(() => {
   right: 0;
   min-width: 210px;
   padding: 0.45rem;
+<<<<<<< HEAD
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
   background: var(--color-surface);
+=======
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: var(--radius-md);
+  background: var(--color-navy-deep);
+>>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
   box-shadow: var(--shadow-lift);
 }
 
@@ -214,15 +224,26 @@ onBeforeUnmount(() => {
   display: block;
   padding: 0.65rem 0.75rem;
   border-radius: var(--radius-sm);
+<<<<<<< HEAD
   color: var(--color-text-main);
+=======
+  color: rgba(255,255,255,.8);
+>>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
   font-size: 0.82rem;
 }
 
 .site-nav__dropdown-link:hover,
 .site-nav__dropdown-link.router-link-active {
+<<<<<<< HEAD
   background: var(--color-bg-alt);
   color: var(--color-heading);
 }
 :global(.dark) .site-nav__dropdown-link:hover,
 :global(.dark) .site-nav__dropdown-link.router-link-active { background:var(--color-surface-alt); color:#fff; }
 </style>
+=======
+  background: var(--color-navy);
+  color: var(--color-white);
+}
+</style>
+>>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7

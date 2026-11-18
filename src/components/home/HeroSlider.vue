@@ -115,7 +115,11 @@ const CONTENT = [
     tag:      'Golani Seventh-day Adventist Church',
     title:    'Faith Hope Love',
     subtitle: 'Rooted in the Word of God, driven by purpose, united in Christ. Join us every Sabbath as we sing, grow, and serve together.',
+<<<<<<< HEAD
     gradient: 'linear-gradient(160deg,#16324a 0%,#163f5e 60%,#16324a 100%)',
+=======
+    gradient: 'linear-gradient(160deg,#0d2137 0%,#163f5e 60%,#0d2137 100%)',
+>>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
   },
   {
     tag:      'Sabbath Worship Service',
@@ -127,7 +131,11 @@ const CONTENT = [
     tag:      'Serving Our Community',
     title:    'Faith in Action',
     subtitle: 'True Christianity extends beyond these walls. Join us as we serve our neighbours and share the Good News of Christ.',
+<<<<<<< HEAD
     gradient: 'linear-gradient(160deg,#08182a 0%,#163f5e 55%,#16324a 100%)',
+=======
+    gradient: 'linear-gradient(160deg,#08182a 0%,#163f5e 55%,#0d2137 100%)',
+>>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
   },
 ]
 
@@ -359,7 +367,11 @@ onUnmounted(() => clearInterval(timer))
 }
 .hero__cta--fill {
   background: rgba(255,255,255,0.92);
+<<<<<<< HEAD
   color: #16324a;
+=======
+  color: #0d2137;
+>>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
   border-color: transparent;
 }
 .hero__cta--fill:hover {

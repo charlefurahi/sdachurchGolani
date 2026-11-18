@@ -180,7 +180,11 @@ onMounted(loadAnnouncements)
   border: 1px solid #e2e8f0;
   border-radius: 0.75rem;
   background: #fff;
+<<<<<<< HEAD
   color: var(--color-heading);
+=======
+  color: #0d2137;
+>>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
   outline: none;
   padding: 0.7rem 1rem;
   font: inherit;

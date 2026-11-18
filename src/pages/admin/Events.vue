@@ -49,7 +49,11 @@
                 <div class="flex items-center gap-3">
                   <div class="w-10 h-10 rounded-xl overflow-hidden flex-shrink-0 bg-gradient-to-br from-primary-600 to-navy-800">
                     <img v-if="ev.banner_url || ev.banner" :src="ev.banner_url || ev.banner" :alt="ev.title" class="w-full h-full object-cover"/>
+<<<<<<< HEAD
                     <div v-else class="w-full h-full flex items-center justify-center text-white/60"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 6h16v15H4zM8 3v6m8-6v6M4 11h16"/></svg></div>
+=======
+                    <div v-else class="w-full h-full flex items-center justify-center text-white/30">📅</div>
+>>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
                   </div>
                   <div>
                     <p class="font-semibold text-navy-800 dark:text-white">{{ ev.title }}</p>
@@ -65,7 +69,11 @@
               </td>
               <td class="px-5 py-3.5">
                 <div class="flex items-center gap-1.5 flex-wrap">
+<<<<<<< HEAD
                   <span v-if="ev.is_featured" class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-amber-50 text-amber-800 dark:bg-amber-500/15 dark:text-amber-300">Featured</span>
+=======
+                  <span v-if="ev.is_featured" class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-blue-50 text-gold-700 dark:bg-gold-900/30 dark:text-blue-400">⭐ Featured</span>
+>>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
                   <span :class="['inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium', isUpcoming(ev.start_date) ? 'bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-300' : 'bg-gray-100 text-gray-500 dark:bg-navy-700 dark:text-gray-400']">
                     {{ isUpcoming(ev.start_date) ? 'Upcoming' : 'Past' }}
                   </span>
@@ -150,18 +158,30 @@
               <div class="flex flex-wrap gap-5">
                 <label class="flex items-center gap-2 text-sm cursor-pointer">
                   <input v-model="form.is_featured" type="checkbox" class="w-4 h-4 accent-gold-500 rounded"/>
+<<<<<<< HEAD
                   <span class="text-gray-700 dark:text-gray-200">Featured</span>
                 </label>
                 <label class="flex items-center gap-2 text-sm cursor-pointer">
                   <input v-model="form.is_online" type="checkbox" class="w-4 h-4 accent-primary-600 rounded"/>
                   <span class="text-gray-700 dark:text-gray-200">Online Event</span>
+=======
+                  <span class="text-gray-700 dark:text-gray-200">⭐ Featured</span>
+                </label>
+                <label class="flex items-center gap-2 text-sm cursor-pointer">
+                  <input v-model="form.is_online" type="checkbox" class="w-4 h-4 accent-primary-600 rounded"/>
+                  <span class="text-gray-700 dark:text-gray-200">🌐 Online Event</span>
+>>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
                 </label>
                 <label class="flex items-center gap-2 text-sm cursor-pointer">
                   <input v-model="form.rsvp_required" type="checkbox" class="w-4 h-4 accent-primary-600 rounded"/>
                   <span class="text-gray-700 dark:text-gray-200">RSVP Required</span>
                 </label>
               </div>
+<<<<<<< HEAD
               <p v-if="formError" class="text-sm text-red-600 bg-red-50 dark:bg-red-900/20 px-4 py-2.5 rounded-xl">{{ formError }}</p>
+=======
+              <p v-if="formError" class="text-sm text-red-600 bg-red-50 dark:bg-red-900/20 px-4 py-2.5 rounded-xl">⚠️ {{ formError }}</p>
+>>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
             </div>
             <div class="sticky bottom-0 bg-white dark:bg-navy-800 border-t border-gray-100 dark:border-navy-700 px-6 py-4 flex gap-3 rounded-b-2xl">
               <button @click="save" :disabled="saving" class="btn-primary flex-1 flex items-center justify-center gap-2">

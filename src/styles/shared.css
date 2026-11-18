@@ -37,8 +37,13 @@
 .page-hero {
   position: relative;
   padding: clamp(2.5rem, 6vw, 3.5rem) 0 clamp(1.75rem, 4vw, 2.5rem);
+<<<<<<< HEAD
   background: var(--gradient-page-hero);
   color: var(--color-text-main);
+=======
+  background: var(--color-navy-deep);
+  color: var(--color-white);
+>>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
   overflow: hidden;
 }
 
@@ -48,6 +53,7 @@
 }
 
 .page-hero .section-tag {
+<<<<<<< HEAD
   color: var(--color-gold-ink);
 }
 
@@ -62,6 +68,21 @@
 
 .page-hero p {
   color: var(--color-text-muted);
+=======
+  color: var(--color-gold);
+}
+
+.page-hero h1 {
+  font-size: clamp(1.75rem, 4vw, 2.25rem);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  color: var(--color-white);
+}
+
+.page-hero p {
+  color: rgba(255, 255, 255, 0.72);
+>>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
 }
 
 .page-hero__breadcrumb {
@@ -71,7 +92,11 @@
 
 .page-hero__breadcrumb a,
 .page-hero__breadcrumb span {
+<<<<<<< HEAD
   color: var(--color-text-muted);
+=======
+  color: rgba(255, 255, 255, 0.6);
+>>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
 }
 
 .page-hero__breadcrumb a:hover {
@@ -79,7 +104,11 @@
 }
 
 .page-hero__breadcrumb .current {
+<<<<<<< HEAD
   color: var(--color-footer);
+=======
+  color: var(--color-white);
+>>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
   font-weight: 500;
 }
 

@@ -8,10 +8,17 @@
       </div>
       <div class="flex gap-2">
         <button @click="activeView = 'leaders'" :class="['px-4 py-2 rounded-xl text-sm font-medium transition-colors', activeView === 'leaders' ? 'bg-primary-600 text-white' : 'bg-gray-100 dark:bg-navy-800 text-gray-600 dark:text-gray-300']">
+<<<<<<< HEAD
           Leaders
         </button>
         <button @click="activeView = 'inquiries'; loadInquiries()" :class="['px-4 py-2 rounded-xl text-sm font-medium transition-colors relative', activeView === 'inquiries' ? 'bg-primary-600 text-white' : 'bg-gray-100 dark:bg-navy-800 text-gray-600 dark:text-gray-300']">
           Inquiries
+=======
+          👑 Leaders
+        </button>
+        <button @click="activeView = 'inquiries'; loadInquiries()" :class="['px-4 py-2 rounded-xl text-sm font-medium transition-colors relative', activeView === 'inquiries' ? 'bg-primary-600 text-white' : 'bg-gray-100 dark:bg-navy-800 text-gray-600 dark:text-gray-300']">
+          💬 Inquiries
+>>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
           <span v-if="unreadCount > 0" class="absolute -top-1 -right-1 w-5 h-5 bg-red-500 text-white text-xs rounded-full flex items-center justify-center font-bold">{{ unreadCount }}</span>
         </button>
         <button v-if="activeView === 'leaders'" @click="openCreate" class="btn-primary flex items-center gap-2">
@@ -78,14 +85,24 @@
                 <p v-if="!leader.is_active" class="text-xs text-red-400 mt-0.5">Hidden</p>
               </div>
               <div class="flex gap-1 flex-shrink-0">
+<<<<<<< HEAD
                 <button @click="openEdit(leader)" class="p-1.5 rounded-lg text-gray-400 hover:text-primary-600 hover:bg-primary-50 dark:hover:bg-navy-700 transition-colors" title="Edit"><svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="m14 5 5 5M4 20l4.5-1 11-11a2.1 2.1 0 0 0-3-3l-11 11L4 20z"/></svg></button>
                 <button @click="confirmDelete(leader)" class="p-1.5 rounded-lg text-gray-400 hover:text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20 transition-colors" title="Delete"><svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M4 7h16m-10 4v6m4-6v6M6 7l1 14h10l1-14M9 7V4h6v3"/></svg></button>
+=======
+                <button @click="openEdit(leader)" class="p-1.5 rounded-lg text-gray-400 hover:text-primary-600 hover:bg-primary-50 dark:hover:bg-navy-700 transition-colors" title="Edit">✏️</button>
+                <button @click="confirmDelete(leader)" class="p-1.5 rounded-lg text-gray-400 hover:text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20 transition-colors" title="Delete">🗑️</button>
+>>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
               </div>
             </div>
             <p v-if="leader.bio" class="text-xs text-gray-500 dark:text-gray-400 mt-1.5 line-clamp-2">{{ leader.bio }}</p>
             <div v-if="leader.email || leader.phone" class="mt-1.5 flex gap-2 flex-wrap">
+<<<<<<< HEAD
               <span v-if="leader.email" class="text-xs text-gray-500 dark:text-gray-400">{{ leader.email }}</span>
               <span v-if="leader.phone" class="text-xs text-gray-500 dark:text-gray-400">{{ leader.phone }}</span>
+=======
+              <span v-if="leader.email" class="text-xs text-gray-400">✉ {{ leader.email }}</span>
+              <span v-if="leader.phone" class="text-xs text-gray-400">📞 {{ leader.phone }}</span>
+>>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
             </div>
           </div>
         </div>
@@ -93,7 +110,11 @@
 
       <!-- Empty -->
       <div v-else class="card p-10 text-center">
+<<<<<<< HEAD
         <svg class="mx-auto mb-3 h-8 w-8 text-primary-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path stroke-linecap="round" stroke-linejoin="round" d="M16 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2m6-10a4 4 0 1 0 0-8 4 4 0 0 0 0 8z"/></svg>
+=======
+        <p class="text-4xl mb-3">👑</p>
+>>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
         <p class="text-gray-500 dark:text-gray-400">No leaders found for this filter.</p>
         <button @click="openCreate" class="btn-primary mt-4">Add First Leader</button>
       </div>
@@ -109,7 +130,11 @@
       </div>
 
       <div v-else-if="!inquiries.length" class="card p-12 text-center">
+<<<<<<< HEAD
         <svg class="mx-auto mb-3 h-8 w-8 text-primary-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path stroke-linecap="round" stroke-linejoin="round" d="M20 11.5a7.5 7.5 0 0 1-8 7.5 8.5 8.5 0 0 1-3.7-.8L4 20l1.2-3.6A7.2 7.2 0 0 1 4 12c0-4.1 3.6-7.5 8-7.5s8 3.1 8 7z"/></svg>
+=======
+        <p class="text-4xl mb-3">💬</p>
+>>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
         <p class="text-gray-500 dark:text-gray-400">No inquiries yet.</p>
       </div>
 
@@ -285,7 +310,11 @@
             <div class="flex gap-3 pt-2">
               <a :href="'mailto:' + selectedInquiry.email + '?subject=Re: ' + selectedInquiry.subject"
                 class="btn-primary flex-1 text-center">
+<<<<<<< HEAD
                 Reply via Email
+=======
+                ✉️ Reply via Email
+>>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
               </a>
               <button @click="markInquiryRead(selectedInquiry)" class="btn-outline">
                 {{ selectedInquiry.is_read ? '✓ Read' : 'Mark Read' }}

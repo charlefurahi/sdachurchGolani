@@ -7,11 +7,16 @@
           <p class="section-tag text-blue-400 mb-3">Who We Are</p>
           <h1 class="font-heading text-4xl md:text-6xl font-bold text-white mb-4">About Golani SDA Church</h1>
           <div class="divider-blue-center mb-4"></div>
+<<<<<<< HEAD
           <p class="max-w-2xl mx-auto text-lg">Grounded in the Bible. Integrated for mission.</p>
+=======
+          <p class="text-blue-200 max-w-2xl mx-auto text-lg">Grounded in the Bible, Integrated for mission31ws</p>
+>>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
         </div>
       </div>
     </div>
 
+<<<<<<< HEAD
     <!-- About the church -->
     <section class="section about-history">
       <div class="container-custom">
@@ -19,11 +24,40 @@
         <div class="about-history__copy">
           <p>Golani Seventh-day Adventist Church is a community growing in faith, worship, and service. We welcome people to learn from Scripture, build meaningful relationships, and share the hope of Jesus.</p>
           <p>Through our ministries and local outreach, we seek to serve our neighbors and make a lasting difference in the community.</p>
+=======
+    <!-- History -->
+    <section class="section bg-white dark:bg-navy-900">
+      <div class="container-custom">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+          <div>
+            <SectionTitle tag="Our History" title="Our Journey of Faith" center />
+            <div class="space-y-4 text-gray-600 dark:text-gray-300 leading-relaxed">
+              <p>The Golani SDA Church was established in 1990 by a small group of faithful Seventh-day Adventists who felt called to plant a congregation in the Golani district. Beginning with just 23 members in a rented school hall, the church grew steadily through evangelistic meetings, Bible studies, and community service.</p>
+              <p>In 1998, the congregation purchased its first property and constructed a permanent sanctuary. By 2005, membership had grown to over 300 souls. The church planted two daughter churches in neighboring areas and established a community outreach center.</p>
+              <p>Today, Golani SDA Church is home to over 847 registered members with 12 active ministry departments, serving as a beacon of hope and light in our region. We remain committed to the Adventist mission of proclaiming the three angels' messages and preparing a people for Christ's imminent return.</p>
+            </div>
+          </div>
+          <div class="space-y-4">
+            <div v-for="milestone in milestones" :key="milestone.year" class="flex gap-4">
+              <div class="text-right w-14 flex-shrink-0">
+                <span class="font-bold text-blue-700 dark:text-blue-500 text-sm">{{ milestone.year }}</span>
+              </div>
+              <div class="flex flex-col items-center">
+                <div class="w-3 h-3 bg-primary-500 rounded-full flex-shrink-0 mt-1"></div>
+                <div class="flex-1 w-px bg-gray-200 dark:bg-navy-700 my-1"></div>
+              </div>
+              <div class="pb-4">
+                <p class="font-semibold text-navy-800 dark:text-white text-sm">{{ milestone.event }}</p>
+              </div>
+            </div>
+          </div>
+>>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
         </div>
       </div>
     </section>
 
     <!-- Mission, Vision, Values -->
+<<<<<<< HEAD
     <section class="section about-foundation">
       <div class="container-custom">
         <SectionTitle tag="Our Foundation" title="Mission, Vision & Values" />
@@ -34,6 +68,14 @@
               <svg v-else-if="mvv.icon === 'vision'" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6S2 12 2 12Z"/><circle cx="12" cy="12" r="2.5"/></svg>
               <svg v-else viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-8-4.5-8-11a4.5 4.5 0 0 1 8-2.8A4.5 4.5 0 0 1 20 10c0 6.5-8 11-8 11Z"/><path d="m8.5 12 2.2 2.2 4.8-5"/></svg>
             </div>
+=======
+    <section class="section bg-gray-50 dark:bg-navy-950">
+      <div class="container-custom">
+        <SectionTitle tag="Our Foundation" title="Mission, Vision & Values" />
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div v-for="mvv in missionVisionValues" :key="mvv.title" class="card p-6 border-t-4 border-primary-500">
+            <div class="text-4xl mb-4">{{ mvv.icon }}</div>
+>>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
             <h3 class="font-heading text-xl font-bold text-navy-800 dark:text-white mb-3">{{ mvv.title }}</h3>
             <p class="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">{{ mvv.text }}</p>
           </div>
@@ -42,6 +84,7 @@
     </section>
 
     <!-- 28 Fundamental Beliefs -->
+<<<<<<< HEAD
     <section class="section about-beliefs">
       <div class="container-custom">
         <SectionTitle tag="What We Believe" title="Fundamental Beliefs" subtitle="Seventh-day Adventists accept these fundamental beliefs as the teaching of Holy Scripture." />
@@ -56,11 +99,25 @@
               <p>{{ belief.summary }}</p>
             </div>
           </article>
+=======
+    <section class="section bg-white dark:bg-navy-900">
+      <div class="container-custom">
+        <SectionTitle tag="What We Believe" title="Fundamental Beliefs" subtitle="Seventh-day Adventists accept these fundamental beliefs as the teaching of Holy Scripture." />
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div v-for="belief in fundamentalBeliefs" :key="belief.number" class="card p-4 flex gap-3 group hover:border-primary-200 dark:hover:border-navy-500 transition-colors border border-transparent">
+            <div class="w-9 h-9 rounded-xl bg-primary-100 dark:bg-primary-900/30 text-primary-600 dark:text-primary-300 flex items-center justify-center font-bold text-sm flex-shrink-0">{{ belief.number }}</div>
+            <div>
+              <h4 class="font-semibold text-sm text-navy-800 dark:text-white mb-1">{{ belief.title }}</h4>
+              <p class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">{{ belief.summary }}</p>
+            </div>
+          </div>
+>>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
         </div>
       </div>
     </section>
 
     <!-- Leadership -->
+<<<<<<< HEAD
     <section class="section about-leadership">
       <div class="container-custom">
         <SectionTitle tag="Leadership" title="Meet Our Team" subtitle="Godly servants dedicated to shepherding the GolaniSDA family." />
@@ -69,6 +126,17 @@
             <div class="about-leader__portrait">
               <img v-if="leader.photo_url" :src="leader.photo_url" :alt="leader.name" loading="lazy" />
               <span v-else>{{ leader.name.charAt(0) }}</span>
+=======
+    <section class="section bg-gray-50 dark:bg-navy-950">
+      <div class="container-custom">
+        <SectionTitle tag="Leadership" title="Meet Our Team" subtitle="Godly servants dedicated to shepherding the GolaniSDA family." />
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div v-for="leader in leadership" :key="leader.id" class="card overflow-hidden group text-center">
+            <div class="h-48 bg-gradient-to-br from-primary-600 to-navy-800 flex items-center justify-center relative">
+              <div class="w-24 h-24 rounded-full bg-white/20 flex items-center justify-center text-4xl text-white border-4 border-white/30">
+                {{ leader.name.charAt(0) }}
+              </div>
+>>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
             </div>
             <div class="p-5">
               <h3 class="font-semibold text-navy-800 dark:text-white">{{ leader.name }}</h3>
@@ -78,12 +146,19 @@
             </div>
           </div>
         </div>
+<<<<<<< HEAD
         <p v-else class="about-leadership__empty">Leadership profiles will be shared here soon.</p>
+=======
+>>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
       </div>
     </section>
 
     <!-- Service Times & Location -->
+<<<<<<< HEAD
     <section class="section about-visit">
+=======
+    <section class="section bg-white dark:bg-navy-900">
+>>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
       <div class="container-custom">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
           <div>
@@ -124,8 +199,11 @@ import { ref, onMounted } from 'vue'
 import { useIntersection } from '@/composables/useIntersection'
 import SectionTitle from '@/components/common/SectionTitle.vue'
 import leadershipService from '@/services/leadershipService.js'
+<<<<<<< HEAD
 import { leadership as demoLeadership } from '@/data/leadership.js'
 import { beliefImageCandidates } from '@/data/beliefImages.js'
+=======
+>>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
 
 const leadership = ref([])
 
@@ -133,6 +211,7 @@ onMounted(async () => {
   useIntersection()
   try {
     const res = await leadershipService.getAll()
+<<<<<<< HEAD
     const people = Array.isArray(res) ? res : (res?.results ?? [])
     leadership.value = people.map(person => ({
       ...person,
@@ -159,6 +238,24 @@ const missionVisionValues = [
   { icon: 'mission', title: 'Our Mission', text: 'To make disciples of all nations through proclamation, fellowship, service, and worship — sharing the everlasting gospel and preparing a people for the return of Jesus Christ.' },
   { icon: 'vision', title: 'Our Vision', text: 'To be a Spirit-filled, mission-driven church that transforms our community, reflects the character of Jesus Christ, and reaches the unreached with the three angels\' messages.' },
   { icon: 'values', title: 'Our Values', text: 'Scripture above all. Whole-person wellness. Sabbath rest and worship. Community service. Family integrity. Global mission. Christ-centred living in every area of life.' }
+=======
+    leadership.value = Array.isArray(res) ? res : (res?.results ?? [])
+  } catch { /* leadership stays empty, page still renders */ }
+})
+
+const milestones = [
+  { year: '1990', event: 'Church founded by _ members in Golani' },
+  { year: '1995', event: 'First dedicated church building constructed' },
+  { year: '2008', event: 'Community outreach center established' },
+  { year: '2015', event: 'Membership reaches _ baptized members' },
+  { year: '2024', event: '_ members — growing in faith and mission' }
+]
+
+const missionVisionValues = [
+  { icon: '', title: 'Our Mission', text: 'To make disciples of all nations through proclamation, fellowship, service, and worship — sharing the everlasting gospel and preparing a people for the return of Jesus Christ.' },
+  { icon: '', title: 'Our Vision', text: 'To be a Spirit-filled, mission-driven church that transforms our community, reflects the character of Jesus Christ, and reaches the unreached with the three angels\' messages.' },
+  { icon: '', title: 'Our Values', text: 'Scripture above all. Whole-person wellness. Sabbath rest and worship. Community service. Family integrity. Global mission. Christ-centred living in every area of life.' }
+>>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
 ]
 
 const fundamentalBeliefs = [
@@ -199,6 +296,7 @@ const serviceTimes = [
   { name: 'Prayer Session (Physical)', day: 'Every Wednesday', time: '05:00 - 06:00 PM' },
 ]
 </script>
+<<<<<<< HEAD
 
 <style scoped>
 .about-history, .about-beliefs, .about-visit { background: var(--color-bg); }
@@ -227,3 +325,5 @@ const serviceTimes = [
 @media(max-width:900px) { .about-beliefs__grid,.about-leadership__grid { grid-template-columns:repeat(2,minmax(0,1fr)); gap:2.5rem 1rem; } .about-belief__image-wrap { width:min(100%,10rem); } }
 @media(max-width:560px) { .about-beliefs__grid,.about-leadership__grid { grid-template-columns:1fr; gap:2.5rem; } .about-belief__image-wrap { width:11rem; } }
 </style>
+=======
+>>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7

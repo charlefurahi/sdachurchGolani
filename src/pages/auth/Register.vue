@@ -1,4 +1,5 @@
 <template>
+<<<<<<< HEAD
   <div class="p-6 sm:p-8 flex flex-col items-center">
     <!-- Page header -->
     <div class="w-full text-center mb-7">
@@ -8,6 +9,17 @@
 
     <form @submit.prevent="submit" class="space-y-4 w-full">
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+=======
+  <div class="p-8 flex flex-col items-center">
+    <!-- Page header -->
+    <div class="w-full text-center mb-7">
+      <h2 class="font-heading text-2xl font-bold text-navy-800 dark:text-white mb-1">Register Page</h2>
+      <p class="text-sm text-gray-500 dark:text-gray-400">Join the GolaniSDA digital community</p>
+    </div>
+
+    <form @submit.prevent="submit" class="space-y-4 w-full">
+      <div class="grid grid-cols-2 gap-3">
+>>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
         <div>
           <label class="label">First Name</label>
           <input v-model="form.first_name" class="input" placeholder="John" required autocomplete="given-name" :disabled="loading" />
@@ -37,7 +49,11 @@
       </div>
 
       <div v-if="error" class="text-sm text-red-600 dark:text-red-400 bg-red-50 dark:bg-red-900/20 rounded-lg px-4 py-3 flex items-start gap-2">
+<<<<<<< HEAD
         <svg class="mt-0.5 h-4 w-4 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v4m0 4h.01M10.3 3.86 1.8 18.5A2 2 0 0 0 3.53 21h16.94a2 2 0 0 0 1.73-2.5L13.7 3.86a2 2 0 0 0-3.4 0Z"/></svg>
+=======
+        <span class="flex-shrink-0 mt-0.5">⚠️</span>
+>>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
         <span>{{ error }}</span>
       </div>
 

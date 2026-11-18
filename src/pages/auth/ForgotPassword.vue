@@ -1,8 +1,15 @@
 <template>
+<<<<<<< HEAD
   <div class="p-6 sm:p-8 flex flex-col items-center">
     <!-- Page header -->
     <div class="w-full text-center mb-7">
       <h2 class="font-heading text-2xl font-bold text-navy-800 dark:text-white mb-1">Reset your password</h2>
+=======
+  <div class="p-8 flex flex-col items-center">
+    <!-- Page header -->
+    <div class="w-full text-center mb-7">
+      <h2 class="font-heading text-2xl font-bold text-navy-800 dark:text-white mb-1">Forgot Password Page</h2>
+>>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
       <p class="text-sm text-gray-500 dark:text-gray-400">Enter your email and we'll send a reset link.</p>
     </div>
 

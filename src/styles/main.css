@@ -4,7 +4,10 @@
 @import "./responsive.css";
 @import "./animations.css";
 @import "./shared.css";
+<<<<<<< HEAD
 @import "./theme.css";
+=======
+>>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
 
 /*
  * Tailwind was configured (tailwind.config.js, postcss.config.js) but never
@@ -27,12 +30,15 @@ html {
   background: var(--color-bg);
 }
 
+<<<<<<< HEAD
 #app {
   min-height: 100vh;
   min-height: 100svh;
   overflow-x: clip;
 }
 
+=======
+>>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
 body {
   min-width: 320px;
   margin: 0;
@@ -44,6 +50,7 @@ body {
     color var(--duration-standard) var(--ease-standard);
 }
 
+<<<<<<< HEAD
 /* Let page content shrink inside grid and flex layouts on narrow screens. */
 main,
 main > *,
@@ -67,6 +74,8 @@ td {
   overflow-wrap: anywhere;
 }
 
+=======
+>>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
 body.menu-open {
   overflow: hidden;
 }

@@ -45,7 +45,11 @@
             </div>
 
             <div class="p-5">
+<<<<<<< HEAD
               <h3 class="font-heading text-2xl font-bold text-slate-900 dark:text-white group-hover:text-navy-500 dark:group-hover:text-blue-400 transition-colors">
+=======
+              <h3 class="font-heading text-2xl font-bold text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+>>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
                 {{ ministry.name }}
               </h3>
               <p class="mt-2 text-sm leading-6 text-slate-600 dark:text-slate-400 line-clamp-3">
@@ -57,7 +61,11 @@
       </div>
 
       <div v-else class="rounded-3xl border border-slate-200 dark:border-navy-700 bg-white dark:bg-navy-900 p-8 md:p-12 text-center">
+<<<<<<< HEAD
         <div class="mx-auto mb-5 w-14 h-14 rounded-2xl bg-navy-50 dark:bg-gold-400/15 text-navy-700 dark:text-gold-400 grid place-items-center">
+=======
+        <div class="mx-auto mb-5 w-14 h-14 rounded-2xl bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 grid place-items-center">
+>>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
           <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
             <path d="M4 19.5V5.5A2.5 2.5 0 0 1 6.5 3H20v16H6.5A2.5 2.5 0 0 0 4 21.5m0-2a2.5 2.5 0 0 1 2.5-2.5H20"/>
           </svg>
@@ -140,7 +148,11 @@ onMounted(loadMinistries)
   @apply relative h-56 overflow-hidden bg-slate-100 dark:bg-navy-800;
 }
 .ministry-card__placeholder {
+<<<<<<< HEAD
   @apply absolute inset-0 grid place-items-center bg-gradient-to-br from-navy-50 to-navy-200 text-navy-700;
+=======
+  @apply absolute inset-0 grid place-items-center bg-gradient-to-br from-blue-700 to-slate-900;
+>>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
 }
 .ministry-card__placeholder span {
   @apply text-4xl font-bold text-white/90 font-heading;

@@ -398,7 +398,11 @@ const pdfUrl = computed(() => {
 
 /* =========================================================
    GOLANI SDA BRAND
+<<<<<<< HEAD
    Navy: #16324a
+=======
+   Navy: #0d2137
+>>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
    Navy Dark: #0a1a2c
    Navy Soft: #2c4a63
    Gold: #f4d03f
@@ -419,7 +423,11 @@ const pdfUrl = computed(() => {
     var(--color-bg, #ffffff);
 
   color:
+<<<<<<< HEAD
     var(--color-text-main, #16324a);
+=======
+    var(--color-text-main, #0d2137);
+>>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
 }
 
 :global(.dark) .announcement-detail {
@@ -519,7 +527,11 @@ const pdfUrl = computed(() => {
   margin: 0;
 
   color:
+<<<<<<< HEAD
     var(--color-text-main, #16324a);
+=======
+    var(--color-text-main, #0d2137);
+>>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
 
   font-family:
     var(--font-heading, inherit);
@@ -601,7 +613,12 @@ const pdfUrl = computed(() => {
   border:
     1px solid rgba(13, 33, 55, 0.15);
 
+<<<<<<< HEAD
   color: var(--color-heading);
+=======
+  color:
+    #0d2137;
+>>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
 }
 
 :global(.dark) .ad-badge--urgent {
@@ -664,7 +681,11 @@ const pdfUrl = computed(() => {
     linear-gradient(
       135deg,
       #16324a,
+<<<<<<< HEAD
       #16324a
+=======
+      #0d2137
+>>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
     );
 
   border:
@@ -829,7 +850,11 @@ const pdfUrl = computed(() => {
   overflow: hidden;
 
   color:
+<<<<<<< HEAD
     #16324a;
+=======
+    #0d2137;
+>>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
 
   background:
     #f4d03f;
@@ -1006,7 +1031,11 @@ const pdfUrl = computed(() => {
   margin: 0;
 
   color:
+<<<<<<< HEAD
     var(--color-text-main, #16324a);
+=======
+    var(--color-text-main, #0d2137);
+>>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
 
   font-family:
     var(--font-heading, inherit);
@@ -1031,7 +1060,12 @@ const pdfUrl = computed(() => {
 
   gap: 0.35rem;
 
+<<<<<<< HEAD
   color: var(--color-heading);
+=======
+  color:
+    #0d2137;
+>>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
 
   font-size: 0.65rem;
 
@@ -1344,7 +1378,11 @@ const pdfUrl = computed(() => {
     linear-gradient(
       135deg,
       #16324a,
+<<<<<<< HEAD
       #16324a
+=======
+      #0d2137
+>>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
     );
 
   color:
@@ -1367,7 +1405,11 @@ const pdfUrl = computed(() => {
   margin: 0;
 
   color:
+<<<<<<< HEAD
     var(--color-text-main, #16324a);
+=======
+    var(--color-text-main, #0d2137);
+>>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
 
   font-family:
     var(--font-heading, inherit);

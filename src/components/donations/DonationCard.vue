@@ -8,7 +8,11 @@
         <span class="badge badge-primary">{{ campaign.category }}</span>
       </div>
       <div v-if="campaign.featured" class="absolute top-3 right-3">
+<<<<<<< HEAD
         <span class="badge bg-blue-700 text-white"><svg class="mr-1 h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path stroke-linejoin="round" d="m12 3 2.7 5.5 6.1.9-4.4 4.3 1 6.1-5.4-2.9-5.4 2.9 1-6.1-4.4-4.3 6.1-.9L12 3z"/></svg> Featured</span>
+=======
+        <span class="badge bg-blue-700 text-white">⭐ Featured</span>
+>>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
       </div>
     </div>
     <div class="p-5">
@@ -30,7 +34,11 @@
         Deadline: {{ formatDate(campaign.deadline) }}
       </div>
       <button class="btn btn-primary w-full justify-center" @click="$emit('donate', campaign)">
+<<<<<<< HEAD
         Donate Now
+=======
+        Donate Now 🙏
+>>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
       </button>
     </div>
   </article>

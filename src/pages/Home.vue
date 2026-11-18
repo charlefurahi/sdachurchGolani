@@ -324,7 +324,11 @@
               class="home-value__icon"
               aria-hidden="true"
             >
+<<<<<<< HEAD
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><path d="m12 12 6-6M16 6h2v2"/></svg>
+=======
+              ◎
+>>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
             </span>
 
             <div>
@@ -349,7 +353,11 @@
               class="home-value__icon"
               aria-hidden="true"
             >
+<<<<<<< HEAD
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6S2 12 2 12Z"/><circle cx="12" cy="12" r="2.5"/></svg>
+=======
+              ✦
+>>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
             </span>
 
             <div>
@@ -489,6 +497,7 @@
             class="worship-card"
           >
 
+<<<<<<< HEAD
             <div class="worship-card__top">
 
               <span class="worship-card__day">
@@ -503,6 +512,11 @@
               </span>
 
             </div>
+=======
+            <span class="worship-card__day">
+              {{ service.day }}
+            </span>
+>>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
 
             <h3 class="worship-card__title">
               {{ service.name }}
@@ -510,14 +524,22 @@
 
             <p class="worship-card__time">
 
+<<<<<<< HEAD
               {{ service.startTime }} Hrs
 
               <span v-if="service.endTime">
                 – {{ service.endTime }} Hrs
+=======
+              {{ service.startTime }}
+
+              <span v-if="service.endTime">
+                – {{ service.endTime }}
+>>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
               </span>
 
             </p>
 
+<<<<<<< HEAD
             <p
               v-if="service.location"
               class="worship-card__location"
@@ -536,6 +558,8 @@
               <span aria-hidden="true">→</span>
             </a>
 
+=======
+>>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
           </article>
 
         </div>
@@ -704,7 +728,14 @@ async function loadSermons() {
 
     const list = res?.results ?? res
 
+<<<<<<< HEAD
     sermons.value = Array.isArray(list) ? list.slice(0, 3) : []
+=======
+    sermons.value =
+      Array.isArray(list) && list.length
+        ? list.slice(0, 3)
+        : demoSermons.slice(0, 3)
+>>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
 
   } catch {
     sermons.value = demoSermons.slice(0, 3)
@@ -739,7 +770,14 @@ async function loadEvents() {
 
     const list = res?.results ?? res
 
+<<<<<<< HEAD
     events.value = Array.isArray(list) ? list.slice(0, 3) : []
+=======
+    events.value =
+      Array.isArray(list) && list.length
+        ? list.slice(0, 3)
+        : demoEvents.slice(0, 3)
+>>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
 
   } catch {
     events.value = demoEvents.slice(0, 3)
@@ -764,7 +802,14 @@ async function loadAnnouncements() {
 
     const list = res?.results ?? res
 
+<<<<<<< HEAD
     announcements.value = Array.isArray(list) ? list.slice(0, 3) : []
+=======
+    announcements.value =
+      Array.isArray(list) && list.length
+        ? list.slice(0, 3)
+        : demoAnnouncements.slice(0, 3)
+>>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
 
   } catch {
     announcements.value = demoAnnouncements.slice(0, 3)
@@ -806,7 +851,11 @@ onMounted(() => {
   position: relative;
   z-index: 0;
   min-height: 100%;
+<<<<<<< HEAD
   background: var(--color-bg);
+=======
+  background: var(--color-white);
+>>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
 }
 
 
@@ -823,8 +872,13 @@ onMounted(() => {
   background-image:
     linear-gradient(
       180deg,
+<<<<<<< HEAD
       rgba(22, 50, 74, 0.80),
       rgba(16, 38, 56, 0.92)
+=======
+      rgba(9, 29, 43, 0.74),
+      rgba(9, 29, 43, 0.88)
+>>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
     ),
     var(--home-bg-image);
 
@@ -841,7 +895,11 @@ onMounted(() => {
 ========================================================= */
 
 .home-section {
+<<<<<<< HEAD
   background: var(--color-bg);
+=======
+  background: var(--color-white);
+>>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
 }
 
 .home-section--alt {
@@ -878,7 +936,11 @@ onMounted(() => {
   align-items: center;
   gap: 0.4rem;
 
+<<<<<<< HEAD
   color: var(--color-heading);
+=======
+  color: var(--color-navy-deep);
+>>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
 
   font-size: 0.86rem;
   font-weight: 600;
@@ -1098,8 +1160,13 @@ onMounted(() => {
   background:
     linear-gradient(
       135deg,
+<<<<<<< HEAD
       rgba(22, 50, 74, 0.86),
       rgba(22, 50, 74, 0.62)
+=======
+      rgba(9, 29, 43, 0.88),
+      rgba(9, 29, 43, 0.68)
+>>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
     ),
     var(--home-bg-image);
 
@@ -1115,8 +1182,13 @@ onMounted(() => {
   background:
     linear-gradient(
       90deg,
+<<<<<<< HEAD
       rgba(16, 38, 56, 0.90),
       rgba(22, 50, 74, 0.45)
+=======
+      rgba(9, 29, 43, 0.92),
+      rgba(9, 29, 43, 0.58)
+>>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
     );
 }
 
@@ -1269,7 +1341,12 @@ onMounted(() => {
 .home-worship__grid {
   display: grid;
 
+<<<<<<< HEAD
   grid-template-columns: repeat(2, minmax(0, 1fr));
+=======
+  grid-template-columns:
+    repeat(auto-fit, minmax(180px, 1fr));
+>>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
 
   gap: 1px;
 
@@ -1284,8 +1361,11 @@ onMounted(() => {
 }
 
 .worship-card {
+<<<<<<< HEAD
   min-width: 0;
 
+=======
+>>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
   background: var(--color-navy-dark);
 
   padding: 1.5rem 1.25rem;
@@ -1300,6 +1380,7 @@ onMounted(() => {
   background: rgba(255, 255, 255, 0.05);
 }
 
+<<<<<<< HEAD
 .worship-card__top {
   display: flex;
   align-items: center;
@@ -1309,6 +1390,8 @@ onMounted(() => {
   margin-bottom: 0.9rem;
 }
 
+=======
+>>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
 .worship-card__day {
   color: var(--color-gold);
 
@@ -1318,6 +1401,7 @@ onMounted(() => {
   letter-spacing: 0.1em;
   text-transform: uppercase;
 
+<<<<<<< HEAD
   white-space: nowrap;
 }
 
@@ -1344,6 +1428,9 @@ onMounted(() => {
 .worship-card__mode--virtual {
   background: var(--color-gold-10);
   color: var(--color-gold);
+=======
+  margin-bottom: 0.9rem;
+>>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
 }
 
 .worship-card__title {
@@ -1352,8 +1439,11 @@ onMounted(() => {
   font-size: 1rem;
   font-weight: 600;
   line-height: 1.3;
+<<<<<<< HEAD
 
   overflow-wrap: break-word;
+=======
+>>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
 }
 
 .worship-card__time {
@@ -1363,6 +1453,7 @@ onMounted(() => {
   color: rgba(255, 255, 255, 0.65);
 
   font-size: 0.84rem;
+<<<<<<< HEAD
   line-height: 1.5;
 
   overflow-wrap: break-word;
@@ -1398,6 +1489,8 @@ onMounted(() => {
 .worship-card__join:hover {
   gap: 0.55rem;
   color: var(--color-gold-soft, var(--color-gold));
+=======
+>>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
 }
 
 .home-worship__cta {
@@ -1472,6 +1565,7 @@ onMounted(() => {
 
 
 /* =========================================================
+<<<<<<< HEAD
    RESPONSIVE
 ========================================================= */
 
@@ -1484,6 +1578,108 @@ onMounted(() => {
 }
 
 
+=======
+   FOOTER
+   IMPORTANT:
+   Footer is rendered by DefaultLayout OUTSIDE Home.vue.
+   Therefore we target it globally here.
+========================================================= */
+
+:global(.app-footer),
+:global(.site-footer),
+:global(footer.app-footer),
+:global(footer.site-footer) {
+  position: relative;
+  isolation: isolate;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(5, 20, 30, 0.88),
+      rgba(5, 20, 30, 0.95)
+    ),
+    url('@/assets/images/worship-crowd.png');
+
+  background-size: cover;
+  background-position: center;
+
+  color: var(--color-white);
+}
+
+
+/* Footer overlay */
+
+:global(.app-footer::before),
+:global(.site-footer::before),
+:global(footer.app-footer::before),
+:global(footer.site-footer::before) {
+  content: '';
+
+  position: absolute;
+  inset: 0;
+
+  z-index: -1;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(9, 29, 43, 0.35),
+      rgba(5, 20, 30, 0.7)
+    );
+
+  pointer-events: none;
+}
+
+
+/* Make footer contents stay above overlay */
+
+:global(.app-footer > *),
+:global(.site-footer > *),
+:global(footer.app-footer > *),
+:global(footer.site-footer > *) {
+  position: relative;
+  z-index: 2;
+}
+
+
+/* Footer text */
+
+:global(.app-footer h1),
+:global(.app-footer h2),
+:global(.app-footer h3),
+:global(.app-footer h4),
+:global(.site-footer h1),
+:global(.site-footer h2),
+:global(.site-footer h3),
+:global(.site-footer h4) {
+  color: var(--color-white);
+}
+
+:global(.app-footer p),
+:global(.site-footer p) {
+  color: rgba(255, 255, 255, 0.72);
+}
+
+:global(.app-footer a),
+:global(.site-footer a) {
+  color: rgba(255, 255, 255, 0.82);
+
+  transition:
+    color 0.2s ease,
+    opacity 0.2s ease;
+}
+
+:global(.app-footer a:hover),
+:global(.site-footer a:hover) {
+  color: var(--color-gold);
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+>>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
 @media (max-width: 900px) {
 
   .home-about {
@@ -1536,6 +1732,7 @@ onMounted(() => {
       clamp(2rem, 10vw, 2.7rem);
   }
 
+<<<<<<< HEAD
   .home-worship__grid {
     grid-template-columns: 1fr;
   }
@@ -1738,6 +1935,11 @@ onMounted(() => {
   .home-value { padding: 1.1rem; }
 }
 
+=======
+}
+
+
+>>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
 /* =========================================================
    REDUCED MOTION
 ========================================================= */
@@ -1749,4 +1951,8 @@ onMounted(() => {
   }
 
 }
+<<<<<<< HEAD
 </style>
+=======
+</style>
+>>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7

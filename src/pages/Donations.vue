@@ -36,6 +36,38 @@
 
 
     <!-- =========================================================
+<<<<<<< HEAD
+=======
+         INTRO
+    ========================================================== -->
+    <section class="bg-white py-10 dark:bg-navy-900">
+      <div class="container-custom">
+        <div class="mx-auto flex max-w-4xl flex-col items-center gap-5 text-center md:flex-row md:text-left">
+          <div class="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-primary-50 dark:bg-primary-900/20">
+            <img
+              src="@/assets/icons/give.svg"
+              alt=""
+              class="h-8 w-8"
+            />
+          </div>
+
+          <div>
+            <h2 class="mb-1 font-heading text-xl font-bold text-navy-800 dark:text-white">
+              Thank you for supporting God's work
+            </h2>
+
+            <p class="text-sm leading-relaxed text-gray-500 dark:text-gray-400">
+              Giving is an act of worship and a practical way of supporting
+              the mission and ministry of our local church.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- =========================================================
+>>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
          MAIN GIVING AREA
     ========================================================== -->
     <section id="give-form" class="section bg-gray-50 dark:bg-navy-950">
@@ -106,7 +138,11 @@
                   </div>
 
                   <p class="mb-2 text-sm font-medium text-primary-600 dark:text-primary-400">
+<<<<<<< HEAD
                     {{ OFFLINE_DEMO ? 'Demo preview · nothing was submitted' : 'Giving information received' }}
+=======
+                    Giving information received
+>>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
                   </p>
 
                   <h3 class="font-heading text-2xl font-bold text-navy-800 dark:text-white">
@@ -114,9 +150,14 @@
                   </h3>
 
                   <p class="mx-auto mt-3 max-w-md text-sm leading-relaxed text-gray-500 dark:text-gray-400">
+<<<<<<< HEAD
                     {{ OFFLINE_DEMO
                       ? 'This local preview uses sample data. No gift or payment was sent.'
                       : 'Please complete your payment using the selected account, then send the payment confirmation to the church for verification.' }}
+=======
+                    Please complete your payment using the selected account,
+                    then send the payment confirmation to the church for verification.
+>>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
                   </p>
 
                   <div class="mx-auto mt-6 max-w-sm rounded-xl bg-gray-50 p-4 dark:bg-navy-800">
@@ -141,7 +182,11 @@
                     </div>
                   </div>
 
+<<<<<<< HEAD
                   <div v-if="!OFFLINE_DEMO" class="mx-auto mt-6 grid max-w-md grid-cols-1 gap-3 sm:grid-cols-2">
+=======
+                  <div class="mx-auto mt-6 grid max-w-md grid-cols-1 gap-3 sm:grid-cols-2">
+>>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
                     <a
                       :href="emailConfirmationLink"
                       class="btn-primary flex items-center justify-center gap-2"
@@ -480,7 +525,12 @@
                     </button>
 
                     <p class="mt-3 text-center text-[11px] leading-relaxed text-gray-400">
+<<<<<<< HEAD
                       {{ OFFLINE_DEMO ? 'Preview only. This form will not send a payment.' : 'After payment, send confirmation to the church for verification.' }}
+=======
+                      After making your payment, send the payment confirmation
+                      to the church for verification.
+>>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
                     </p>
                   </div>
                 </form>
@@ -501,7 +551,11 @@
                 <div
                   v-if="form.method === 'mpesa'"
                   key="mpesa-account"
+<<<<<<< HEAD
                   class="giving-account overflow-hidden rounded-2xl border"
+=======
+                  class="overflow-hidden rounded-2xl bg-navy-900 shadow-lg dark:bg-navy-800"
+>>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
                 >
                   <div class="p-6">
 
@@ -515,7 +569,11 @@
                       </div>
 
                       <div>
+<<<<<<< HEAD
                         <p class="text-xs text-gray-500">
+=======
+                        <p class="text-xs text-blue-300">
+>>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
                           Payment Account
                         </p>
 
@@ -526,7 +584,11 @@
                     </div>
 
                     <div class="mt-7">
+<<<<<<< HEAD
                       <p class="text-xs text-gray-500">
+=======
+                      <p class="text-xs text-blue-300">
+>>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
                         M-Pesa Paybill
                       </p>
 
@@ -534,9 +596,15 @@
                         54299125
                       </p>
 
+<<<<<<< HEAD
                       <div class="my-5 h-px bg-gray-200 dark:bg-white/10"></div>
 
                       <p class="text-xs text-gray-500">
+=======
+                      <div class="my-5 h-px bg-white/10"></div>
+
+                      <p class="text-xs text-blue-300">
+>>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
                         Account Name
                       </p>
 
@@ -546,10 +614,17 @@
                     </div>
                   </div>
 
+<<<<<<< HEAD
                   <div class="giving-account__note px-6 py-4">
                     <div class="flex gap-3">
                       <svg
                         class="mt-0.5 h-4 w-4 shrink-0 text-primary-600 dark:text-blue-300"
+=======
+                  <div class="bg-white/5 px-6 py-4">
+                    <div class="flex gap-3">
+                      <svg
+                        class="mt-0.5 h-4 w-4 shrink-0 text-blue-300"
+>>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
                         viewBox="0 0 24 24"
                         fill="none"
                         stroke="currentColor"
@@ -562,7 +637,11 @@
                         />
                       </svg>
 
+<<<<<<< HEAD
                       <p class="text-xs leading-relaxed text-gray-600 dark:text-gray-300">
+=======
+                      <p class="text-xs leading-relaxed text-blue-200">
+>>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
                         Please confirm the Paybill number and account name
                         before completing your payment.
                       </p>
@@ -575,7 +654,11 @@
                 <div
                   v-else
                   key="bank-account"
+<<<<<<< HEAD
                   class="giving-account overflow-hidden rounded-2xl border"
+=======
+                  class="overflow-hidden rounded-2xl bg-navy-900 shadow-lg dark:bg-navy-800"
+>>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
                 >
                   <div class="p-6">
 
@@ -589,7 +672,11 @@
                       </div>
 
                       <div>
+<<<<<<< HEAD
                         <p class="text-xs text-gray-500">
+=======
+                        <p class="text-xs text-blue-300">
+>>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
                           Payment Account
                         </p>
 
@@ -602,7 +689,11 @@
                     <div class="mt-7 space-y-5">
 
                       <div>
+<<<<<<< HEAD
                         <p class="text-xs text-gray-500">
+=======
+                        <p class="text-xs text-blue-300">
+>>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
                           Bank Name
                         </p>
 
@@ -612,7 +703,11 @@
                       </div>
 
                       <div>
+<<<<<<< HEAD
                         <p class="text-xs text-gray-500">
+=======
+                        <p class="text-xs text-blue-300">
+>>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
                           Account Name
                         </p>
 
@@ -623,7 +718,11 @@
 
                       <!-- Add the official account number here -->
                       <div>
+<<<<<<< HEAD
                         <p class="text-xs text-gray-500">
+=======
+                        <p class="text-xs text-blue-300">
+>>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
                           Account Number
                         </p>
 
@@ -635,10 +734,17 @@
                     </div>
                   </div>
 
+<<<<<<< HEAD
                   <div class="giving-account__note px-6 py-4">
                     <div class="flex gap-3">
                       <svg
                         class="mt-0.5 h-4 w-4 shrink-0 text-primary-600 dark:text-blue-300"
+=======
+                  <div class="bg-white/5 px-6 py-4">
+                    <div class="flex gap-3">
+                      <svg
+                        class="mt-0.5 h-4 w-4 shrink-0 text-blue-300"
+>>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
                         viewBox="0 0 24 24"
                         fill="none"
                         stroke="currentColor"
@@ -651,7 +757,11 @@
                         />
                       </svg>
 
+<<<<<<< HEAD
                       <p class="text-xs leading-relaxed text-gray-600 dark:text-gray-300">
+=======
+                      <p class="text-xs leading-relaxed text-blue-200">
+>>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
                         Please verify the bank details before completing
                         your transfer.
                       </p>
@@ -661,9 +771,52 @@
               </Transition>
 
 
+<<<<<<< HEAD
               <p class="px-1 text-center text-xs leading-relaxed text-gray-500 dark:text-gray-300">
                 Giving is voluntary. Please verify the account details before making a transfer.
               </p>
+=======
+              <!-- How giving works -->
+              <div class="rounded-2xl border border-gray-100 bg-white p-6 dark:border-navy-700 dark:bg-navy-900">
+                <h3 class="font-heading font-semibold text-navy-800 dark:text-white">
+                  How Giving Works
+                </h3>
+
+                <div class="mt-5 space-y-5">
+                  <div
+                    v-for="(step, index) in givingSteps"
+                    :key="step.title"
+                    class="flex gap-3"
+                  >
+                    <div class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-primary-50 text-xs font-bold text-primary-600 dark:bg-primary-900/30 dark:text-primary-300">
+                      {{ index + 1 }}
+                    </div>
+
+                    <div>
+                      <h4 class="text-sm font-semibold text-navy-800 dark:text-white">
+                        {{ step.title }}
+                      </h4>
+
+                      <p class="mt-1 text-xs leading-relaxed text-gray-500 dark:text-gray-400">
+                        {{ step.text }}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
+              <!-- Scripture -->
+              <div class="rounded-2xl border border-primary-100 bg-primary-50/60 p-6 dark:border-primary-900/40 dark:bg-primary-900/10">
+                <p class="font-heading text-sm font-medium leading-relaxed text-navy-800 dark:text-primary-100">
+                  “God loves a cheerful giver.”
+                </p>
+
+                <p class="mt-2 text-xs font-medium text-primary-600 dark:text-primary-300">
+                  2 Corinthians 9:7
+                </p>
+              </div>
+>>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
 
             </div>
           </div>
@@ -673,6 +826,148 @@
     </section>
 
 
+<<<<<<< HEAD
+=======
+    <!-- =========================================================
+         SPECIAL EVENTS
+         BACKEND READY
+    ========================================================== -->
+    <section class="section bg-white dark:bg-navy-900">
+      <div class="container-custom">
+
+        <SectionTitle
+          centered
+          tag="Church Events"
+          title="Special Giving & Community Events"
+          subtitle="Special church activities such as giving programs and blood donation drives will appear here when announced."
+        />
+
+        <!-- Loading skeleton -->
+        <div
+          v-if="eventsLoading"
+          class="mt-8 grid grid-cols-1 gap-6 md:grid-cols-2"
+        >
+          <div
+            v-for="item in 2"
+            :key="item"
+            class="animate-pulse rounded-2xl border border-gray-100 p-6 dark:border-navy-700"
+          >
+            <div class="h-5 w-28 rounded bg-gray-200 dark:bg-navy-700"></div>
+            <div class="mt-4 h-7 w-3/4 rounded bg-gray-200 dark:bg-navy-700"></div>
+            <div class="mt-3 h-4 w-full rounded bg-gray-100 dark:bg-navy-800"></div>
+            <div class="mt-2 h-4 w-5/6 rounded bg-gray-100 dark:bg-navy-800"></div>
+            <div class="mt-6 h-10 w-32 rounded-xl bg-gray-200 dark:bg-navy-700"></div>
+          </div>
+        </div>
+
+        <!-- Events from backend -->
+        <div
+          v-else-if="events.length"
+          class="mt-8 grid grid-cols-1 gap-6 md:grid-cols-2"
+        >
+          <article
+            v-for="event in events"
+            :key="event.id"
+            class="overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-md dark:border-navy-700 dark:bg-navy-800"
+          >
+            <div class="flex items-center justify-between border-b border-gray-100 bg-gray-50 px-6 py-4 dark:border-navy-700 dark:bg-navy-900">
+              <span class="badge-primary">
+                {{ event.type }}
+              </span>
+
+              <span class="text-xs font-medium text-gray-400">
+                {{ formatEventDate(event.date) }}
+              </span>
+            </div>
+
+            <div class="p-6">
+              <h3 class="font-heading text-xl font-bold text-navy-800 dark:text-white">
+                {{ event.title }}
+              </h3>
+
+              <p class="mt-3 text-sm leading-relaxed text-gray-500 dark:text-gray-400">
+                {{ event.description }}
+              </p>
+
+              <button
+                type="button"
+                class="btn-outline mt-5"
+                @click="handleEvent(event)"
+              >
+                {{ event.actionLabel || 'Learn More' }}
+              </button>
+            </div>
+          </article>
+        </div>
+
+        <!-- Empty state -->
+        <div
+          v-else
+          class="mx-auto mt-8 max-w-2xl rounded-2xl border border-dashed border-gray-200 bg-gray-50 px-6 py-10 text-center dark:border-navy-700 dark:bg-navy-950"
+        >
+          <div class="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-white shadow-sm dark:bg-navy-900">
+            <img
+              src="@/assets/icons/give.svg"
+              alt=""
+              class="h-7 w-7 opacity-70"
+            />
+          </div>
+
+          <h3 class="mt-4 font-heading font-semibold text-navy-800 dark:text-white">
+            No Special Events at the Moment
+          </h3>
+
+          <p class="mx-auto mt-2 max-w-md text-sm leading-relaxed text-gray-500 dark:text-gray-400">
+            When the church announces a special giving program, community
+            activity, or blood donation event, its details will appear here.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- =========================================================
+         WHY WE GIVE
+    ========================================================== -->
+    <section class="section-sm bg-gray-50 dark:bg-navy-950">
+      <div class="container-custom">
+
+        <SectionTitle
+          centered
+          tag="Stewardship"
+          title="Why We Give"
+          subtitle="Giving is one of the ways we participate in the work and mission of the church."
+        />
+
+        <div class="mt-8 grid grid-cols-1 gap-5 md:grid-cols-3">
+          <div
+            v-for="reason in whyGive"
+            :key="reason.title"
+            class="rounded-2xl border border-gray-100 bg-white p-6 text-center shadow-sm dark:border-navy-700 dark:bg-navy-900"
+          >
+            <div class="mx-auto flex h-12 w-12 items-center justify-center rounded-xl bg-primary-50 dark:bg-primary-900/20">
+              <img
+                src="@/assets/icons/give.svg"
+                alt=""
+                class="h-6 w-6"
+              />
+            </div>
+
+            <h3 class="mt-4 font-heading font-semibold text-navy-800 dark:text-white">
+              {{ reason.title }}
+            </h3>
+
+            <p class="mt-2 text-sm leading-relaxed text-gray-500 dark:text-gray-400">
+              {{ reason.text }}
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+>>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
   </div>
 </template>
 
@@ -681,7 +976,10 @@
 import { computed, ref } from 'vue'
 import SectionTitle from '@/components/common/SectionTitle.vue'
 import donationService from '@/services/donationService.js'
+<<<<<<< HEAD
 import { OFFLINE_DEMO } from '@/services/offline.js'
+=======
+>>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
 
 /*
 |--------------------------------------------------------------------------
@@ -882,11 +1180,14 @@ async function submitDonation() {
   donating.value = true
 
   try {
+<<<<<<< HEAD
     if (OFFLINE_DEMO) {
       donationSuccess.value = true
       return
     }
 
+=======
+>>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
     await donationService.create({
       first_name: form.value.firstName,
       last_name: form.value.lastName,
@@ -934,6 +1235,99 @@ function resetDonation() {
 }
 
 
+<<<<<<< HEAD
+=======
+/*
+|--------------------------------------------------------------------------
+| Special events
+|--------------------------------------------------------------------------
+|
+| Empty by default.
+|
+| Later the backend can return events such as:
+|
+| {
+|   id: 1,
+|   type: 'Blood Donation',
+|   title: 'Community Blood Donation',
+|   description: '...',
+|   date: '2026-10-10',
+|   actionLabel: 'Learn More'
+| }
+|
+*/
+
+const events = ref([])
+const eventsLoading = ref(false)
+
+
+function formatEventDate(date) {
+  if (!date) {
+    return 'Date to be announced'
+  }
+
+  return new Intl.DateTimeFormat('en-TZ', {
+    day: 'numeric',
+    month: 'short',
+    year: 'numeric'
+  }).format(new Date(date))
+}
+
+
+function handleEvent(event) {
+  console.log('Selected church event:', event)
+
+  // Add router/backend event handling here later.
+}
+
+
+/*
+|--------------------------------------------------------------------------
+| How giving works
+|--------------------------------------------------------------------------
+*/
+
+const givingSteps = [
+  {
+    title: 'Choose your amount',
+    text: 'Select a suggested amount or enter the amount you would like to give.'
+  },
+  {
+    title: 'Choose the purpose',
+    text: 'Select whether your gift is a tithe, offering, church development, or other giving.'
+  },
+  {
+    title: 'Choose payment method',
+    text: 'Select M-Pesa or Bank Transfer. The correct church account will appear on the right.'
+  },
+  {
+    title: 'Make payment & confirm',
+    text: 'Complete your payment, then send the payment confirmation to the church.'
+  }
+]
+
+
+/*
+|--------------------------------------------------------------------------
+| Why we give
+|--------------------------------------------------------------------------
+*/
+
+const whyGive = [
+  {
+    title: 'Support Worship',
+    text: 'Your giving helps support the ministry and worship activities of the local church.'
+  },
+  {
+    title: 'Serve the Community',
+    text: 'Your generosity helps the church serve and support people in the community.'
+  },
+  {
+    title: 'Advance God’s Work',
+    text: 'Your giving contributes to the mission and ministry of the church.'
+  }
+]
+>>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
 </script>
 
 
@@ -954,6 +1348,7 @@ function resetDonation() {
   opacity: 0;
   transform: translateY(-8px);
 }
+<<<<<<< HEAD
 
 .giving-account { background: var(--color-surface); border-color: var(--color-border); box-shadow: var(--shadow-soft); }
 .giving-account h3, .giving-account .text-white { color: var(--color-footer) !important; }
@@ -961,4 +1356,6 @@ function resetDonation() {
 :global(.dark) .giving-account { background: var(--color-surface); }
 :global(.dark) .giving-account h3, :global(.dark) .giving-account .text-white { color: #f2f6f8 !important; }
 :global(.dark) .giving-account__note { background: rgba(255,255,255,.04); border-color: var(--color-border); }
+=======
+>>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
 </style>

@@ -65,10 +65,16 @@ const pillars = [
 ========================================================= */
 
 .pillars-section {
+<<<<<<< HEAD
   background: var(--color-bg);
 
   border-top: 1px solid rgba(13, 33, 55, 0.08);
   margin-bottom: clamp(2.5rem, 6vw, 5rem);
+=======
+  background: #ffffff;
+
+  border-top: 1px solid rgba(13, 33, 55, 0.08);
+>>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
 }
 
 
@@ -128,10 +134,13 @@ const pillars = [
 
 .pillar-logo img {
   display: block;
+<<<<<<< HEAD
   /* white halo keeps dark logos visible on any background (no bar behind them) */
   filter: drop-shadow(0 0 1px #fff) drop-shadow(0 0 3px #fff) drop-shadow(0 0 10px rgba(255, 255, 255, 0.95));
   transform-origin: 50% 0;
   animation: pillar-hang 4.5s ease-in-out infinite alternate;
+=======
+>>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
 
   height: 100%;
   width: auto;
@@ -148,20 +157,29 @@ const pillars = [
    HOVER
 ========================================================= */
 
+<<<<<<< HEAD
 .pillar-logo:nth-child(2n) img { animation-delay: -1.4s; }
 .pillar-logo:nth-child(3n) img { animation-delay: -2.8s; }
 .pillar-logo:hover img { animation-play-state: paused; transform: scale(1.08); }
+=======
+.pillar-logo:hover img {
+  transform: scale(1.06);
+}
+>>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
 
 
 /* =========================================================
    RIGHT → LEFT
 ========================================================= */
 
+<<<<<<< HEAD
 @keyframes pillar-hang {
   from { transform: rotate(-2.2deg) translateY(0); }
   to   { transform: rotate(2.2deg) translateY(4px); }
 }
 
+=======
+>>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
 @keyframes pillars-scroll {
   from {
     transform: translateX(0);
@@ -202,6 +220,11 @@ const pillars = [
     animation: none;
     transform: translateX(0);
   }
+<<<<<<< HEAD
   .pillar-logo img { animation: none; }
 }
 </style>
+=======
+}
+</style>
+>>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7

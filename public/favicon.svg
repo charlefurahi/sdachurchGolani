@@ -1,4 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+<<<<<<< HEAD
   <defs>
     <filter id="dark-mark" color-interpolation-filters="sRGB">
       <feColorMatrix type="matrix" values="-1 0 0 0 1  0 -1 0 0 1  0 0 -1 0 1  0 0 0 1 0"/>
@@ -6,4 +7,8 @@
   </defs>
   <rect x="2" y="2" width="60" height="60" rx="14" fill="#edf2ef" stroke="#16324a" stroke-opacity=".2" stroke-width="2"/>
   <image href="/golani-logo.png" x="9" y="9" width="46" height="46" preserveAspectRatio="xMidYMid meet" filter="url(#dark-mark)"/>
+=======
+  <rect width="64" height="64" rx="14" fill="#1e3a8a"/>
+  <text x="32" y="46" font-family="serif" font-size="38" font-weight="bold" fill="#c8971a" text-anchor="middle">G</text>
+>>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
 </svg>
