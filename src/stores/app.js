@@ -36,7 +36,6 @@ export const useAppStore = defineStore('app', () => {
     } else {
       document.documentElement.classList.remove('dark')
     }
-<<<<<<< HEAD
 
     const favicon = document.getElementById('site-favicon')
     if (favicon) {
@@ -45,8 +44,6 @@ export const useAppStore = defineStore('app', () => {
 
     const themeColor = document.getElementById('site-theme-color')
     if (themeColor) themeColor.content = isDark.value ? '#102638' : '#fafbfc'
-=======
->>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
   }
 
   function toggleMenu() { isMenuOpen.value = !isMenuOpen.value }

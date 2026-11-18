@@ -1,7 +1,6 @@
 <template>
   <div class="flex h-screen bg-gray-50 dark:bg-navy-950 overflow-hidden">
     <!-- Sidebar -->
-<<<<<<< HEAD
     <aside :class="['admin-sidebar fixed inset-y-0 left-0 z-50 w-64 transform transition-transform duration-300 flex flex-col', sidebarOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0']">
       <!-- Logo -->
       <div class="flex items-center gap-3 px-4 py-4 border-b border-gray-200 dark:border-navy-700">
@@ -11,17 +10,6 @@
           <p class="text-primary-700 dark:text-blue-300 text-xs font-medium">Admin Panel</p>
         </div>
         <button @click="sidebarOpen = false" class="ml-auto text-gray-500 hover:text-navy-800 dark:text-gray-400 dark:hover:text-white lg:hidden p-1 rounded" aria-label="Close menu">
-=======
-    <aside :class="['fixed inset-y-0 left-0 z-50 w-64 bg-navy-900 transform transition-transform duration-300 flex flex-col', sidebarOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0']">
-      <!-- Logo -->
-      <div class="flex items-center gap-3 px-4 py-4 border-b border-navy-700">
-        <img src="@/assets/logos/logo.png" alt="GolaniSDA Logo" class="h-8 w-auto object-contain flex-shrink-0" />
-        <div class="flex-1 min-w-0">
-          <p class="text-white font-semibold text-sm font-accent">GolaniSDA</p>
-          <p class="text-blue-500 text-xs font-medium">Admin Panel</p>
-        </div>
-        <button @click="sidebarOpen = false" class="ml-auto text-gray-400 hover:text-white lg:hidden p-1 rounded" aria-label="Close menu">
->>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
         </button>
       </div>
@@ -29,7 +17,6 @@
       <!-- Nav items -->
       <nav class="flex-1 px-3 py-4 overflow-y-auto space-y-1">
         <RouterLink v-for="item in navItems" :key="item.to" :to="item.to"
-<<<<<<< HEAD
           class="admin-sidebar__link flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-all duration-200"
           active-class="admin-sidebar__link--active">
           <svg class="h-[18px] w-[18px] flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -41,27 +28,17 @@
             <path v-else-if="item.icon === 'leadership' || item.icon === 'users'" d="M16 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2m6-10a4 4 0 1 0 0-8 4 4 0 0 0 0 8zm6-7.5a4 4 0 0 1 0 7.5m2 4a4 4 0 0 1 2 3.5V21"/>
             <path v-else d="M12 15.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7zm0-12v2m0 13v2m8-8h-2m-12 0H4m13.7-5.7-1.4 1.4m-8.6 8.6-1.4 1.4m11.4 0-1.4-1.4m-8.6-8.6L6.3 6.3"/>
           </svg>
-=======
-          class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-gray-300 hover:text-white hover:bg-navy-700 transition-all duration-200"
-          active-class="!bg-primary-600 !text-white">
-          <span class="text-base w-5 text-center flex-shrink-0">{{ item.icon }}</span>
->>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
           {{ item.label }}
         </RouterLink>
       </nav>
 
       <!-- User info + footer -->
-<<<<<<< HEAD
       <div class="px-4 py-4 border-t border-gray-200 dark:border-navy-700 space-y-2">
-=======
-      <div class="px-4 py-4 border-t border-navy-700 space-y-2">
->>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
         <div class="flex items-center gap-3 px-2 py-2">
           <div class="w-8 h-8 bg-primary-500 rounded-full flex items-center justify-center text-white text-xs font-bold flex-shrink-0">
             {{ initials }}
           </div>
           <div class="flex-1 min-w-0">
-<<<<<<< HEAD
             <p class="text-navy-800 dark:text-white text-xs font-semibold truncate">{{ authStore.fullName }}</p>
             <p class="text-gray-400 text-xs truncate">{{ authStore.user?.email }}</p>
           </div>
@@ -74,20 +51,6 @@
         </RouterLink>
         <button @click="handleLogout" class="admin-sidebar__logout w-full flex items-center gap-2 px-3 py-2 rounded-lg text-xs transition-colors">
           <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M10 17l5-5-5-5m5 5H3m9-9h6a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-6"/></svg> Sign Out
-=======
-            <p class="text-white text-xs font-semibold truncate">{{ authStore.fullName }}</p>
-            <p class="text-gray-400 text-xs truncate">{{ authStore.user?.email }}</p>
-          </div>
-        </div>
-        <RouterLink to="/dashboard" class="flex items-center gap-2 px-3 py-2 text-gray-400 hover:text-white hover:bg-navy-700 rounded-lg text-xs transition-colors">
-          <span>🏠</span> My Dashboard
-        </RouterLink>
-        <RouterLink to="/" class="flex items-center gap-2 px-3 py-2 text-gray-400 hover:text-white hover:bg-navy-700 rounded-lg text-xs transition-colors">
-          <span>🌐</span> Back to Website
-        </RouterLink>
-        <button @click="handleLogout" class="w-full flex items-center gap-2 px-3 py-2 text-red-400 hover:text-red-300 hover:bg-red-900/20 rounded-lg text-xs transition-colors">
-          <span>🚪</span> Sign Out
->>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
         </button>
       </div>
     </aside>
@@ -135,7 +98,6 @@ const initials = computed(() => {
 })
 
 const navItems = [
-<<<<<<< HEAD
   { to: '/admin/dashboard', icon: 'dashboard', label: 'Dashboard' },
   { to: '/admin/events', icon: 'events', label: 'Events' },
   { to: '/admin/sermons', icon: 'sermons', label: 'Sermons' },
@@ -144,16 +106,6 @@ const navItems = [
   { to: '/admin/leadership', icon: 'leadership', label: 'Leadership' },
   { to: '/admin/users', icon: 'users', label: 'Users' },
   { to: '/admin/settings', icon: 'settings', label: 'Settings' }
-=======
-  { to: '/admin/dashboard', icon: '📊', label: 'Dashboard' },
-  { to: '/admin/events', icon: '📅', label: 'Events' },
-  { to: '/admin/sermons', icon: '🎙️', label: 'Sermons' },
-  { to: '/admin/gallery', icon: '🖼️', label: 'Gallery' },
-  { to: '/admin/announcements', icon: '📢', label: 'Announcements' },
-  { to: '/admin/leadership', icon: '👑', label: 'Leadership' },
-  { to: '/admin/users', icon: '👥', label: 'Users' },
-  { to: '/admin/settings', icon: '⚙️', label: 'Settings' }
->>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
 ]
 
 const currentTitle = computed(() => navItems.find(n => route.path.startsWith(n.to))?.label || 'Dashboard')
@@ -163,7 +115,6 @@ async function handleLogout() {
   router.push('/auth/login')
 }
 </script>
-<<<<<<< HEAD
 
 <style scoped>
 .admin-sidebar { background:var(--color-surface); border-right:1px solid var(--color-border); color:var(--color-text-main); }
@@ -177,5 +128,3 @@ async function handleLogout() {
 :global(.dark) .admin-sidebar__link--active { background:rgba(244,208,63,.13); color:#f4d03f; }
 :global(.dark) .admin-sidebar__logout { color:#f09a9a; }
 </style>
-=======
->>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7

@@ -1,17 +1,9 @@
 <template>
-<<<<<<< HEAD
   <div class="p-6 sm:p-8 flex flex-col items-center">
     <!-- Page header -->
     <div class="w-full text-center mb-7">
       <h2 class="font-heading text-2xl font-bold text-navy-800 dark:text-white mb-1">Welcome back</h2>
       <p class="text-sm text-gray-500 dark:text-gray-400">Sign in to stay connected with your church family.</p>
-=======
-  <div class="p-8 flex flex-col items-center">
-    <!-- Page header -->
-    <div class="w-full text-center mb-7">
-      <h2 class="font-heading text-2xl font-bold text-navy-800 dark:text-white mb-1">Login Page</h2>
-      <p class="text-sm text-gray-500 dark:text-gray-400">Sign in to your GolaniSDA account</p>
->>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
     </div>
 
     <form @submit.prevent="handleLogin" class="space-y-5 w-full">
@@ -117,20 +109,6 @@
       <RouterLink to="/auth/register" class="font-semibold text-primary-600 dark:text-blue-400 hover:underline">Create one</RouterLink>
     </p>
 
-<<<<<<< HEAD
-=======
-    <div class="mt-5 rounded-xl bg-gray-50 dark:bg-navy-800/50 border border-gray-200 dark:border-navy-700 px-4 py-3 w-full">
-      <div class="flex items-center gap-2 mb-1">
-        <svg class="w-3.5 h-3.5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
-        </svg>
-        <p class="text-xs font-semibold text-gray-500 dark:text-gray-400">Staff &amp; Members</p>
-      </div>
-      <p class="text-xs text-gray-400 dark:text-gray-500 leading-relaxed">
-        Use your registered church email and password. Contact your administrator if you need access.
-      </p>
-    </div>
->>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
   </div>
 </template>
 

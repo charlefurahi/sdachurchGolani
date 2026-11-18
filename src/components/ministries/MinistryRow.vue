@@ -167,11 +167,7 @@ function initials(name = '') {
 
   overflow: hidden;
 
-<<<<<<< HEAD
   background: var(--color-bg-alt);
-=======
-  background: var(--color-navy);
->>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
 }
 
 .ministry-item__media img,

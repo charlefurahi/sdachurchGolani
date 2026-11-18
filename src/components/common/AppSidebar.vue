@@ -17,11 +17,7 @@
       :class="{ 'golani-sidebar--pinned': appStore.isSidebarPinned }"
       aria-label="Navigation sidebar"
     >
-<<<<<<< HEAD
       <!-- Header -->
-=======
-      <!-- ── Header ──────────────────────────────────────────── -->
->>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
       <div class="sidebar__header">
         <div class="sidebar__brand">
           <img src="@/assets/logos/logo.png" alt="GolaniSDA" class="sidebar__logo" />
@@ -31,16 +27,11 @@
           </div>
         </div>
         <div class="sidebar__header-actions">
-<<<<<<< HEAD
-=======
-          <!-- Pin (desktop only) -->
->>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
           <button
             @click="appStore.toggleSidebarPin()"
             class="sidebar__pin-btn"
             :class="{ 'sidebar__pin-btn--active': appStore.isSidebarPinned }"
             title="Pin sidebar"
-<<<<<<< HEAD
             aria-label="Pin sidebar"
           >
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -49,23 +40,12 @@
           </button>
           <button @click="appStore.closeSidebar()" class="sidebar__close-btn" title="Close" aria-label="Close menu">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
-=======
-          >
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <line x1="12" y1="17" x2="12" y2="22"/><path d="M5 17h14v-1.76a2 2 0 0 0-1.11-1.79l-1.78-.9A2 2 0 0 1 15 10.76V6h1a2 2 0 0 0 0-4H8a2 2 0 0 0 0 4h1v4.76a2 2 0 0 1-1.11 1.79l-1.78.9A2 2 0 0 0 5 15.24Z"/>
-            </svg>
-          </button>
-          <!-- Close -->
-          <button @click="appStore.closeSidebar()" class="sidebar__close-btn" title="Close">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
->>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
               <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
             </svg>
           </button>
         </div>
       </div>
 
-<<<<<<< HEAD
       <!-- Scrollable body -->
       <div class="sidebar__body">
         <p class="sidebar__section-label">Menu</p>
@@ -103,37 +83,6 @@
 
       <!-- Footer -->
       <div class="sidebar__footer">
-=======
-      <!-- ── Scrollable body ─────────────────────────────────── -->
-      <div class="sidebar__body">
-
-        <!-- Navigation — flat plain list, no icons, no section labels -->
-        <nav class="sidebar__nav">
-          <RouterLink
-            v-for="link in allLinks"
-            :key="link.to"
-            :to="link.to"
-            class="sidebar__nav-item"
-            active-class="sidebar__nav-item--active"
-            @click="handleNavClick"
-          >
-            {{ link.label }}
-          </RouterLink>
-        </nav>
-
-        <!-- Account -->
-        <RouterLink to="/dashboard" class="sidebar__account-link" @click="handleNavClick">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
-            <circle cx="12" cy="8" r="4"/>
-            <path d="M4 21c0-4 3.6-6 8-6s8 2 8 6"/>
-          </svg>
-        </RouterLink>
-      </div>
-
-      <!-- ── Footer ──────────────────────────────────────────── -->
-      <div class="sidebar__footer">
-        <!-- Contact Us -->
->>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
         <div class="sidebar__contact">
           <p class="sidebar__contact-label">Contact Us</p>
           <div class="sidebar__contact-row">
@@ -159,7 +108,6 @@
         </div>
 
         <div class="sidebar__footer-row">
-<<<<<<< HEAD
           <div class="sidebar__socials">
             <a v-if="churchLinks.facebook" :href="churchLinks.facebook" target="_blank" rel="noopener" class="sidebar__social" aria-label="Facebook">
               <img src="@/assets/icons/facebook.png" alt="Facebook" />
@@ -188,57 +136,6 @@
               </span>
             </span>
             <span class="sidebar__theme-text">{{ appStore.isDark ? 'Dark' : 'Light' }}</span>
-=======
-          <!-- Social links -->
-          <div class="sidebar__socials">
-            <a
-              v-if="churchLinks.facebook"
-              :href="churchLinks.facebook"
-              target="_blank"
-              rel="noopener"
-              class="sidebar__social"
-              aria-label="Facebook"
-            >
-              <img src="@/assets/icons/facebook.png" alt="Facebook" />
-            </a>
-            <a
-              v-if="churchLinks.instagram"
-              :href="churchLinks.instagram"
-              target="_blank"
-              rel="noopener"
-              class="sidebar__social"
-              aria-label="Instagram"
-            >
-              <img src="@/assets/icons/instagram.png" alt="Instagram" />
-            </a>
-            <a
-              v-if="churchLinks.youtube"
-              :href="churchLinks.youtube"
-              target="_blank"
-              rel="noopener"
-              class="sidebar__social"
-              aria-label="YouTube"
-            >
-              <img src="@/assets/icons/youtube.png" alt="YouTube" />
-            </a>
-          </div>
-          <!-- Theme toggle -->
-          <button @click="appStore.toggleTheme()" class="sidebar__theme-btn" :title="appStore.isDark ? 'Switch to light mode' : 'Switch to dark mode'">
-            <svg v-if="appStore.isDark" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <circle cx="12" cy="12" r="4"/>
-              <line x1="12" y1="2" x2="12" y2="4"/>
-              <line x1="12" y1="20" x2="12" y2="22"/>
-              <line x1="4.93" y1="4.93" x2="6.34" y2="6.34"/>
-              <line x1="17.66" y1="17.66" x2="19.07" y2="19.07"/>
-              <line x1="2" y1="12" x2="4" y2="12"/>
-              <line x1="20" y1="12" x2="22" y2="12"/>
-              <line x1="4.93" y1="19.07" x2="6.34" y2="17.66"/>
-              <line x1="17.66" y1="6.34" x2="19.07" y2="4.93"/>
-            </svg>
-            <svg v-else width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
-            </svg>
->>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
           </button>
         </div>
       </div>
@@ -256,7 +153,6 @@ const appStore = useAppStore()
 
 // Flat, plain link list — no icons, no section headers, mirrors the
 // navbar's primary + "More" links in one continuous list.
-<<<<<<< HEAD
 // Inline stroke icons (24x24 viewBox) so the sidebar needs no icon library.
 const allLinks = [
   { to: '/',              label: 'Home',          icon: 'M3 11l9-8 9 8M5 10v10h5v-6h4v6h5V10' },
@@ -270,20 +166,6 @@ const allLinks = [
   { to: '/gallery',       label: 'Gallery',       icon: 'M3 5h18v14H3zM3 16l5-5 4 4 3-3 6 6M8.5 9.5h.01' },
   { to: '/give',          label: 'Give / Donate', icon: 'M12 21s-8-5-8-11a4.5 4.5 0 018-2.8A4.5 4.5 0 0120 10c0 6-8 11-8 11z' },
   { to: '/contact',       label: 'Contact',       icon: 'M3 6h18v12H3zM3 7l9 7 9-7' },
-=======
-const allLinks = [
-  { to: '/',              label: 'Home' },
-  { to: '/about',         label: 'About' },
-  { to: '/worship',       label: 'Worship' },
-  { to: '/ministries',    label: 'Ministries' },
-  { to: '/sermons',       label: 'Sermons' },
-  { to: '/events',        label: 'Events' },
-  { to: '/leadership',    label: 'Leadership' },
-  { to: '/announcements', label: 'Announcements' },
-  { to: '/gallery',       label: 'Gallery' },
-  { to: '/give',          label: 'Give / Donate' },
-  { to: '/contact',       label: 'Contact' },
->>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
 ]
 
 function handleNavClick() {
@@ -315,7 +197,6 @@ onBeforeUnmount(() => {
 </script>
 
 <style scoped>
-<<<<<<< HEAD
 /* Overlay */
 .sidebar-overlay { position: fixed; inset: 0; z-index: 150; background: rgba(16, 38, 56, 0.45); backdrop-filter: blur(4px); }
 .overlay-fade-enter-active, .overlay-fade-leave-active { transition: opacity 0.3s; }
@@ -415,228 +296,3 @@ a.sidebar__contact-row:hover { color: var(--color-heading); }
 
 @media (prefers-reduced-motion: reduce) { .sidebar__nav-item { animation: none; } }
 </style>
-=======
-/* ─── Overlay ──────────────────────────────────────────────── */
-.sidebar-overlay {
-  position: fixed;
-  inset: 0;
-  z-index: 150;
-  background: rgba(0, 0, 0, 0.60);
-  backdrop-filter: blur(3px);
-}
-.overlay-fade-enter-active, .overlay-fade-leave-active { transition: opacity 0.3s; }
-.overlay-fade-enter-from, .overlay-fade-leave-to { opacity: 0; }
-
-/* ─── Sidebar panel ────────────────────────────────────────── */
-.golani-sidebar {
-  position: fixed;
-  top: var(--nav-height); /* sits below the navbar, whatever its height is at this breakpoint */
-  right: 0;
-  bottom: 0;
-  width: 280px;
-  z-index: 151;
-  background: #0a0a0a;
-  border-left: 1px solid rgba(255, 255, 255, 0.08);
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-  box-shadow: -4px 0 24px rgba(0, 0, 0, 0.40);
-}
-.golani-sidebar--pinned {
-  z-index: 50; /* behind navbar and overlays */
-}
-
-@media (max-width: 960px) {
-  /* Pinning only makes sense on wide screens with room to spare. */
-  .sidebar__pin-btn {
-    display: none;
-  }
-}
-
-/* Slide transition (from the right, since the panel now docks on the right edge) */
-.sidebar-slide-enter-active, .sidebar-slide-leave-active { transition: transform 0.3s cubic-bezier(0.4,0,0.2,1); }
-.sidebar-slide-enter-from, .sidebar-slide-leave-to { transform: translateX(100%); }
-
-/* ─── Header ───────────────────────────────────────────────── */
-.sidebar__header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 16px 16px 14px;
-  border-bottom: 1px solid rgba(255,255,255,0.08);
-  flex-shrink: 0;
-}
-.sidebar__brand {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-.sidebar__logo {
-  width: 36px;
-  height: 36px;
-  object-fit: contain;
-  filter: brightness(0) invert(1);
-}
-.sidebar__brand-name {
-  font-size: 0.9rem;
-  font-weight: 800;
-  color: #ffffff;
-  line-height: 1.1;
-  font-family: 'Poppins', sans-serif;
-}
-.sidebar__brand-sub {
-  font-size: 0.65rem;
-  color: #f4d03f;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  font-family: 'Poppins', sans-serif;
-}
-.sidebar__header-actions { display: flex; align-items: center; gap: 4px; }
-
-.sidebar__pin-btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 28px;
-  height: 28px;
-  background: transparent;
-  border: none;
-  color: rgba(255,255,255,0.45);
-  cursor: pointer;
-  transition: color 0.2s;
-}
-.sidebar__pin-btn--active {
-  color: #f4d03f;
-}
-.sidebar__pin-btn:hover { color: #f4d03f; }
-
-.sidebar__close-btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 28px;
-  height: 28px;
-  background: transparent;
-  border: none;
-  color: rgba(255,255,255,0.6);
-  cursor: pointer;
-  transition: color 0.2s;
-}
-.sidebar__close-btn:hover { color: #ffffff; }
-
-/* ─── Body ─────────────────────────────────────────────────── */
-.sidebar__body {
-  flex: 1;
-  overflow-y: auto;
-  padding: 20px 20px 12px;
-  scrollbar-width: thin;
-  scrollbar-color: rgba(255,255,255,0.2) transparent;
-}
-.sidebar__body::-webkit-scrollbar { width: 4px; }
-.sidebar__body::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.2); border-radius: 2px; }
-
-/* ─── Nav section — flat plain list, no icons, no labels ─────── */
-.sidebar__nav {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 28px;
-}
-.sidebar__nav-item {
-  padding: 11px 0;
-  text-decoration: none;
-  color: #ffffff;
-  font-size: 1.05rem;
-  font-weight: 500;
-  transition: color 0.15s;
-  font-family: 'Poppins', sans-serif;
-}
-.sidebar__nav-item:hover {
-  color: rgba(255,255,255,0.65);
-}
-.sidebar__nav-item--active {
-  color: #f4d03f !important;
-  font-weight: 700;
-}
-
-/* ─── Account icon ─────────────────────────────────────────── */
-.sidebar__account-link {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  color: rgba(255,255,255,0.65);
-  text-decoration: none;
-  margin-bottom: 24px;
-  transition: color 0.2s;
-}
-.sidebar__account-link:hover { color: #ffffff; }
-
-
-/* ─── Footer ───────────────────────────────────────────────── */
-.sidebar__footer {
-  border-top: 1px solid rgba(255,255,255,0.06);
-  padding: 12px 20px 20px;
-  flex-shrink: 0;
-}
-
-/* ─── Contact Us ───────────────────────────────────────────── */
-.sidebar__contact {
-  padding: 4px 0 16px;
-  margin-bottom: 4px;
-  border-bottom: 1px solid rgba(255,255,255,0.08);
-}
-.sidebar__contact-label {
-  font-size: 0.68rem;
-  font-weight: 700;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: rgba(255,255,255,0.45);
-  margin-bottom: 12px;
-  font-family: 'Poppins', sans-serif;
-}
-.sidebar__contact-row {
-  display: flex;
-  align-items: center;
-  gap: 9px;
-  padding: 6px 0;
-  color: #ffffff;
-  font-size: 0.82rem;
-  text-decoration: none;
-  font-family: 'Poppins', sans-serif;
-  transition: opacity 0.2s;
-}
-.sidebar__contact-row svg { flex-shrink: 0; color: rgba(255,255,255,0.55); }
-a.sidebar__contact-row:hover { opacity: 0.75; }
-
-.sidebar__footer-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 14px 0 2px;
-}
-.sidebar__socials {
-  display: flex;
-  gap: 16px;
-}
-.sidebar__social {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: opacity 0.2s;
-}
-.sidebar__social img { width: 16px; height: 16px; object-fit: contain; filter: brightness(0) invert(1); opacity: 0.7; }
-.sidebar__social:hover img { opacity: 1; }
-
-.sidebar__theme-btn {
-  background: transparent;
-  border: none;
-  color: rgba(255,255,255,0.7);
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: color 0.2s;
-}
-.sidebar__theme-btn:hover { color: #ffffff; }
-</style>
->>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7

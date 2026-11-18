@@ -265,13 +265,8 @@ const accentColor = computed(() =>
 const placeholderGradient = computed(() => {
   return `linear-gradient(
     135deg,
-<<<<<<< HEAD
     #f4f8fb 0%,
     #dde8ef 100%
-=======
-    #0d2137 0%,
-    #163f5e 100%
->>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
   )`
 })
 
@@ -404,11 +399,7 @@ const capacityPct = computed(() => {
 
   overflow: hidden;
 
-<<<<<<< HEAD
   background: var(--color-bg-alt);
-=======
-  background: #0d2137;
->>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
 
   text-decoration: none;
 }
@@ -458,11 +449,7 @@ const capacityPct = computed(() => {
   padding: 0.4rem 0.7rem;
 
   background: #c9a227;
-<<<<<<< HEAD
   color: #16324a;
-=======
-  color: #0d2137;
->>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
 
   font-size: 0.65rem;
   font-weight: 700;
@@ -490,11 +477,7 @@ const capacityPct = computed(() => {
 
   padding: 0.4rem 0.7rem;
 
-<<<<<<< HEAD
   background: rgba(255, 255, 255, 0.92); color: var(--color-heading);
-=======
-  background: rgba(13, 33, 55, 0.9);
->>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
   color: #ffffff;
 
   font-size: 0.65rem;
@@ -531,11 +514,7 @@ const capacityPct = computed(() => {
 .event-card__date strong {
   display: block;
 
-<<<<<<< HEAD
   color: var(--color-heading);
-=======
-  color: #0d2137;
->>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
 
   font-family:
     'Cormorant Garamond',
@@ -593,11 +572,7 @@ const capacityPct = computed(() => {
 .event-card h3 {
   margin: 0;
 
-<<<<<<< HEAD
   color: var(--color-heading);
-=======
-  color: #0d2137;
->>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
 
   font-family:
     'Cormorant Garamond',
@@ -619,11 +594,7 @@ const capacityPct = computed(() => {
 .event-card__subtitle {
   margin: 0.55rem 0 0;
 
-<<<<<<< HEAD
   color: var(--color-text-muted);
-=======
-  color: rgba(13, 33, 55, 0.55);
->>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
 
   font-size: 0.78rem;
 }
@@ -631,11 +602,7 @@ const capacityPct = computed(() => {
 .event-card__speaker {
   margin: 0.7rem 0 0;
 
-<<<<<<< HEAD
   color: var(--color-text-muted);
-=======
-  color: rgba(13, 33, 55, 0.65);
->>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
 
   font-size: 0.82rem;
   font-weight: 600;
@@ -643,11 +610,7 @@ const capacityPct = computed(() => {
 
 .event-card__speaker span {
   font-weight: 400;
-<<<<<<< HEAD
   color: var(--color-text-faint);
-=======
-  color: rgba(13, 33, 55, 0.45);
->>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
 }
 
 .event-card__verse {
@@ -665,11 +628,7 @@ const capacityPct = computed(() => {
 .event-card__date-text {
   margin: 0.65rem 0 0;
 
-<<<<<<< HEAD
   color: var(--color-text-faint);
-=======
-  color: rgba(13, 33, 55, 0.45);
->>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
 
   font-size: 0.72rem;
 }
@@ -686,11 +645,7 @@ const capacityPct = computed(() => {
 
   margin-top: 0.8rem;
 
-<<<<<<< HEAD
   color: var(--color-text-muted);
-=======
-  color: rgba(13, 33, 55, 0.55);
->>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
 
   font-size: 0.72rem;
 }
@@ -716,11 +671,7 @@ const capacityPct = computed(() => {
 .event-card__description {
   margin: 0.8rem 0 0;
 
-<<<<<<< HEAD
   color: var(--color-text-muted);
-=======
-  color: rgba(13, 33, 55, 0.58);
->>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
 
   font-size: 0.78rem;
 
@@ -752,11 +703,7 @@ const capacityPct = computed(() => {
 }
 
 .event-card__registered {
-<<<<<<< HEAD
   color: var(--color-text-faint);
-=======
-  color: rgba(13, 33, 55, 0.45);
->>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
 
   font-size: 0.7rem;
 }
@@ -772,21 +719,13 @@ const capacityPct = computed(() => {
 
   margin-bottom: 0.3rem;
 
-<<<<<<< HEAD
   color: var(--color-text-faint);
-=======
-  color: rgba(13, 33, 55, 0.45);
->>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
 
   font-size: 0.65rem;
 }
 
 .event-card__capacity-top strong {
-<<<<<<< HEAD
   color: var(--color-heading);
-=======
-  color: #0d2137;
->>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
 }
 
 .event-card__capacity-bar {
@@ -815,11 +754,7 @@ const capacityPct = computed(() => {
 
   padding: 0 0.85rem;
 
-<<<<<<< HEAD
   background: #16324a;
-=======
-  background: #0d2137;
->>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
   color: #ffffff;
 
   font-size: 0.7rem;
@@ -834,11 +769,7 @@ const capacityPct = computed(() => {
 
 .event-card__details:hover {
   background: #c9a227;
-<<<<<<< HEAD
   color: #16324a;
-=======
-  color: #0d2137;
->>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
 }
 
 /* =========================================================
@@ -846,11 +777,7 @@ const capacityPct = computed(() => {
 ========================================================= */
 
 :global(.dark) .event-card {
-<<<<<<< HEAD
   background: var(--color-surface);
-=======
-  background: #101f30;
->>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
   border-color: rgba(255, 255, 255, 0.08);
 }
 

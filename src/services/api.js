@@ -1,8 +1,5 @@
 import axios from 'axios'
-<<<<<<< HEAD
 import { OFFLINE_DEMO, offlineAdapter } from './offline'
-=======
->>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
 
 const BASE = import.meta.env.VITE_API_BASE_URL || 'http://127.0.0.1:8000/api/v1'
 
@@ -12,10 +9,7 @@ const api = axios.create({
   baseURL: BASE,
   timeout: 30000,
   headers: { 'Content-Type': 'application/json' },
-<<<<<<< HEAD
   ...(OFFLINE_DEMO ? { adapter: offlineAdapter } : {}),
-=======
->>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
 })
 
 // Attach JWT access token to every request

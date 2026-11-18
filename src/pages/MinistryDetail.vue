@@ -1550,11 +1550,7 @@ onMounted(() => {
 
 .leader-first__intro h2 {
   margin: 0.55rem 0 0;
-<<<<<<< HEAD
   color: var(--color-heading);
-=======
-  color: var(--color-navy-deep, #0d2137);
->>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
   font-family: var(--font-heading, inherit);
   font-size: clamp(1.7rem, 3vw, 2.35rem);
   line-height: 1.12;
@@ -1602,11 +1598,7 @@ onMounted(() => {
   overflow: hidden;
   width: 100%;
   aspect-ratio: 1;
-<<<<<<< HEAD
   background: var(--color-navy, #16324a);
-=======
-  background: var(--color-navy, #15324e);
->>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
   border-radius: var(--radius-md, 0.85rem);
 }
 
@@ -1630,11 +1622,7 @@ onMounted(() => {
 .leader-photo__placeholder {
   display: grid;
   place-items: center;
-<<<<<<< HEAD
   background: linear-gradient(135deg, #16324a, #16324a);
-=======
-  background: linear-gradient(135deg, #15324e, #0d2137);
->>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
 }
 
 .leader-photo__placeholder span {
@@ -1658,11 +1646,7 @@ onMounted(() => {
 
 .leader-profile h3 {
   margin: 0.45rem 0 0;
-<<<<<<< HEAD
   color: var(--color-heading);
-=======
-  color: var(--color-navy-deep, #0d2137);
->>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
   font-size: clamp(1.2rem, 2.2vw, 1.55rem);
   line-height: 1.2;
   font-weight: 700;
@@ -1685,11 +1669,7 @@ onMounted(() => {
   align-items: center;
   gap: 0.45rem;
   margin-top: 1.15rem;
-<<<<<<< HEAD
   color: var(--color-heading);
-=======
-  color: var(--color-navy-deep, #0d2137);
->>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
   font-size: 0.7rem;
   font-weight: 700;
 }
@@ -1719,21 +1699,13 @@ onMounted(() => {
   height: 48px;
   margin-bottom: 0.8rem;
   border-radius: 50%;
-<<<<<<< HEAD
   background: var(--color-navy-deep, #16324a);
-=======
-  background: var(--color-navy-deep, #0d2137);
->>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
   font-size: 1.15rem;
 }
 
 .leader-empty h3 {
   margin: 0;
-<<<<<<< HEAD
   color: var(--color-text-main, #16324a);
-=======
-  color: var(--color-text-main, #0d2137);
->>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
   font-size: 0.95rem;
 }
 
@@ -1757,11 +1729,7 @@ onMounted(() => {
 
 .ministry-introduction__heading h2 {
   margin: 0.55rem 0 0;
-<<<<<<< HEAD
   color: var(--color-heading);
-=======
-  color: var(--color-navy-deep, #0d2137);
->>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
   font-family: var(--font-heading, inherit);
   font-size: clamp(1.75rem, 3.4vw, 2.6rem);
   line-height: 1.12;
@@ -1779,11 +1747,7 @@ onMounted(() => {
 .detail-image {
   position: relative;
   overflow: hidden;
-<<<<<<< HEAD
   background: var(--color-navy, #16324a);
-=======
-  background: var(--color-navy, #15324e);
->>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
   border: 1px solid var(--color-border, rgba(13,33,55,0.1));
   border-radius: var(--radius-lg, 1rem);
   box-shadow: 0 12px 32px rgba(13,33,55,0.06);
@@ -1800,11 +1764,7 @@ onMounted(() => {
   display: grid;
   place-items: center;
   aspect-ratio: 16 / 10;
-<<<<<<< HEAD
   background: linear-gradient(135deg, var(--color-navy, #16324a), var(--color-navy-deep, #16324a));
-=======
-  background: linear-gradient(135deg, var(--color-navy, #15324e), var(--color-navy-deep, #0d2137));
->>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
 }
 
 .detail-image__placeholder span {
@@ -1854,11 +1814,7 @@ onMounted(() => {
 
 .children-heading h2 {
   margin: 0.55rem 0 0;
-<<<<<<< HEAD
   color: var(--color-heading);
-=======
-  color: var(--color-navy-deep, #0d2137);
->>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
   font-family: var(--font-heading, inherit);
   font-size: clamp(1.45rem, 3vw, 2rem);
   font-weight: 700;
@@ -1919,11 +1875,7 @@ onMounted(() => {
 .child-card__placeholder {
   display: grid;
   place-items: center;
-<<<<<<< HEAD
   background: var(--gradient-card-dark, linear-gradient(135deg, #16324a, #16324a));
-=======
-  background: var(--gradient-card-dark, linear-gradient(135deg, #15324e, #0d2137));
->>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
 }
 
 .child-card__placeholder span {
@@ -2050,22 +2002,14 @@ onMounted(() => {
   height: 52px;
   margin: 0 auto 1rem;
   border-radius: 50%;
-<<<<<<< HEAD
   background: var(--color-navy-deep, #16324a);
-=======
-  background: var(--color-navy-deep, #0d2137);
->>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
   color: #ffffff;
   font-weight: 700;
 }
 
 .children-empty h2 {
   margin: 0;
-<<<<<<< HEAD
   color: var(--color-heading);
-=======
-  color: var(--color-navy-deep);
->>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
   font-size: 1.25rem;
 }
 
@@ -2170,11 +2114,7 @@ onMounted(() => {
 }
 
 .container-custom h1 {
-<<<<<<< HEAD
   color: var(--color-heading);
-=======
-  color: var(--color-navy-deep, #0d2137);
->>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
 }
 
 

@@ -57,11 +57,7 @@
                 <div class="flex items-center gap-3">
                   <div class="w-10 h-10 rounded-xl overflow-hidden flex-shrink-0 bg-gradient-to-br from-navy-700 to-primary-800">
                     <img v-if="s.thumbnail_url || s.thumbnail" :src="s.thumbnail_url || s.thumbnail" :alt="s.title" class="w-full h-full object-cover"/>
-<<<<<<< HEAD
                     <div v-else class="w-full h-full flex items-center justify-center text-white/70"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path stroke-linecap="round" stroke-linejoin="round" d="M12 18.5v2.5m-5-8.5v1a5 5 0 0 0 10 0v-1m-5-8a4 4 0 0 0-4 4v5a4 4 0 0 0 8 0v-5a4 4 0 0 0-4-4z"/></svg></div>
-=======
-                    <div v-else class="w-full h-full flex items-center justify-center text-white/30 text-lg">🎙️</div>
->>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
                   </div>
                   <div>
                     <p class="font-semibold text-navy-800 dark:text-white">{{ s.title }}</p>
@@ -79,19 +75,11 @@
                 {{ fmt(s.preach_date || s.sermon_date || s.date) }}
               </td>
               <td class="px-5 py-3.5 text-xs text-gray-600 dark:text-gray-300">
-<<<<<<< HEAD
                 {{ (s.views_count || 0).toLocaleString() }} views
               </td>
               <td class="px-5 py-3.5">
                 <div class="flex items-center gap-1.5 flex-wrap">
                   <span v-if="s.is_featured" class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-amber-50 text-amber-800 dark:bg-amber-500/15 dark:text-amber-300">Featured</span>
-=======
-                👁 {{ (s.views_count || 0).toLocaleString() }}
-              </td>
-              <td class="px-5 py-3.5">
-                <div class="flex items-center gap-1.5 flex-wrap">
-                  <span v-if="s.is_featured" class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-blue-50 text-gold-700 dark:bg-gold-900/30 dark:text-blue-400">⭐ Featured</span>
->>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
                   <span v-if="!s.is_published" class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-500 dark:bg-navy-700 dark:text-gray-400">Draft</span>
                   <span v-if="s.is_published && !s.is_featured" class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-300">Live</span>
                 </div>
@@ -163,20 +151,12 @@
                 <label class="label">Audio File</label>
                 <div class="border-2 border-dashed border-gray-200 dark:border-navy-600 rounded-xl p-4">
                   <div v-if="audioFile" class="flex items-center gap-3 mb-2">
-<<<<<<< HEAD
                   <svg class="h-6 w-6 text-primary-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M9 18V5l12-2v13M9 18c0 1.1-1.6 2-3.5 2S2 19.1 2 18s1.6-2 3.5-2S9 16.9 9 18zm12-2c0 1.1-1.6 2-3.5 2S14 17.1 14 16s1.6-2 3.5-2 3.5.9 3.5 2z"/></svg>
-=======
-                    <span class="text-2xl">🎵</span>
->>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
                     <p class="text-sm font-medium text-navy-800 dark:text-white flex-1 truncate">{{ audioFile.name }}</p>
                     <button @click="audioFile = null" class="text-xs text-red-500 hover:underline">Remove</button>
                   </div>
                   <div v-else-if="form.audio_file_url" class="flex items-center gap-3 mb-2">
-<<<<<<< HEAD
                   <svg class="h-6 w-6 text-primary-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M9 18V5l12-2v13M9 18c0 1.1-1.6 2-3.5 2S2 19.1 2 18s1.6-2 3.5-2S9 16.9 9 18zm12-2c0 1.1-1.6 2-3.5 2S14 17.1 14 16s1.6-2 3.5-2 3.5.9 3.5 2z"/></svg>
-=======
-                    <span class="text-2xl">🎵</span>
->>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
                     <p class="text-sm text-navy-800 dark:text-white flex-1">Current audio attached</p>
                     <button @click="form.audio_file_url = null" class="text-xs text-red-500 hover:underline">Remove</button>
                   </div>
@@ -210,22 +190,14 @@
               <div class="flex flex-wrap gap-5">
                 <label class="flex items-center gap-2 text-sm cursor-pointer">
                   <input v-model="form.is_featured" type="checkbox" class="w-4 h-4 accent-gold-500 rounded"/>
-<<<<<<< HEAD
                   <span class="text-gray-700 dark:text-gray-200">Mark as featured</span>
-=======
-                  <span class="text-gray-700 dark:text-gray-200">⭐ Mark as Featured</span>
->>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
                 </label>
                 <label class="flex items-center gap-2 text-sm cursor-pointer">
                   <input v-model="form.is_published" type="checkbox" class="w-4 h-4 accent-primary-600 rounded"/>
                   <span class="text-gray-700 dark:text-gray-200">Publish immediately</span>
                 </label>
               </div>
-<<<<<<< HEAD
               <p v-if="formError" class="text-sm text-red-600 bg-red-50 dark:bg-red-900/20 px-4 py-2.5 rounded-xl">{{ formError }}</p>
-=======
-              <p v-if="formError" class="text-sm text-red-600 bg-red-50 dark:bg-red-900/20 px-4 py-2.5 rounded-xl">⚠️ {{ formError }}</p>
->>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
             </div>
             <div class="sticky bottom-0 bg-white dark:bg-navy-800 border-t border-gray-100 dark:border-navy-700 px-6 py-4 flex gap-3 rounded-b-2xl">
               <button @click="save" :disabled="saving" class="btn-primary flex-1 flex items-center justify-center gap-2">

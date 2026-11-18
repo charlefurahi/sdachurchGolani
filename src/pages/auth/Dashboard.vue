@@ -41,11 +41,7 @@
           v-for="stat in quickStats" :key="stat.label"
           class="rounded-xl border border-gray-100 bg-white p-4 text-center dark:border-navy-700 dark:bg-navy-900"
         >
-<<<<<<< HEAD
           <svg class="mx-auto mb-2 h-6 w-6 text-primary-600 dark:text-primary-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8 12h8M12 8v8"/></svg>
-=======
-          <div class="mb-1 text-2xl">{{ stat.icon }}</div>
->>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
           <div class="text-xl font-bold text-navy-800 dark:text-white">{{ stat.value }}</div>
           <div class="text-xs text-gray-500 dark:text-gray-400">{{ stat.label }}</div>
         </div>
@@ -59,11 +55,7 @@
           <!-- Profile card -->
           <div class="rounded-2xl border border-gray-100 bg-white p-5 dark:border-navy-700 dark:bg-navy-900">
             <h2 class="mb-4 flex items-center gap-2 font-semibold text-navy-800 dark:text-white">
-<<<<<<< HEAD
               <svg class="h-4 w-4 text-primary-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path stroke-linecap="round" d="M4 21a8 8 0 0 1 16 0"/></svg> My Profile
-=======
-              <span>👤</span> My Profile
->>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
             </h2>
 
             <div v-if="!editingProfile" class="space-y-3">
@@ -123,11 +115,7 @@
           <!-- Change password -->
           <div class="rounded-2xl border border-gray-100 bg-white p-5 dark:border-navy-700 dark:bg-navy-900">
             <h2 class="mb-4 flex items-center gap-2 font-semibold text-navy-800 dark:text-white">
-<<<<<<< HEAD
               <svg class="h-4 w-4 text-primary-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="4" y="10" width="16" height="11" rx="2"/><path stroke-linecap="round" d="M8 10V7a4 4 0 0 1 8 0v3"/></svg> Change Password
-=======
-              <span>🔒</span> Change Password
->>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
             </h2>
             <div class="space-y-3">
               <div>
@@ -157,22 +145,14 @@
           <!-- Quick links -->
           <div class="rounded-2xl border border-gray-100 bg-white p-5 dark:border-navy-700 dark:bg-navy-900">
             <h2 class="mb-4 flex items-center gap-2 font-semibold text-navy-800 dark:text-white">
-<<<<<<< HEAD
               <svg class="h-4 w-4 text-primary-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="4" y="4" width="6" height="6" rx="1"/><rect x="14" y="4" width="6" height="6" rx="1"/><rect x="4" y="14" width="6" height="6" rx="1"/><rect x="14" y="14" width="6" height="6" rx="1"/></svg> Quick Access
-=======
-              <span>🔗</span> Quick Access
->>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
             </h2>
             <div class="grid grid-cols-2 gap-3 sm:grid-cols-3">
               <RouterLink
                 v-for="link in quickLinks" :key="link.to" :to="link.to"
                 class="group flex flex-col items-center gap-2 rounded-xl border border-gray-100 p-4 text-center transition-all hover:border-primary-300 hover:bg-primary-50 dark:border-navy-700 dark:hover:border-primary-600 dark:hover:bg-navy-800"
               >
-<<<<<<< HEAD
                 <svg class="h-7 w-7 text-primary-600 transition-transform group-hover:scale-110 dark:text-primary-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path v-if="link.icon === 'calendar'" d="M4 6h16v15H4zM8 3v6m8-6v6M4 11h16"/><path v-else-if="link.icon === 'book'" d="M4 5h7a3 3 0 0 1 3 3v12a3 3 0 0 0-3-3H4zM20 5h-3a3 3 0 0 0-3 3v12a3 3 0 0 1 3-3h3z"/><path v-else-if="link.icon === 'news'" d="M5 5h14v15H5zM8 9h8M8 13h8M8 17h5"/><path v-else-if="link.icon === 'gallery'" d="M4 5h16v14H4zM7 15l3-3 2 2 3-4 3 5M9 9h.01"/><path v-else-if="link.icon === 'give'" d="M12 20s-8-4.5-8-10a4 4 0 0 1 8-1 4 4 0 0 1 8 1c0 5.5-8 10-8 10z"/><path v-else d="M4 5h16v14H4zM8 8l8 8m0-8-8 8"/></svg>
-=======
-                <span class="text-2xl transition-transform group-hover:scale-110">{{ link.icon }}</span>
->>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
                 <span class="text-xs font-medium text-gray-700 dark:text-gray-200">{{ link.label }}</span>
               </RouterLink>
             </div>
@@ -182,11 +162,7 @@
           <div class="rounded-2xl border border-gray-100 bg-white p-5 dark:border-navy-700 dark:bg-navy-900">
             <div class="mb-4 flex items-center justify-between">
               <h2 class="flex items-center gap-2 font-semibold text-navy-800 dark:text-white">
-<<<<<<< HEAD
                 <svg class="h-4 w-4 text-primary-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 6h16v15H4zM8 3v6m8-6v6M4 11h16"/></svg> Upcoming Events
-=======
-                <span>📅</span> Upcoming Events
->>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
               </h2>
               <RouterLink to="/events" class="text-xs text-primary-600 hover:underline dark:text-blue-500">View all</RouterLink>
             </div>
@@ -215,11 +191,7 @@
           <div class="rounded-2xl border border-gray-100 bg-white p-5 dark:border-navy-700 dark:bg-navy-900">
             <div class="mb-4 flex items-center justify-between">
               <h2 class="flex items-center gap-2 font-semibold text-navy-800 dark:text-white">
-<<<<<<< HEAD
                 <svg class="h-4 w-4 text-primary-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 10v4h3l9 4V6l-9 4H4zM7 14l2 6h4"/><path stroke-linecap="round" d="M19 9l2-2m-2 10 2 2"/></svg> Latest Announcements
-=======
-                <span>📢</span> Latest Announcements
->>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
               </h2>
               <RouterLink to="/announcements" class="text-xs text-primary-600 hover:underline dark:text-blue-500">View all</RouterLink>
             </div>
@@ -241,11 +213,7 @@
           <!-- Admin shortcut -->
           <div v-if="authStore.isAdmin" class="rounded-2xl border border-blue-200 bg-gradient-to-r from-gold-500/10 to-gold-600/10 p-5 dark:border-gold-800">
             <div class="flex items-center gap-3">
-<<<<<<< HEAD
               <svg class="h-6 w-6 text-primary-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m3 8 5 4 4-7 4 7 5-4-2 12H5L3 8z"/></svg>
-=======
-              <span class="text-2xl">👑</span>
->>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
               <div class="flex-1">
                 <p class="font-semibold text-navy-800 dark:text-white">Admin Access</p>
                 <p class="text-sm text-gray-600 dark:text-gray-300">You have administrative privileges</p>
@@ -302,7 +270,6 @@ const memberSince = computed(() => {
   return new Date(d).toLocaleDateString('en-US', { year: 'numeric', month: 'long' })
 })
 const quickStats = computed(() => [
-<<<<<<< HEAD
   { icon: 'church', value: 'SDA',         label: 'Church'      },
   { icon: 'book',   value: 'Sabbath',      label: 'Worship Day' },
   { icon: 'place',  value: 'Golani',       label: 'District'    },
@@ -315,20 +282,6 @@ const quickLinks = [
   { to: '/gallery',       icon: 'gallery',  label: 'Gallery'       },
   { to: '/give',          icon: 'give',     label: 'Give'          },
   { to: '/contact',       icon: 'contact',  label: 'Contact'       },
-=======
-  { icon: '✝️',  value: 'SDA',          label: 'Church'      },
-  { icon: '📖',  value: 'Sabbath',       label: 'Worship Day' },
-  { icon: '🌍',  value: 'Golani',        label: 'District'    },
-  { icon: '⭐',  value: userRole.value,  label: 'My Role'     },
-])
-const quickLinks = [
-  { to: '/events',        icon: '📅', label: 'Events'        },
-  { to: '/sermons',       icon: '🎙️', label: 'Sermons'       },
-  { to: '/announcements', icon: '📢', label: 'Announcements' },
-  { to: '/gallery',       icon: '🖼️', label: 'Gallery'       },
-  { to: '/give',          icon: '💝', label: 'Give'          },
-  { to: '/contact',       icon: '📞', label: 'Contact'       },
->>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
 ]
 
 // ── Helpers ───────────────────────────────────────────────────────────────────

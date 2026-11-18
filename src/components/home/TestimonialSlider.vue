@@ -4,11 +4,7 @@
       <Transition name="fade" mode="out-in">
         <div :key="current" class="bg-white dark:bg-navy-800 p-8 md:p-10 rounded-2xl shadow-lg">
           <div class="flex gap-1 mb-6">
-<<<<<<< HEAD
             <span v-for="n in 5" :key="n" class="text-gold-500 text-lg">★</span>
-=======
-            <span v-for="n in 5" :key="n" class="text-blue-400 text-lg">★</span>
->>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
           </div>
           <blockquote class="font-heading text-xl md:text-2xl text-navy-800 dark:text-white italic leading-relaxed mb-8">
             "{{ testimonials[current].text }}"
@@ -29,11 +25,7 @@
       <button @click="prev" class="btn-ghost p-2 rounded-xl">←</button>
       <div class="flex gap-2">
         <button v-for="(_, i) in testimonials" :key="i" @click="current = i"
-<<<<<<< HEAD
           :class="['w-2 h-2 rounded-full transition-all', i === current ? 'w-6 bg-gold-400' : 'bg-gray-300 dark:bg-navy-600']" />
-=======
-          :class="['w-2 h-2 rounded-full transition-all', i === current ? 'w-6 bg-blue-600' : 'bg-gray-300 dark:bg-navy-600']" />
->>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
       </div>
       <button @click="next" class="btn-ghost p-2 rounded-xl">→</button>
     </div>

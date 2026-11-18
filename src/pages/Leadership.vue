@@ -31,22 +31,14 @@
 
         <!-- Error state -->
         <div v-else-if="error" class="text-center py-16">
-<<<<<<< HEAD
           <svg class="mx-auto mb-4 h-10 w-10 text-primary-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path stroke-linecap="round" d="M12 8v5m0 3h.01"/></svg>
-=======
-          <p class="text-5xl mb-4">⚠️</p>
->>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
           <p class="text-gray-500 dark:text-gray-400">{{ error }}</p>
           <button @click="loadLeaders" class="btn-primary mt-6">Try Again</button>
         </div>
 
         <!-- Empty state -->
         <div v-else-if="!leaders.length" class="text-center py-16">
-<<<<<<< HEAD
           <svg class="mx-auto mb-4 h-10 w-10 text-primary-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path stroke-linecap="round" d="M12 3v18M5 9h14"/></svg>
-=======
-          <p class="text-5xl mb-4">✝️</p>
->>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
           <h3 class="text-xl font-semibold text-gray-700 dark:text-gray-200 mb-2">Coming Soon</h3>
           <p class="text-gray-500 dark:text-gray-400">Leadership information will be added soon.</p>
         </div>
@@ -132,11 +124,7 @@
     </section>
 
     <!-- Scripture Quote -->
-<<<<<<< HEAD
     <section class="section leadership-quote">
-=======
-    <section class="section bg-primary-800 dark:bg-navy-900">
->>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
       <div class="container-custom text-center text-white">
         <p class="text-xl md:text-2xl font-heading italic text-blue-200 max-w-3xl mx-auto leading-relaxed mb-4">
           "The elders who direct the affairs of the church well are worthy of double honor, especially those whose work is preaching and teaching."
@@ -160,11 +148,7 @@
 
             <!-- Success state -->
             <div v-if="inquirySent" class="p-8 text-center">
-<<<<<<< HEAD
               <svg class="mx-auto mb-3 h-10 w-10 text-green-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path stroke-linecap="round" stroke-linejoin="round" d="m8 12 2.5 2.5L16 9"/></svg>
-=======
-              <div class="text-5xl mb-3">✅</div>
->>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
               <h3 class="font-bold text-navy-800 dark:text-white mb-2">Message Sent!</h3>
               <p class="text-sm text-gray-500 dark:text-gray-400">Your message has been sent. We'll get back to you soon.</p>
               <button @click="closeInquiry" class="btn-primary mt-6">Close</button>
@@ -234,11 +218,7 @@ async function loadLeaders() {
     const res = await leadershipService.getAll()
     const list = res.results ?? res
     const results = Array.isArray(list) ? list : []
-<<<<<<< HEAD
     leaders.value = results
-=======
-    leaders.value = results.length ? results : leadership
->>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
   } catch (e) {
     console.warn('Unable to load leadership from API. Using demo data.', e)
     leaders.value = leadership
@@ -291,7 +271,6 @@ async function sendInquiry() {
 
 onMounted(loadLeaders)
 </script>
-<<<<<<< HEAD
 
 <style scoped>
 .leadership-quote { background: #edf3f3; color: var(--color-text-main); }
@@ -301,5 +280,3 @@ onMounted(loadLeaders)
 :global(.dark) .leadership-quote p:first-child { color:#f2f6f8; }
 :global(.dark) .leadership-quote p:last-child { color:#f4d03f; }
 </style>
-=======
->>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7

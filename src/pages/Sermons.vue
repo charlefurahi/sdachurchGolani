@@ -1182,11 +1182,7 @@ watch(
 
 .sermons-page {
   background: #f5f4f0;
-<<<<<<< HEAD
   color: var(--color-heading);
-=======
-  color: var(--color-navy-deep, #0d2137);
->>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
 }
 
 
@@ -1225,22 +1221,14 @@ watch(
   line-height: 1.1;
   letter-spacing: -0.03em;
 
-<<<<<<< HEAD
   color: var(--color-heading);
-=======
-  color: var(--color-navy-deep, #0d2137);
->>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
 }
 
 .sermons-introduction__grid p:not(.text-kicker) {
   max-width: 570px;
   margin: 1.25rem 0 0;
 
-<<<<<<< HEAD
   color: var(--color-text-muted);
-=======
-  color: rgba(13, 33, 55, 0.65);
->>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
 
   font-size: clamp(0.95rem, 1.2vw, 1.05rem);
   line-height: 1.8;
@@ -1266,11 +1254,7 @@ watch(
   border-left: 3px solid var(--color-gold, #c9a227);
   background: #fbf8ec;
 
-<<<<<<< HEAD
   color: var(--color-text-muted);
-=======
-  color: rgba(13, 33, 55, 0.75);
->>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
   font-size: 0.88rem;
   line-height: 1.6;
 }
@@ -1322,11 +1306,7 @@ watch(
   font-size: clamp(2rem, 3vw, 2.8rem);
   line-height: 1.1;
 
-<<<<<<< HEAD
   color: var(--color-heading);
-=======
-  color: var(--color-navy-deep, #0d2137);
->>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
 }
 
 .sermon-library-heading h2::before {
@@ -1342,11 +1322,7 @@ watch(
   max-width: 350px;
   margin: 0;
 
-<<<<<<< HEAD
   color: var(--color-text-muted);
-=======
-  color: rgba(13, 33, 55, 0.6);
->>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
 
   font-size: 0.92rem;
   line-height: 1.7;
@@ -1379,11 +1355,7 @@ watch(
 
   transform: translateY(-50%);
 
-<<<<<<< HEAD
   color: var(--color-text-faint);
-=======
-  color: rgba(13, 33, 55, 0.45);
->>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
 
   pointer-events: none;
 }
@@ -1400,11 +1372,7 @@ watch(
 
   background: #ffffff;
 
-<<<<<<< HEAD
   color: var(--color-heading);
-=======
-  color: var(--color-navy-deep, #0d2137);
->>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
 
   font-family: inherit;
   font-size: 0.86rem;
@@ -1500,13 +1468,8 @@ watch(
   background:
     linear-gradient(
       135deg,
-<<<<<<< HEAD
       #16324a,
       #16324a
-=======
-      #132f4c,
-      #0d2137
->>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
     );
 
   cursor: pointer;
@@ -1600,11 +1563,7 @@ watch(
 
   background: var(--color-gold, #c9a227);
 
-<<<<<<< HEAD
   color: var(--color-navy-deep, #16324a);
-=======
-  color: var(--color-navy-deep, #0d2137);
->>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
 
   font-size: 0.56rem;
   font-weight: 700;
@@ -1654,11 +1613,7 @@ watch(
 
   background: var(--color-gold, #c9a227);
 
-<<<<<<< HEAD
   color: var(--color-navy-deep, #16324a);
-=======
-  color: var(--color-navy-deep, #0d2137);
->>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
 
   transition:
     opacity 0.25s ease,
@@ -1711,11 +1666,7 @@ watch(
 .sermon-card h3 {
   margin: 0;
 
-<<<<<<< HEAD
   color: var(--color-text-main, #16324a);
-=======
-  color: var(--color-text-main, #0d2137);
->>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
 
   font-size: 0.98rem;
   font-weight: 700;
@@ -1827,11 +1778,7 @@ watch(
 }
 
 .sermon-card__listen {
-<<<<<<< HEAD
   background: var(--color-navy-deep, #16324a);
-=======
-  background: var(--color-navy-deep, #0d2137);
->>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
 
   color: #ffffff;
 }
@@ -1839,21 +1786,13 @@ watch(
 .sermon-card__listen:hover {
   background: var(--color-gold, #c9a227);
 
-<<<<<<< HEAD
   color: var(--color-navy-deep, #16324a);
-=======
-  color: var(--color-navy-deep, #0d2137);
->>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
 }
 
 .sermon-card__details {
   border-color: rgba(13, 33, 55, 0.15);
 
-<<<<<<< HEAD
   color: var(--color-heading);
-=======
-  color: var(--color-navy-deep, #0d2137);
->>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
 }
 
 .sermon-card__details:hover {
@@ -1881,11 +1820,7 @@ watch(
 
   background: var(--color-gold, #c9a227);
 
-<<<<<<< HEAD
   color: var(--color-navy-deep, #16324a);
-=======
-  color: var(--color-navy-deep, #0d2137);
->>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
 
   font-family: inherit;
   font-size: 0.8rem;
@@ -1925,11 +1860,7 @@ watch(
 
   background: transparent;
 
-<<<<<<< HEAD
   color: var(--color-heading);
-=======
-  color: var(--color-navy-deep, #0d2137);
->>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
 
   font-family: inherit;
   font-size: 0.8rem;
@@ -2068,11 +1999,7 @@ watch(
 .sermon-empty h3 {
   margin: 0;
 
-<<<<<<< HEAD
   color: var(--color-heading);
-=======
-  color: var(--color-navy-deep, #0d2137);
->>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
 
   font-size: 1.25rem;
 }
@@ -2080,11 +2007,7 @@ watch(
 .sermon-empty p {
   margin: 0.7rem 0 1.5rem;
 
-<<<<<<< HEAD
   color: var(--color-text-muted);
-=======
-  color: rgba(13, 33, 55, 0.55);
->>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
 
   font-size: 0.9rem;
 }
@@ -2156,13 +2079,8 @@ watch(
   background:
     linear-gradient(
       135deg,
-<<<<<<< HEAD
       #16324a,
       #16324a
-=======
-      #132f4c,
-      #0d2137
->>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
     );
 }
 
@@ -2195,11 +2113,7 @@ watch(
 .sermon-player__content h3 {
   margin: 0;
 
-<<<<<<< HEAD
   color: var(--color-heading);
-=======
-  color: var(--color-navy-deep, #0d2137);
->>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
 
   font-family:
     var(
@@ -2216,11 +2130,7 @@ watch(
 .sermon-player__content > p:not(.sermon-player__scripture):not(.sermon-player__unavailable) {
   margin: 0.55rem 0 0;
 
-<<<<<<< HEAD
   color: var(--color-text-muted);
-=======
-  color: rgba(13, 33, 55, 0.6);
->>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
 
   font-size: 0.88rem;
 }
@@ -2247,11 +2157,7 @@ watch(
 
   background: #f5f4f0;
 
-<<<<<<< HEAD
   color: var(--color-text-muted);
-=======
-  color: rgba(13, 33, 55, 0.55);
->>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
 
   font-size: 0.85rem;
 }
@@ -2277,11 +2183,7 @@ watch(
 .sermon-video__header h3 {
   margin: 0.65rem 0 0;
 
-<<<<<<< HEAD
   color: var(--color-heading);
-=======
-  color: var(--color-navy-deep, #0d2137);
->>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
 
   font-size: 1.3rem;
   line-height: 1.4;
@@ -2293,11 +2195,7 @@ watch(
   width: 100%;
   aspect-ratio: 16 / 9;
 
-<<<<<<< HEAD
   background: var(--color-navy-deep, #16324a);
-=======
-  background: var(--color-navy-deep, #0d2137);
->>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
 }
 
 .sermon-video__frame iframe {
@@ -2321,11 +2219,7 @@ watch(
 
   background: #f5f4f0;
 
-<<<<<<< HEAD
   color: var(--color-text-muted);
-=======
-  color: rgba(13, 33, 55, 0.5);
->>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
 
   text-align: center;
 }
@@ -2458,7 +2352,6 @@ watch(
     animation-duration: 0.01ms !important;
   }
 }
-<<<<<<< HEAD
 
 :global(.dark) .sermons-page { background:var(--color-bg); color:var(--color-text-main); }
 :global(.dark) .sermons-introduction,:global(.dark) .sermons-notice-section { background:var(--color-bg); }
@@ -2482,6 +2375,3 @@ watch(
 @media(max-width:1000px) { .sermon-grid { grid-template-columns:repeat(2,minmax(0,1fr)); } }
 @media(max-width:640px) { .sermon-grid { grid-template-columns:1fr; } }
 </style>
-=======
-</style>
->>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7

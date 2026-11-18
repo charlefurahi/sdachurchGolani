@@ -81,11 +81,7 @@
               </td>
               <td class="px-5 py-3.5">
                 <div class="flex items-center gap-1.5 flex-wrap">
-<<<<<<< HEAD
                   <span v-if="ann.is_pinned" class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-medium bg-amber-50 text-amber-800 dark:bg-amber-500/15 dark:text-amber-300">Pinned</span>
-=======
-                  <span v-if="ann.is_pinned" class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-medium bg-blue-50 text-gold-700 dark:bg-gold-900/30 dark:text-blue-400">📌 Pinned</span>
->>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
                   <span v-if="!ann.is_published" class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-500 dark:bg-navy-700 dark:text-gray-400">Draft</span>
                   <span v-if="ann.is_published && !ann.is_pinned" class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-300">Published</span>
                 </div>
@@ -177,11 +173,7 @@
               <div class="flex flex-wrap gap-5">
                 <label class="flex items-center gap-2 text-sm cursor-pointer">
                   <input v-model="form.is_pinned" type="checkbox" class="w-4 h-4 accent-gold-500 rounded"/>
-<<<<<<< HEAD
                   <span class="text-gray-700 dark:text-gray-200">Pin this announcement</span>
-=======
-                  <span class="text-gray-700 dark:text-gray-200">📌 Pin this announcement</span>
->>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
                 </label>
                 <label class="flex items-center gap-2 text-sm cursor-pointer">
                   <input v-model="form.is_published" type="checkbox" class="w-4 h-4 accent-primary-600 rounded"/>
@@ -194,11 +186,7 @@
                 <input v-model="form.expire_date" type="datetime-local" class="input"/>
               </div>
               <!-- Error -->
-<<<<<<< HEAD
               <p v-if="formError" class="text-sm text-red-600 bg-red-50 dark:bg-red-900/20 px-4 py-2.5 rounded-xl">{{ formError }}</p>
-=======
-              <p v-if="formError" class="text-sm text-red-600 bg-red-50 dark:bg-red-900/20 px-4 py-2.5 rounded-xl">⚠️ {{ formError }}</p>
->>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
             </div>
             <div class="sticky bottom-0 bg-white dark:bg-navy-800 border-t border-gray-100 dark:border-navy-700 px-6 py-4 flex gap-3 rounded-b-2xl">
               <button @click="save" :disabled="saving"

@@ -8,11 +8,7 @@
           <div class="font-heading text-3xl md:text-4xl font-bold text-white mb-1">
             <span ref="countRef">{{ stat.value }}</span>{{ stat.suffix }}
           </div>
-<<<<<<< HEAD
           <p class="text-xs text-white/70 tracking-wide">{{ stat.label }}</p>
-=======
-          <p class="text-xs text-blue-200 tracking-wide">{{ stat.label }}</p>
->>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
         </div>
       </div>
     </div>

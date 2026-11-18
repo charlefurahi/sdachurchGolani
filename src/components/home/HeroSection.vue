@@ -1,7 +1,6 @@
 <template>
   <section class="home-hero" aria-labelledby="hero-title">
 
-<<<<<<< HEAD
     <!-- Hero photos dissolve into one another through an SVG turbulence mask.
          The photo underneath stays solid; the next photo is revealed through animated noise. -->
     <svg
@@ -37,21 +36,12 @@
         filter="url(#hero-dissolve)"
       />
     </svg>
-=======
-    <img
-      :src="image"
-      alt="Worshippers gathered together at Golani SDA Church"
-      class="home-hero__image"
-      fetchpriority="high"
-    />
->>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
 
     <div
       class="home-hero__shade"
       aria-hidden="true"
     ></div>
 
-<<<<<<< HEAD
     <!-- Wave edge (same arrangement as the TNC site: gradient wave behind a page-coloured wave) -->
     <svg class="home-hero__wave" viewBox="0 0 1440 140" preserveAspectRatio="none" aria-hidden="true" focusable="false">
       <defs>
@@ -65,18 +55,12 @@
       <path class="home-hero__wave-front" d="M0 96C230 30 450 30 700 76s500 52 740 0V140H0Z" />
     </svg>
 
-=======
->>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
     <div class="site-container home-hero__content">
 
       <!-- Church name removed -->
 
       <h1 id="hero-title" class="home-hero__title">
-<<<<<<< HEAD
         <span class="home-hero__title-mark">{{ welcomeLine }}</span>
-=======
-        {{ welcomeLine }}
->>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
       </h1>
 
       <p class="home-hero__description">
@@ -117,17 +101,10 @@
 </template>
 
 <script setup>
-<<<<<<< HEAD
 import { computed, ref, onMounted, onBeforeUnmount } from 'vue'
 import { RouterLink } from 'vue-router'
 
 import worshipCrowd from '@/assets/images/worship-crowd.png'
-=======
-import { computed } from 'vue'
-import { RouterLink } from 'vue-router'
-
-import image from '@/assets/images/worship-crowd.png'
->>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
 import { church } from '@/constants/church'
 
 defineProps({
@@ -137,7 +114,6 @@ defineProps({
   }
 })
 
-<<<<<<< HEAD
 
 // ── Slides ────────────────────────────────────────────────────────────────
 // Sample photos shipped with the project. They are used whenever the gallery
@@ -212,8 +188,6 @@ onBeforeUnmount(() => {
   cancelAnimationFrame(raf)
 })
 
-=======
->>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
 const welcomeLine = computed(
   () => 'Growing in Christ. Serving with purpose.'
 )
@@ -269,18 +243,8 @@ function formattedTime(t) {
 .home-hero__shade {
   z-index: -1;
 
-<<<<<<< HEAD
   background: linear-gradient(90deg, rgba(16, 38, 56, 0.56) 0%, rgba(16, 38, 56, 0.34) 38%, rgba(16, 38, 56, 0.05) 76%),
     linear-gradient(0deg, rgba(16, 38, 56, 0.22) 0%, rgba(16, 38, 56, 0) 48%);
-=======
-  background: linear-gradient(
-    90deg,
-    rgba(13, 33, 55, 0.82) 0%,
-    rgba(13, 33, 55, 0.72) 45%,
-    rgba(13, 33, 55, 0.42) 75%,
-    rgba(13, 33, 55, 0.3) 100%
-  );
->>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
 }
 
 
@@ -319,12 +283,8 @@ function formattedTime(t) {
 
   margin: 0;
 
-<<<<<<< HEAD
   font-family: var(--font-display);
   font-size: clamp(2.5rem, 5vw, 4rem);
-=======
-  font-size: clamp(2rem, 4.2vw, 3rem);
->>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
 
   font-weight: 700;
   line-height: 1.15;
@@ -336,19 +296,11 @@ function formattedTime(t) {
 /* Description */
 
 .home-hero__description {
-<<<<<<< HEAD
   max-width: 470px;
 
   margin-top: 1rem;
 
   color: rgba(255, 255, 255, 0.96);
-=======
-  max-width: 560px;
-
-  margin-top: 1rem;
-
-  color: rgba(255, 255, 255, 0.82);
->>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
 
   font-size: clamp(0.95rem, 1.2vw, 1.05rem);
 
@@ -454,7 +406,6 @@ function formattedTime(t) {
 
 }
 
-<<<<<<< HEAD
 
 /* Wave edge into the page */
 .home-hero {
@@ -486,6 +437,3 @@ function formattedTime(t) {
 }
 .home-hero__title { text-shadow: none; }
 </style>
-=======
-</style>
->>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7

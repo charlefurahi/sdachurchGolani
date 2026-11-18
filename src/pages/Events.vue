@@ -63,17 +63,10 @@
 
 
     <!-- =========================================================
-<<<<<<< HEAD
          PREVIEW SCHEDULE NOTICE
     ========================================================== -->
     <section
       v-if="usingFallbackData"
-=======
-         ADMIN FALLBACK NOTICE
-    ========================================================== -->
-    <section
-      v-if="usingFallbackData && isAdmin"
->>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
       class="events-notice-section"
     >
       <div class="site-container">
@@ -101,14 +94,8 @@
           </svg>
 
           <p>
-<<<<<<< HEAD
             Sample events are shown for preview. The church calendar will display
             live dates and details when the backend is connected.
-=======
-            Showing demonstration events because the events API returned
-            no events or could not be reached. Real events from the
-            backend are automatically displayed whenever they are available.
->>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
           </p>
 
         </div>
@@ -1006,13 +993,8 @@ import {
 
 import { formatDate } from '@/utils/index.js'
 import eventService from '@/services/eventService'
-<<<<<<< HEAD
 import { OFFLINE_DEMO } from '@/services/offline'
 import EventCard from '@/components/events/EventCard.vue'
-=======
-import EventCard from '@/components/events/EventCard.vue'
-import { useAuthStore } from '@/stores/auth'
->>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
 
 /*
 |--------------------------------------------------------------------------
@@ -1020,18 +1002,8 @@ import { useAuthStore } from '@/stores/auth'
 |--------------------------------------------------------------------------
 |
 | IMPORTANT:
-<<<<<<< HEAD
 | Demo data is used in local preview mode or if the backend is unavailable.
 | A live response, including an empty list, is the source of truth.
-=======
-| Demo data is NOT the primary source.
-|
-| The backend is always requested first.
-|
-| Demo data is only used when:
-|   1. backend returns zero events, OR
-|   2. backend cannot be reached.
->>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
 |
 | If demoEvents is empty, the page simply shows the empty state.
 |--------------------------------------------------------------------------
@@ -1046,20 +1018,6 @@ const safeDemoCategories = Array.isArray(demoCategories)
   ? demoCategories
   : []
 /* =========================================================
-<<<<<<< HEAD
-=======
-   AUTH
-========================================================= */
-
-const authStore = useAuthStore()
-
-const isAdmin = computed(() => {
-  return authStore.isAdmin
-})
-
-
-/* =========================================================
->>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
    API
 ========================================================= */
 
@@ -1336,23 +1294,10 @@ async function fetchEvents() {
     }
 
 
-<<<<<<< HEAD
     /* Demo content belongs to local preview mode. A live backend's empty
        response is authoritative and should stay empty. */
     if (
       OFFLINE_DEMO &&
-=======
-    /*
-    |--------------------------------------------------------------------------
-    | BACKEND RESPONDED BUT HAS NO EVENTS
-    |--------------------------------------------------------------------------
-    |
-    | Only now do we consider demo data.
-    |
-    */
-
-    if (
->>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
       Array.isArray(demoEvents) &&
       demoEvents.length > 0
     ) {
@@ -1862,13 +1807,8 @@ onMounted(() => {
 ========================================================= */
 
 .events-page {
-<<<<<<< HEAD
   --navy: #102638;
   --navy-light: #315d78;
-=======
-  --navy: #0d2137;
-  --navy-light: #163f5e;
->>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
 
   --gold: #c9a227;
   --gold-dark: #a67c00;
@@ -1887,16 +1827,7 @@ onMounted(() => {
 ========================================================= */
 
 .events-page__hero {
-<<<<<<< HEAD
   background: linear-gradient(135deg, #fffdf7, #edf3f3);
-=======
-  background:
-    linear-gradient(
-      135deg,
-      #0d2137 0%,
-      #163f5e 100%
-    );
->>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
 }
 
 
@@ -1943,12 +1874,7 @@ onMounted(() => {
 
   margin-top: 1.2rem;
 
-<<<<<<< HEAD
   color: var(--color-text-muted);
-=======
-  color:
-    rgba(13, 33, 55, 0.62);
->>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
 
   font-size: 0.95rem;
 
@@ -1979,11 +1905,7 @@ onMounted(() => {
 
   background: #f5f3ed;
 
-<<<<<<< HEAD
   color: var(--color-text-muted);
-=======
-  color: rgba(13, 33, 55, 0.68);
->>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
 
   font-size: 0.8rem;
 
@@ -2023,13 +1945,9 @@ onMounted(() => {
     minmax(300px, 0.9fr)
     minmax(0, 1.1fr);
 
-<<<<<<< HEAD
   background: var(--color-surface);
   border: 1px solid var(--color-border);
   border-radius: 1.25rem;
-=======
-  background: var(--navy);
->>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
 
   overflow: hidden;
 
@@ -2042,11 +1960,7 @@ onMounted(() => {
 
   min-height: 390px;
 
-<<<<<<< HEAD
   background: #16324a;
-=======
-  background: #132f4c;
->>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
 }
 
 .featured-event__media img {
@@ -2102,11 +2016,7 @@ onMounted(() => {
 
   margin-bottom: 0.8rem;
 
-<<<<<<< HEAD
   color: var(--gold-dark);
-=======
-  color: var(--gold);
->>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
 
   font-size: 0.68rem;
   font-weight: 700;
@@ -2119,11 +2029,7 @@ onMounted(() => {
 .featured-event h2 {
   margin: 0;
 
-<<<<<<< HEAD
   color: var(--color-footer);
-=======
-  color: #ffffff;
->>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
 
   font-family:
     'Cormorant Garamond',
@@ -2139,11 +2045,7 @@ onMounted(() => {
 .featured-event__subtitle {
   margin: 0.7rem 0 0;
 
-<<<<<<< HEAD
   color: var(--color-text-muted);
-=======
-  color: rgba(255, 255, 255, 0.65);
->>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
 
   font-size: 0.85rem;
 }
@@ -2151,11 +2053,7 @@ onMounted(() => {
 .featured-event__verse {
   margin: 1rem 0 0;
 
-<<<<<<< HEAD
   color: var(--gold-dark);
-=======
-  color: var(--gold);
->>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
 
   font-size: 0.85rem;
 
@@ -2177,11 +2075,7 @@ onMounted(() => {
 
   gap: 0.4rem;
 
-<<<<<<< HEAD
   color: var(--color-text-muted);
-=======
-  color: rgba(255, 255, 255, 0.62);
->>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
 
   font-size: 0.73rem;
 }
@@ -2194,11 +2088,7 @@ onMounted(() => {
 .featured-event__description {
   margin-top: 1.3rem;
 
-<<<<<<< HEAD
   color: var(--color-text-muted);
-=======
-  color: rgba(255, 255, 255, 0.62);
->>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
 
   font-size: 0.84rem;
 
@@ -2255,11 +2145,7 @@ onMounted(() => {
 
   margin: 0;
 
-<<<<<<< HEAD
   color: var(--color-text-muted);
-=======
-  color: rgba(13, 33, 55, 0.52);
->>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
 
   font-size: 0.82rem;
 
@@ -2301,11 +2187,7 @@ onMounted(() => {
 
   transform: translateY(-50%);
 
-<<<<<<< HEAD
   color: var(--color-text-faint);
-=======
-  color: rgba(13, 33, 55, 0.4);
->>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
 
   pointer-events: none;
 }
@@ -2346,11 +2228,7 @@ onMounted(() => {
 }
 
 .event-search input::placeholder {
-<<<<<<< HEAD
   color: var(--color-text-faint);
-=======
-  color: rgba(13, 33, 55, 0.4);
->>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
 }
 
 .event-search button {
@@ -2365,11 +2243,7 @@ onMounted(() => {
 
   background: none;
 
-<<<<<<< HEAD
   color: var(--color-text-faint);
-=======
-  color: rgba(13, 33, 55, 0.45);
->>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
 
   font-size: 1rem;
 
@@ -2395,11 +2269,7 @@ onMounted(() => {
 
   background: #ffffff;
 
-<<<<<<< HEAD
   color: var(--color-text-muted);
-=======
-  color: rgba(13, 33, 55, 0.58);
->>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
 
   font-family: inherit;
 
@@ -2439,11 +2309,7 @@ onMounted(() => {
 
   background: #ffffff;
 
-<<<<<<< HEAD
   color: var(--color-text-faint);
-=======
-  color: rgba(13, 33, 55, 0.4);
->>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
 
   cursor: pointer;
 }
@@ -2482,11 +2348,7 @@ onMounted(() => {
 }
 
 .active-filters > span {
-<<<<<<< HEAD
   color: var(--color-text-faint);
-=======
-  color: rgba(13, 33, 55, 0.45);
->>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
 
   font-weight: 600;
 }
@@ -2711,11 +2573,7 @@ onMounted(() => {
   margin:
     0.7rem auto 1.5rem;
 
-<<<<<<< HEAD
   color: var(--color-text-muted);
-=======
-  color: rgba(13, 33, 55, 0.55);
->>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
 
   font-size: 0.85rem;
 
@@ -2841,11 +2699,7 @@ onMounted(() => {
 
   background: #ffffff;
 
-<<<<<<< HEAD
   color: var(--color-text-muted);
-=======
-  color: rgba(13, 33, 55, 0.6);
->>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
 
   cursor: pointer;
 }
@@ -2993,11 +2847,7 @@ onMounted(() => {
 .modal-subtitle {
   margin: 0.6rem 0 0;
 
-<<<<<<< HEAD
   color: var(--color-text-muted);
-=======
-  color: rgba(13, 33, 55, 0.55);
->>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
 
   font-size: 0.82rem;
 }
@@ -3005,11 +2855,7 @@ onMounted(() => {
 .modal-description {
   margin: 1.2rem 0 0;
 
-<<<<<<< HEAD
   color: var(--color-text-muted);
-=======
-  color: rgba(13, 33, 55, 0.68);
->>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
 
   font-size: 0.88rem;
 
@@ -3038,11 +2884,7 @@ onMounted(() => {
 
   margin-bottom: 0.25rem;
 
-<<<<<<< HEAD
   color: var(--color-text-faint);
-=======
-  color: rgba(13, 33, 55, 0.4);
->>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
 
   font-size: 0.62rem;
   font-weight: 700;
@@ -3071,11 +2913,7 @@ onMounted(() => {
 
   margin-bottom: 0.4rem;
 
-<<<<<<< HEAD
   color: var(--color-text-muted);
-=======
-  color: rgba(13, 33, 55, 0.55);
->>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
 
   font-size: 0.7rem;
 }
@@ -3181,11 +3019,7 @@ onMounted(() => {
 }
 
 .rsvp-form label small {
-<<<<<<< HEAD
   color: var(--color-text-faint);
-=======
-  color: rgba(13, 33, 55, 0.4);
->>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
 
   font-weight: 400;
 }
@@ -3281,16 +3115,11 @@ onMounted(() => {
 .rsvp-success p {
   margin-top: 0.5rem;
 
-<<<<<<< HEAD
   color: var(--color-text-muted);
-=======
-  color: rgba(13, 33, 55, 0.55);
->>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
 
   font-size: 0.8rem;
 }
 
-<<<<<<< HEAD
 /* Warm, open calendar surfaces that match the rest of the church site. */
 .events-introduction, .events-notice-section, .featured-event-section { background: var(--color-bg); }
 .events-introduction__grid h2, .event-library-heading h2, .event-empty h3 { font-family: var(--font-display); }
@@ -3340,8 +3169,6 @@ onMounted(() => {
 :global(.dark) .rsvp-form input, :global(.dark) .rsvp-form select, :global(.dark) .rsvp-form textarea { border-color: var(--color-border-strong); background: var(--color-surface-alt); color: #f2f6f8; }
 :global(.dark) .event-error { border-color: #8d3c45; background: #3a2027; color: #fecdd3; }
 
-=======
->>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
 
 /* =========================================================
    TRANSITION
@@ -3448,7 +3275,6 @@ onMounted(() => {
   }
 
 }
-<<<<<<< HEAD
 
 :global(.dark) .events-page { --navy:#eef3f7; --navy-light:#b8c8d5; --gold:#f4d03f; --gold-dark:#f4d03f; --cream:#172f45; --off-white:#12263a; --border:rgba(255,255,255,.13); color:#eef3f7; }
 :global(.dark) .events-introduction,:global(.dark) .events-notice-section,:global(.dark) .featured-event-section { background:#0e1b27; }
@@ -3462,6 +3288,3 @@ onMounted(() => {
 :global(.dark) .event-card h3,:global(.dark) .event-card h4,:global(.dark) .event-library-heading p { color:#eef3f7; }
 :global(.dark) .event-search input:focus { border-color:#f4d03f; box-shadow:0 0 0 3px rgba(244,208,63,.12); }
 </style>
-=======
-</style>
->>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7

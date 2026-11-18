@@ -79,11 +79,7 @@
 
 .button--light {
   background: var(--color-white);
-<<<<<<< HEAD
   color: var(--color-heading);
-=======
-  color: var(--color-navy-deep);
->>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
 }
 
 .button--outline-light {
@@ -100,11 +96,7 @@
   position: sticky;
   top: 0;
   z-index: 100;
-<<<<<<< HEAD
   background: var(--color-footer);
-=======
-  background: var(--color-navy-deep);
->>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
   color: var(--color-white);
   transition:
     background-color var(--duration-standard) var(--ease-standard),
@@ -241,15 +233,12 @@
 
 .page-shell {
   min-height: 100vh;
-<<<<<<< HEAD
   display: flex;
   flex-direction: column;
 }
 
 .page-shell > main {
   flex: 1 0 auto;
-=======
->>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
 }
 
 .page-header {

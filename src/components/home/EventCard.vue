@@ -18,11 +18,7 @@
       />
       <!-- Poster-style gradient placeholder (matches poster blue) -->
       <div v-else class="ec__poster-placeholder" :style="{ background: placeholderGrad }">
-<<<<<<< HEAD
         <svg class="ec__poster-cross" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path stroke-linecap="round" d="M12 3v18M5 9h14"/></svg>
-=======
-        <span class="ec__poster-cross">✝</span>
->>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
       </div>
 
       <!-- Dark overlay so text on image stays readable -->
@@ -35,13 +31,8 @@
           class="ec__badge ec__badge--cat"
           :style="{ background: categoryColor }"
         >{{ categoryName }}</span>
-<<<<<<< HEAD
         <span v-if="event.is_featured" class="ec__badge ec__badge--star"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path stroke-linejoin="round" d="m12 3 2.7 5.5 6.1.9-4.4 4.3 1 6.1-5.4-2.9-5.4 2.9 1-6.1-4.4-4.3 6.1-.9L12 3z"/></svg> Featured</span>
         <span v-if="event.is_online" class="ec__badge ec__badge--online"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg> Online</span>
-=======
-        <span v-if="event.is_featured" class="ec__badge ec__badge--star">⭐ Featured</span>
-        <span v-if="event.is_online"   class="ec__badge ec__badge--online">🌐 Online</span>
->>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
       </div>
 
       <!-- Speaker photo bubble: bottom-left (matches poster speaker image) -->
@@ -74,11 +65,7 @@
 
       <!-- Bible verse — italic small, like poster "Luka 11:1-4" -->
       <p v-if="event.bible_verse" class="ec__verse">
-<<<<<<< HEAD
         <svg class="ec__inline-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M4 5h7a3 3 0 0 1 3 3v12a3 3 0 0 0-3-3H4zM20 5h-3a3 3 0 0 0-3 3v12a3 3 0 0 1 3-3h3z"/></svg> <em>{{ event.bible_verse }}</em>
-=======
-        📖 <em>{{ event.bible_verse }}</em>
->>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
       </p>
 
       <!-- Speaker — like poster "Na Mch. Godliven Ngessi" -->
@@ -91,30 +78,16 @@
       <!-- Date / Time / Location — like poster info box -->
       <div class="ec__info-box">
         <div class="ec__info-row">
-<<<<<<< HEAD
           <svg class="ec__info-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 6h16v15H4zM8 3v6m8-6v6M4 11h16"/></svg>
           <span class="ec__info-text">{{ formattedDate }}</span>
         </div>
         <div class="ec__info-row">
           <svg class="ec__info-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path stroke-linecap="round" d="M12 7v5l3 2"/></svg>
-=======
-          <span class="ec__info-icon">📅</span>
-          <span class="ec__info-text">{{ formattedDate }}</span>
-        </div>
-        <div class="ec__info-row">
-          <span class="ec__info-icon">🕐</span>
->>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
           <span class="ec__info-text">{{ eventTime }}</span>
         </div>
         <div v-if="event.location || event.is_online" class="ec__info-row">
           <!-- Google Meet icon when online (matches poster) -->
-<<<<<<< HEAD
           <svg class="ec__info-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle v-if="event.is_online" cx="12" cy="12" r="9"/><path v-if="event.is_online" d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/><path v-else stroke-linecap="round" stroke-linejoin="round" d="M19 10c0 5-7 11-7 11S5 15 5 10a7 7 0 1 1 14 0z"/><circle v-if="!event.is_online" cx="12" cy="10" r="2"/></svg>
-=======
-          <span class="ec__info-icon">
-            {{ event.is_online ? '🌐' : '📍' }}
-          </span>
->>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
           <span class="ec__info-text">{{ event.is_online ? (event.location || 'Google Meet') : event.location }}</span>
         </div>
       </div>
@@ -142,11 +115,7 @@
         <RouterLink
           :to="`/events/${event.id}`"
           class="ec__rsvp-btn"
-<<<<<<< HEAD
           :style="{ background: accentColor, color: darkAccent ? '#fff' : '#16324a' }"
-=======
-          :style="{ background: accentColor, color: darkAccent ? '#fff' : '#0d2137' }"
->>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
           @click.stop
         >
           RSVP
@@ -220,11 +189,7 @@ const categoryName = computed(() => {
 const categoryColor = computed(() => {
   if (typeof props.event.category === 'object' && props.event.category?.color)
     return props.event.category.color
-<<<<<<< HEAD
   return CAT_COLORS[categoryName.value] || '#16324a'
-=======
-  return CAT_COLORS[categoryName.value] || '#0d2137'
->>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
 })
 
 // Poster accent: admin theme_color → category color → poster yellow
@@ -234,11 +199,7 @@ const accentColor = computed(() =>
 
 // Card bg: admin theme_color darkened, or default poster navy
 const cardBg = computed(() =>
-<<<<<<< HEAD
   props.event.theme_color ? props.event.theme_color : '#16324a'
-=======
-  props.event.theme_color ? props.event.theme_color : '#0d2137'
->>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
 )
 
 // Check if accent is dark (use white text on RSVP btn)
@@ -252,13 +213,8 @@ const darkAccent = computed(() => {
 })
 
 const placeholderGrad = computed(() => {
-<<<<<<< HEAD
   const base = props.event.theme_color || '#16324a'
   return `linear-gradient(135deg, #f4f8fb 0%, color-mix(in srgb, ${base} 22%, #dde8ef) 100%)`
-=======
-  const base = props.event.theme_color || '#0d2137'
-  return `linear-gradient(135deg, ${base} 0%, #0d2137 100%)`
->>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
 })
 
 // Dates
@@ -300,11 +256,7 @@ const capacityPct = computed(() => {
   position: relative;
 }
 .dark .ec {
-<<<<<<< HEAD
   background: var(--color-surface);
-=======
-  background: #08182a;
->>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
   border-color: rgba(255,255,255,0.07);
 }
 .ec:hover {
@@ -318,11 +270,7 @@ const capacityPct = computed(() => {
   height: 200px;
   flex-shrink: 0;
   overflow: hidden;
-<<<<<<< HEAD
   background: var(--color-bg-alt);  /* light fallback */
-=======
-  background: #0d2137;  /* brand navy fallback */
->>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
 }
 
 .ec__poster-img {
@@ -344,13 +292,8 @@ const capacityPct = computed(() => {
 }
 .ec__poster-cross {
   font-size: 52px;
-<<<<<<< HEAD
   color: var(--color-heading);
   opacity: 0.18;
-=======
-  color: #fff;
-  opacity: 0.1;
->>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
 }
 
 /* gradient overlay so badges always readable */
@@ -381,13 +324,8 @@ const capacityPct = computed(() => {
   color: #fff;
   backdrop-filter: blur(4px);
 }
-<<<<<<< HEAD
 .ec__badge--star  { background: #f4d03f; color: #16324a !important; }
 .ec__badge--online { background: rgba(255,255,255,0.92); color: var(--color-heading) !important; }
-=======
-.ec__badge--star  { background: #f4d03f; color: #0d2137 !important; }
-.ec__badge--online { background: rgba(13,33,55,0.85); }
->>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
 
 /* ── Speaker bubble (matches poster speaker photo) ───────────────────── */
 .ec__speaker-bubble {
@@ -400,11 +338,7 @@ const capacityPct = computed(() => {
   border: 3px solid var(--ec-accent, #f4d03f);
   overflow: hidden;
   box-shadow: 0 3px 12px rgba(0,0,0,0.35);
-<<<<<<< HEAD
   background: var(--color-bg-alt);
-=======
-  background: #0d2137;
->>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
   z-index: 3;
 }
 .ec__speaker-img { width: 100%; height: 100%; object-fit: cover; }
@@ -422,11 +356,7 @@ const capacityPct = computed(() => {
   box-shadow: 0 2px 10px rgba(0,0,0,0.2);
   border-left: 3px solid var(--ec-accent, #f4d03f);
 }
-<<<<<<< HEAD
 .dark .ec__date-chip { background: rgba(23,47,69,0.95); }
-=======
-.dark .ec__date-chip { background: rgba(13,30,53,0.95); }
->>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
 .ec__date-day {
   display: block;
   font-size: 22px;
@@ -468,11 +398,7 @@ const capacityPct = computed(() => {
   font-family: 'Cinzel', serif;
   font-size: clamp(14px, 2vw, 17px);
   font-weight: 700;
-<<<<<<< HEAD
   color: var(--color-heading);
-=======
-  color: #0d2137;
->>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
   margin: 0;
   line-height: 1.3;
   display: -webkit-box;
@@ -516,13 +442,9 @@ const capacityPct = computed(() => {
 }
 .dark .ec__info-box { background: rgba(255,255,255,0.04); }
 .ec__info-row { display: flex; align-items: center; gap: 8px; font-size: 11px; }
-<<<<<<< HEAD
 .ec__info-icon { width:15px; height:15px; flex-shrink:0; }
 .ec__inline-icon { display:inline-block; width:14px; height:14px; vertical-align:-2px; }
 .ec__badge svg { width:13px; height:13px; flex:none; }
-=======
-.ec__info-icon { font-size: 13px; flex-shrink: 0; }
->>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
 .ec__info-text { color: #4a5568; font-weight: 500; }
 .dark .ec__info-text { color: #9baac0; }
 
@@ -583,8 +505,4 @@ const capacityPct = computed(() => {
   .card-list-mode { flex-direction: column !important; }
   .card-list-mode .ec__poster { width: 100% !important; height: 200px !important; }
 }
-<<<<<<< HEAD
 </style>
-=======
-</style>
->>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7

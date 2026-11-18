@@ -1,7 +1,6 @@
 <template>
   <div class="space-y-6">
     <!-- Welcome Banner -->
-<<<<<<< HEAD
     <div class="admin-welcome rounded-2xl p-6 relative overflow-hidden">
       <div class="relative z-10 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
@@ -10,16 +9,6 @@
           <p class="admin-welcome__copy text-sm">{{ today }} · Here's what's happening with your church.</p>
         </div>
         <span class="site-brand__mark"><img src="@/assets/logos/logo.png" alt="Golani SDA Church" class="site-brand__logo" /></span>
-=======
-    <div class="rounded-2xl p-6 text-white relative overflow-hidden" style="background: var(--gradient-page-hero)">
-      <div class="relative z-10 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-        <div>
-          <p class="text-blue-200 text-sm mb-1">{{ greeting }} 👋</p>
-          <h2 class="font-heading text-2xl font-bold mb-1">Welcome to GolaniSDA Admin</h2>
-          <p class="text-blue-200 text-sm">{{ today }} · Here's what's happening with your church.</p>
-        </div>
-        <img src="@/assets/logos/logo.png" alt="GolaniSDA" class="h-14 w-auto opacity-90 self-start sm:self-auto" />
->>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
       </div>
     </div>
 
@@ -28,7 +17,6 @@
       <div v-for="stat in statsCards" :key="stat.label"
         class="card p-5 hover:shadow-md transition-shadow">
         <div class="flex items-start justify-between mb-3">
-<<<<<<< HEAD
           <div class="w-11 h-11 rounded-xl flex items-center justify-center" :class="stat.bg">
             <svg class="h-5 w-5 text-primary-700 dark:text-primary-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <path v-if="stat.icon === 'sermon'" d="M4 5h7a3 3 0 0 1 3 3v12a3 3 0 0 0-3-3H4zM20 5h-3a3 3 0 0 0-3 3v12a3 3 0 0 1 3-3h3z"/>
@@ -36,10 +24,6 @@
               <path v-else-if="stat.icon === 'announcement'" d="M4 10v4h3l9 4V6l-9 4H4zM7 14l2 6h4"/>
               <path v-else d="M4 6h16v15H4zM8 3v6m8-6v6M4 11h16"/>
             </svg>
-=======
-          <div class="w-11 h-11 rounded-xl flex items-center justify-center text-xl" :class="stat.bg">
-            {{ stat.icon }}
->>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
           </div>
           <span v-if="!statsLoading"
             :class="['text-xs font-bold', stat.trend > 0 ? 'text-emerald-600 dark:text-emerald-400' : stat.trend < 0 ? 'text-red-500' : 'text-gray-400']">
@@ -83,7 +67,6 @@
         <div class="space-y-2.5">
           <RouterLink v-for="action in quickActions" :key="action.to" :to="action.to"
             class="flex items-center gap-3 p-3 rounded-xl hover:bg-gray-50 dark:hover:bg-navy-700 transition-colors group">
-<<<<<<< HEAD
             <div class="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0" :class="action.bg">
               <svg class="h-[18px] w-[18px] text-primary-700 dark:text-primary-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <path v-if="action.icon === 'announcement'" d="M4 10v4h3l9 4V6l-9 4H4zM7 14l2 6h4"/>
@@ -91,10 +74,6 @@
                 <path v-else-if="action.icon === 'gallery'" d="M4 5h16v14H4zM7 15l3-3 2 2 3-4 3 5M9 9h.01"/>
                 <path v-else d="M4 6h16v15H4zM8 3v6m8-6v6M4 11h16"/>
               </svg>
-=======
-            <div class="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0 text-lg" :class="action.bg">
-              {{ action.icon }}
->>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
             </div>
             <div class="flex-1 min-w-0">
               <p class="text-sm font-medium text-navy-800 dark:text-white group-hover:text-primary-600 dark:group-hover:text-blue-500 transition-colors">{{ action.label }}</p>
@@ -133,21 +112,13 @@
               <img v-if="sermon.thumbnail_url || sermon.thumbnail"
                 :src="sermon.thumbnail_url || sermon.thumbnail" :alt="sermon.title"
                 class="w-full h-full object-cover"/>
-<<<<<<< HEAD
               <div v-else class="w-full h-full flex items-center justify-center text-primary-600/50"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path stroke-linecap="round" stroke-linejoin="round" d="M12 18.5v2.5m-5-8.5v1a5 5 0 0 0 10 0v-1m-5-8a4 4 0 0 0-4 4v5a4 4 0 0 0 8 0v-5a4 4 0 0 0-4-4z"/></svg></div>
-=======
-              <div v-else class="w-full h-full flex items-center justify-center text-lg opacity-30">🎙️</div>
->>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
             </div>
             <div class="flex-1 min-w-0">
               <p class="text-sm font-medium text-navy-800 dark:text-white truncate">{{ sermon.title }}</p>
               <p class="text-xs text-gray-400">{{ sermon.speaker || 'Unknown' }} · {{ fmtDate(sermon.preach_date || sermon.date) }}</p>
             </div>
-<<<<<<< HEAD
             <span class="inline-flex items-center gap-1 text-xs text-gray-400 flex-shrink-0"><svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path stroke-linecap="round" stroke-linejoin="round" d="M2.5 12s3.5-6 9.5-6 9.5 6 9.5 6-3.5 6-9.5 6-9.5-6-9.5-6z"/><circle cx="12" cy="12" r="2.5"/></svg>{{ (sermon.views_count || 0).toLocaleString() }}</span>
-=======
-            <span class="text-xs text-gray-400 flex-shrink-0">👁 {{ (sermon.views_count || 0).toLocaleString() }}</span>
->>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
           </div>
         </div>
         <p v-else class="text-xs text-gray-400 text-center py-8">No sermons yet. <RouterLink to="/admin/sermons" class="text-primary-600 hover:underline">Add one →</RouterLink></p>
@@ -176,11 +147,7 @@
               <img v-if="event.banner_url || event.banner"
                 :src="event.banner_url || event.banner" :alt="event.title"
                 class="w-full h-full object-cover"/>
-<<<<<<< HEAD
               <div v-else class="w-full h-full flex items-center justify-center text-primary-700/60"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 6h16v15H4zM8 3v6m8-6v6M4 11h16"/></svg></div>
-=======
-              <div v-else class="w-full h-full flex items-center justify-center text-lg">📅</div>
->>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
             </div>
             <div class="flex-1 min-w-0">
               <p class="text-sm font-medium text-navy-800 dark:text-white truncate">{{ event.title }}</p>
@@ -217,13 +184,8 @@
             <span :class="['inline-flex items-center px-2 py-0.5 rounded-full text-xs font-semibold', priorityBadge(ann.priority)]">
               {{ ann.priority || 'normal' }}
             </span>
-<<<<<<< HEAD
             <span v-if="ann.pdf_file_url" class="text-xs text-red-500">PDF</span>
             <svg v-if="ann.is_pinned" class="h-3.5 w-3.5 text-blue-700 dark:text-blue-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-label="Pinned"><path stroke-linecap="round" stroke-linejoin="round" d="m16 3 5 5-4 1-4 4-1 7-2-6-6-2 7-1 4-4z"/></svg>
-=======
-            <span v-if="ann.pdf_file_url" class="text-xs text-red-500">📄 PDF</span>
-            <span v-if="ann.is_pinned" class="text-xs text-blue-700">📌</span>
->>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
           </div>
           <p class="text-sm font-medium text-navy-800 dark:text-white line-clamp-1">{{ ann.title }}</p>
           <p class="text-xs text-gray-500 dark:text-gray-400 line-clamp-2 mt-0.5">{{ ann.content }}</p>
@@ -263,17 +225,10 @@ const liveStats = ref({ sermons: 0, events: 0, announcements: 0, albums: 0 })
 
 // ── Stats Cards (dynamic once loaded) ───────────────────────────────
 const statsCards = computed(() => [
-<<<<<<< HEAD
   { label: 'Total Sermons',      value: liveStats.value.sermons,       icon: 'sermon',       bg: 'bg-primary-100 dark:bg-primary-900/30', trend: 0 },
   { label: 'Gallery Albums',     value: liveStats.value.albums,        icon: 'gallery',      bg: 'bg-emerald-100 dark:bg-emerald-900/30', trend: 0 },
   { label: 'Announcements',      value: liveStats.value.announcements, icon: 'announcement', bg: 'bg-blue-50 dark:bg-gold-900/30',     trend: 0 },
   { label: 'Upcoming Events',    value: liveStats.value.events,        icon: 'events',       bg: 'bg-purple-100 dark:bg-purple-900/30', trend: 0 },
-=======
-  { label: 'Total Sermons',      value: liveStats.value.sermons,       icon: '🎙️', bg: 'bg-primary-100 dark:bg-primary-900/30', trend: 0 },
-  { label: 'Gallery Albums',     value: liveStats.value.albums,        icon: '🖼️', bg: 'bg-emerald-100 dark:bg-emerald-900/30', trend: 0 },
-  { label: 'Announcements',      value: liveStats.value.announcements, icon: '📢', bg: 'bg-blue-50 dark:bg-gold-900/30',     trend: 0 },
-  { label: 'Upcoming Events',    value: liveStats.value.events,        icon: '📅', bg: 'bg-purple-100 dark:bg-purple-900/30', trend: 0 },
->>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
 ])
 
 // ── Fake attendance bars (visual only - no real attendance tracking yet) ─
@@ -287,17 +242,10 @@ const viewsBars = [
 ]
 
 const quickActions = [
-<<<<<<< HEAD
   { to: '/admin/announcements', icon: 'announcement', label: 'New Announcement',     sub: 'Publish with PDF & date',    bg: 'bg-blue-100 dark:bg-blue-900/30' },
   { to: '/admin/sermons',       icon: 'sermon',       label: 'Upload Sermon',         sub: 'Add audio, thumbnail & type', bg: 'bg-primary-100 dark:bg-primary-900/30' },
   { to: '/admin/events',        icon: 'events',       label: 'Create Event',          sub: 'Set date, location & RSVP',   bg: 'bg-blue-50 dark:bg-gold-900/30' },
   { to: '/admin/gallery',       icon: 'gallery',      label: 'Upload Gallery Photos', sub: 'Add by album & category',    bg: 'bg-emerald-100 dark:bg-emerald-900/30' },
-=======
-  { to: '/admin/announcements', icon: '📢', label: 'New Announcement',    sub: 'Publish with PDF & date',    bg: 'bg-blue-100 dark:bg-blue-900/30' },
-  { to: '/admin/sermons',       icon: '🎙️', label: 'Upload Sermon',       sub: 'Add audio, thumbnail & type', bg: 'bg-primary-100 dark:bg-primary-900/30' },
-  { to: '/admin/events',        icon: '📅', label: 'Create Event',         sub: 'Set date, location & RSVP',   bg: 'bg-blue-50 dark:bg-gold-900/30' },
-  { to: '/admin/gallery',       icon: '📸', label: 'Upload Gallery Photos', sub: 'Add by album & category',    bg: 'bg-emerald-100 dark:bg-emerald-900/30' },
->>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
 ]
 
 function priorityBadge(p) {
@@ -369,7 +317,6 @@ onMounted(async () => {
   statsLoading.value = false
 })
 </script>
-<<<<<<< HEAD
 
 <style scoped>
 .admin-welcome { border:1px solid var(--color-border); background:linear-gradient(125deg,#fffdf7 0%,#edf3f3 100%); box-shadow:var(--shadow-soft); }
@@ -381,5 +328,3 @@ onMounted(async () => {
 :global(.dark) .admin-welcome__eyebrow { color:#f4d03f; }
 :global(.dark) .admin-welcome__copy { color:#d9e3e9; }
 </style>
-=======
->>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7

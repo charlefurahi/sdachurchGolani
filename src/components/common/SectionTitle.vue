@@ -8,11 +8,7 @@
     </div>
 
     <!-- Title -->
-<<<<<<< HEAD
     <h2 :class="['section-heading section-title__heading mb-4', dark ? '!text-white' : '']">{{ title }}</h2>
-=======
-    <h2 :class="['section-heading mb-4', dark ? '!text-white' : '']">{{ title }}</h2>
->>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
 
     <!-- Yellow divider — solid, no gradient -->
     <div class="h-[3px] w-14 rounded-full mb-5 mx-auto bg-yellow-500" />
@@ -33,7 +29,6 @@ defineProps({
   dark:     { type: Boolean, default: false },
 })
 </script>
-<<<<<<< HEAD
 
 <style scoped>
 .section-title__heading {
@@ -43,5 +38,3 @@ defineProps({
   text-wrap: balance;
 }
 </style>
-=======
->>>>>>> 91573f2cbf9e6e54880aca85d3cd70eaf6edcee7
