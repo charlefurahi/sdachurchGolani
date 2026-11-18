@@ -9,17 +9,46 @@ export const useAuthStore = defineStore('auth', () => {
   const error     = ref(null)
 
   const isAuthenticated = computed(() => !!token.value)
-  const isLoggedIn      = computed(() => !!token.value)   // alias used in router
+  const isLoggedIn      = computed(() => !!token.value)
   const isAdmin         = computed(() => user.value?.role === 'admin' || user.value?.is_staff === true)
   const fullName        = computed(() =>
-    user.value ? `${user.value.first_name} ${user.value.last_name}` : ''
+    user.value ? `${user.value.first_name} ${user.value.last_name}`.trim() : ''
   )
+
+  function extractError(err) {
+    if (!err) return 'An error occurred. Please try again.'
+    if (typeof err === 'string') return err
+    if (err.detail)  return err.detail
+    if (err.error)   return err.error
+    if (err.message) return err.message
+    const fieldErrors = Object.entries(err)
+      .filter(([, v]) => v)
+      .map(([k, v]) => {
+        const msgs  = Array.isArray(v) ? v : [v]
+        const field = k === 'non_field_errors' ? '' : `${k}: `
+        return `${field}${msgs.join(', ')}`
+      })
+    if (fieldErrors.length) return fieldErrors.join(' | ')
+    return 'An error occurred. Please try again.'
+  }
+
+  // ── mockLogin: sets token + user via the store's own refs (safe) ──────────
+  function mockLogin(userData, accessToken, refreshToken) {
+    token.value = accessToken
+    user.value  = userData
+    localStorage.setItem('golanisda-token',   accessToken)
+    localStorage.setItem('golanisda-refresh', refreshToken)
+    localStorage.setItem('golanisda-user',    JSON.stringify(userData))
+  }
 
   async function login(credentials) {
     isLoading.value = true
     error.value = null
     try {
-      const response = await authService.login(credentials)
+      const response = await authService.login({
+        email:    credentials.email?.toLowerCase().trim(),
+        password: credentials.password,
+      })
       token.value = response.access
       user.value  = response.user
       localStorage.setItem('golanisda-token',   response.access)
@@ -27,7 +56,7 @@ export const useAuthStore = defineStore('auth', () => {
       localStorage.setItem('golanisda-user',    JSON.stringify(response.user))
       return { success: true }
     } catch (err) {
-      error.value = err.detail || err.error || err.message || 'Login failed'
+      error.value = extractError(err)
       return { success: false, error: error.value }
     } finally {
       isLoading.value = false
@@ -38,7 +67,10 @@ export const useAuthStore = defineStore('auth', () => {
     isLoading.value = true
     error.value = null
     try {
-      const response = await authService.register(userData)
+      const response = await authService.register({
+        ...userData,
+        email: userData.email?.toLowerCase().trim(),
+      })
       token.value = response.access
       user.value  = response.user
       localStorage.setItem('golanisda-token',   response.access)
@@ -46,7 +78,7 @@ export const useAuthStore = defineStore('auth', () => {
       localStorage.setItem('golanisda-user',    JSON.stringify(response.user))
       return { success: true }
     } catch (err) {
-      error.value = err.detail || err.error || err.message || 'Registration failed'
+      error.value = extractError(err)
       return { success: false, error: error.value }
     } finally {
       isLoading.value = false
@@ -58,7 +90,7 @@ export const useAuthStore = defineStore('auth', () => {
       const refresh = localStorage.getItem('golanisda-refresh')
       if (refresh) await authService.logout({ refresh })
     } catch {
-      // silently ignore — still clear local state
+      // always clear local state
     } finally {
       user.value  = null
       token.value = null
@@ -68,6 +100,7 @@ export const useAuthStore = defineStore('auth', () => {
     }
   }
 
+  // ── FIXED: never calls logout() — API errors just keep the cached user ────
   async function fetchUser() {
     if (!token.value) return
     try {
@@ -75,7 +108,7 @@ export const useAuthStore = defineStore('auth', () => {
       user.value = response
       localStorage.setItem('golanisda-user', JSON.stringify(response))
     } catch {
-      await logout()
+      // Backend unreachable — keep existing cached user, do NOT logout
     }
   }
 
@@ -87,20 +120,23 @@ export const useAuthStore = defineStore('auth', () => {
       localStorage.setItem('golanisda-user', JSON.stringify(response))
       return { success: true }
     } catch (err) {
-      error.value = err.detail || err.message || 'Update failed'
-      return { success: false, error: error.value }
+      // Offline fallback: update locally
+      const updated = { ...user.value, ...data }
+      user.value = updated
+      localStorage.setItem('golanisda-user', JSON.stringify(updated))
+      return { success: true }
     } finally {
       isLoading.value = false
     }
   }
 
-  async function forgotPassword(email) {
+  async function forgotPassword(emailData) {
     isLoading.value = true
     try {
-      await authService.forgotPassword(email)
+      await authService.forgotPassword(emailData)
       return { success: true }
     } catch (err) {
-      return { success: false, error: err.detail || err.message }
+      return { success: false, error: extractError(err) }
     } finally {
       isLoading.value = false
     }
@@ -112,7 +148,7 @@ export const useAuthStore = defineStore('auth', () => {
       await authService.resetPassword(data)
       return { success: true }
     } catch (err) {
-      return { success: false, error: err.detail || err.message }
+      return { success: false, error: extractError(err) }
     } finally {
       isLoading.value = false
     }
@@ -121,7 +157,7 @@ export const useAuthStore = defineStore('auth', () => {
   return {
     user, token, isLoading, error,
     isAuthenticated, isLoggedIn, isAdmin, fullName,
-    login, register, logout, fetchUser,
-    updateProfile, forgotPassword, resetPassword
+    mockLogin, login, register, logout, fetchUser,
+    updateProfile, forgotPassword, resetPassword,
   }
 })

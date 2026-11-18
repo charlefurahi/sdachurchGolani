@@ -8,7 +8,7 @@
         <span class="badge badge-primary">{{ campaign.category }}</span>
       </div>
       <div v-if="campaign.featured" class="absolute top-3 right-3">
-        <span class="badge bg-gold-500 text-white">⭐ Featured</span>
+        <span class="badge bg-blue-700 text-white"><svg class="mr-1 h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path stroke-linejoin="round" d="m12 3 2.7 5.5 6.1.9-4.4 4.3 1 6.1-5.4-2.9-5.4 2.9 1-6.1-4.4-4.3 6.1-.9L12 3z"/></svg> Featured</span>
       </div>
     </div>
     <div class="p-5">
@@ -17,7 +17,7 @@
       <!-- Progress -->
       <div class="mb-4">
         <div class="flex justify-between text-sm mb-1.5">
-          <span class="font-semibold text-primary-600 dark:text-gold-400">{{ formatCurrency(campaign.raised, campaign.currency) }}</span>
+          <span class="font-semibold text-primary-600 dark:text-blue-500">{{ formatCurrency(campaign.raised, campaign.currency) }}</span>
           <span class="text-gray-500">of {{ formatCurrency(campaign.goal, campaign.currency) }}</span>
         </div>
         <div class="h-2.5 bg-gray-100 dark:bg-navy-700 rounded-full overflow-hidden">
@@ -29,8 +29,8 @@
       <div v-if="campaign.deadline" class="text-xs text-gray-400 mb-4">
         Deadline: {{ formatDate(campaign.deadline) }}
       </div>
-      <button class="btn btn-gold w-full justify-center" @click="$emit('donate', campaign)">
-        Donate Now 🙏
+      <button class="btn btn-primary w-full justify-center" @click="$emit('donate', campaign)">
+        Donate Now
       </button>
     </div>
   </article>

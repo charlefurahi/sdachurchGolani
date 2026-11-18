@@ -1,405 +1,139 @@
+@import "./variables.css";
+@import "./typography.css";
+@import "./components.css";
+@import "./responsive.css";
+@import "./animations.css";
+@import "./shared.css";
+@import "./theme.css";
+
+/*
+ * Tailwind was configured (tailwind.config.js, postcss.config.js) but never
+ * actually imported into the build — every dark:, grid-cols-*, rounded-2xl
+ * etc. class used across ~50 page/components files was rendering as nothing.
+ * This is the fix.
+ */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* =====================
-   CSS Custom Properties
-   ===================== */
-:root {
-  --color-primary: #1e3a8a;
-  --color-primary-light: #1e40af;
-  --color-gold: #c8971a;
-  --color-gold-light: #fbbf24;
-  --color-navy: #0f172a;
-  --transition-base: 0.3s ease;
-  --shadow-gold: 0 4px 20px rgba(200, 151, 26, 0.3);
-  --shadow-primary: 0 4px 20px rgba(30, 58, 138, 0.3);
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
-/* =====================
-   Base Styles
-   ===================== */
-@layer base {
-  html {
-    @apply scroll-smooth;
-  }
-
-  body {
-    @apply font-body antialiased;
-  }
-
-  h1, h2, h3 {
-    @apply font-heading;
-  }
-
-  h4, h5, h6 {
-    @apply font-body font-semibold;
-  }
-
-  *:focus-visible {
-    @apply outline-2 outline-offset-2 outline-gold-500;
-  }
-
-  ::selection {
-    @apply bg-primary-500 text-white;
-  }
-
-  /* Custom scrollbar */
-  ::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
-  }
-
-  ::-webkit-scrollbar-track {
-    @apply bg-gray-100 dark:bg-navy-800;
-  }
-
-  ::-webkit-scrollbar-thumb {
-    @apply bg-primary-500 rounded-full;
-  }
-
-  ::-webkit-scrollbar-thumb:hover {
-    @apply bg-primary-600;
-  }
+html {
+  scroll-behavior: smooth;
+  background: var(--color-bg);
 }
 
-/* =====================
-   Component Classes
-   ===================== */
-@layer components {
-  /* Buttons */
-  .btn {
-    @apply inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg font-body font-medium text-sm tracking-wide transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 cursor-pointer;
-  }
-
-  .btn-primary {
-    @apply btn bg-primary-500 text-white hover:bg-primary-600 focus-visible:ring-primary-500 shadow-md hover:shadow-primary-500/30 hover:shadow-lg active:scale-95;
-  }
-
-  .btn-gold {
-    @apply btn bg-gold-500 text-white hover:bg-gold-600 focus-visible:ring-gold-500 shadow-md hover:shadow-gold-500/30 hover:shadow-lg active:scale-95;
-  }
-
-  .btn-outline {
-    @apply btn border-2 border-primary-500 text-primary-500 hover:bg-primary-500 hover:text-white focus-visible:ring-primary-500 dark:border-primary-400 dark:text-primary-400 dark:hover:bg-primary-500 dark:hover:text-white;
-  }
-
-  .btn-outline-white {
-    @apply btn border-2 border-white text-white hover:bg-white hover:text-primary-800 focus-visible:ring-white;
-  }
-
-  .btn-ghost {
-    @apply btn text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-navy-700 focus-visible:ring-gray-400;
-  }
-
-  .btn-sm {
-    @apply px-4 py-2 text-xs;
-  }
-
-  .btn-lg {
-    @apply px-8 py-4 text-base;
-  }
-
-  /* Cards */
-  .card {
-    @apply bg-white dark:bg-navy-800 rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden;
-  }
-
-  .card-hover {
-    @apply card hover:-translate-y-1;
-  }
-
-  /* Section */
-  .section {
-    @apply py-16 md:py-24;
-  }
-
-  .section-sm {
-    @apply py-10 md:py-16;
-  }
-
-  .container-custom {
-    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
-  }
-
-  /* Gold divider */
-  .divider-gold {
-    @apply w-16 h-1 bg-gradient-to-r from-gold-400 to-gold-600 rounded-full;
-  }
-
-  .divider-gold-center {
-    @apply divider-gold mx-auto;
-  }
-
-  /* Badge */
-  .badge {
-    @apply inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold tracking-wide;
-  }
-
-  .badge-primary {
-    @apply badge bg-primary-100 text-primary-700 dark:bg-primary-900/40 dark:text-primary-300;
-  }
-
-  .badge-gold {
-    @apply badge bg-gold-100 text-gold-800 dark:bg-gold-900/40 dark:text-gold-300;
-  }
-
-  /* Input */
-  .input {
-    @apply w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-navy-600 bg-white dark:bg-navy-800 text-gray-900 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200;
-  }
-
-  .textarea {
-    @apply input resize-none;
-  }
-
-  .select {
-    @apply input appearance-none cursor-pointer;
-  }
-
-  .label {
-    @apply block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5;
-  }
-
-  /* Nav link */
-  .nav-link {
-    @apply relative text-sm font-medium tracking-wide text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-gold-400 transition-colors duration-200;
-  }
-
-  .nav-link.router-link-active {
-    @apply text-primary-600 dark:text-gold-400;
-  }
-
-  /* Section title styles */
-  .section-tag {
-    @apply font-accent text-xs tracking-[0.2em] uppercase text-gold-600 dark:text-gold-400;
-  }
-
-  .section-heading {
-    @apply font-heading text-3xl md:text-4xl lg:text-5xl font-bold text-navy-800 dark:text-white leading-tight;
-  }
-
-  .section-subheading {
-    @apply font-heading text-xl md:text-2xl font-light text-navy-600 dark:text-gray-300 italic;
-  }
-
-  /* Gradient text */
-  .text-gradient {
-    @apply bg-gradient-to-r from-primary-600 to-gold-500 bg-clip-text text-transparent;
-  }
-
-  /* Overlay */
-  .overlay-dark {
-    @apply absolute inset-0 bg-gradient-to-b from-navy-900/60 via-navy-900/40 to-navy-900/80;
-  }
-
-  /* Skeleton loader */
-  .skeleton {
-    @apply animate-pulse bg-gray-200 dark:bg-navy-700 rounded-lg;
-  }
-
-  /* Gold accent border */
-  .border-gold-accent {
-    @apply border-l-4 border-gold-500 pl-4;
-  }
-
-  /* Glass effect */
-  .glass {
-    @apply bg-white/10 backdrop-blur-md border border-white/20;
-  }
-
-  .glass-dark {
-    @apply bg-navy-900/80 backdrop-blur-md border border-navy-700/50;
-  }
+#app {
+  min-height: 100vh;
+  min-height: 100svh;
+  overflow-x: clip;
 }
 
-/* =====================
-   Utility Classes
-   ===================== */
-@layer utilities {
-  .text-shadow {
-    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
-  }
-
-  .text-shadow-sm {
-    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
-  }
-
-  .no-scrollbar::-webkit-scrollbar {
-    display: none;
-  }
-
-  .no-scrollbar {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-  }
-
-  /* Intersection observer animation triggers */
-  .reveal {
-    @apply opacity-0 translate-y-8 transition-all duration-700 ease-out;
-  }
-
-  .reveal.visible {
-    @apply opacity-100 translate-y-0;
-  }
-
-  .reveal-left {
-    @apply opacity-0 -translate-x-8 transition-all duration-700 ease-out;
-  }
-
-  .reveal-left.visible {
-    @apply opacity-100 translate-x-0;
-  }
-
-  .reveal-right {
-    @apply opacity-0 translate-x-8 transition-all duration-700 ease-out;
-  }
-
-  .reveal-right.visible {
-    @apply opacity-100 translate-x-0;
-  }
-
-  .delay-100 { transition-delay: 100ms; }
-  .delay-200 { transition-delay: 200ms; }
-  .delay-300 { transition-delay: 300ms; }
-  .delay-400 { transition-delay: 400ms; }
-  .delay-500 { transition-delay: 500ms; }
-  .delay-600 { transition-delay: 600ms; }
+body {
+  min-width: 320px;
+  margin: 0;
+  background: var(--color-bg);
+  color: var(--color-text-main);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  transition: background-color var(--duration-standard) var(--ease-standard),
+    color var(--duration-standard) var(--ease-standard);
 }
 
-/* =====================
-   Transitions
-   ===================== */
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.3s ease;
+/* Let page content shrink inside grid and flex layouts on narrow screens. */
+main,
+main > *,
+main section,
+main article,
+.site-container,
+.site-header__inner {
+  min-width: 0;
 }
 
-.fade-enter-from,
-.fade-leave-to {
-  opacity: 0;
+/* Long email addresses, links, and user supplied copy should wrap instead of
+   pushing the layout wider than the device. */
+p,
+a,
+label,
+button,
+input,
+textarea,
+th,
+td {
+  overflow-wrap: anywhere;
 }
 
-.fade-up-enter-active,
-.fade-up-leave-active {
-  transition: all 0.4s ease;
+body.menu-open {
+  overflow: hidden;
 }
 
-.fade-up-enter-from,
-.fade-up-leave-to {
-  opacity: 0;
-  transform: translateY(20px);
+img,
+svg,
+video {
+  display: block;
+  max-width: 100%;
 }
 
-.slide-left-enter-active,
-.slide-left-leave-active {
-  transition: all 0.35s ease;
+img {
+  height: auto;
 }
 
-.slide-left-enter-from {
-  opacity: 0;
-  transform: translateX(30px);
+button,
+input,
+textarea,
+select {
+  font: inherit;
 }
 
-.slide-left-leave-to {
-  opacity: 0;
-  transform: translateX(-30px);
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
 }
 
-.scale-enter-active,
-.scale-leave-active {
-  transition: all 0.25s ease;
+a {
+  color: inherit;
+  text-decoration: none;
 }
 
-.scale-enter-from,
-.scale-leave-to {
-  opacity: 0;
-  transform: scale(0.95);
+button {
+  border: 0;
 }
 
-/* Page transition */
-.page-enter-active,
-.page-leave-active {
-  transition: all 0.4s ease;
+:focus-visible {
+  outline: 3px solid var(--color-gold);
+  outline-offset: 3px;
 }
 
-.page-enter-from {
-  opacity: 0;
-  transform: translateY(16px);
+::selection {
+  background: var(--color-gold);
+  color: var(--color-navy-deep);
 }
 
-.page-leave-to {
-  opacity: 0;
-  transform: translateY(-16px);
+/* ── Dark theme base coverage ──────────────────────────────────────────
+   Pages that use plain elements (not Tailwind dark: classes) still need
+   readable text/backgrounds when .dark is active. */
+.dark {
+  color-scheme: dark;
 }
 
-/* =====================
-   Hero Slider
-   ===================== */
-.hero-slide {
-  position: absolute;
-  inset: 0;
-  transition: opacity 1.2s ease-in-out;
+.dark h1,
+.dark h2,
+.dark h3,
+.dark h4,
+.dark h5,
+.dark h6 {
+  color: var(--color-text-main);
 }
 
-.hero-slide.active {
-  opacity: 1;
-  z-index: 1;
+.dark a {
+  color: inherit;
 }
 
-.hero-slide.inactive {
-  opacity: 0;
-  z-index: 0;
-}
-
-/* =====================
-   Audio Player
-   ===================== */
-.audio-progress::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  appearance: none;
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
-  background: #c8971a;
-  cursor: pointer;
-}
-
-.audio-progress::-moz-range-thumb {
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
-  background: #c8971a;
-  cursor: pointer;
-  border: none;
-}
-
-/* =====================
-   Masonry Gallery
-   ===================== */
-.masonry-grid {
-  columns: 1;
-  gap: 1rem;
-}
-
-@media (min-width: 640px) {
-  .masonry-grid { columns: 2; }
-}
-
-@media (min-width: 1024px) {
-  .masonry-grid { columns: 3; }
-}
-
-.masonry-item {
-  break-inside: avoid;
-  margin-bottom: 1rem;
-}
-
-/* =====================
-   Print Styles
-   ===================== */
-@media print {
-  .no-print { display: none; }
-  body { font-size: 12pt; }
-  a { text-decoration: none; }
+.dark ::selection {
+  background: var(--color-gold);
+  color: var(--color-navy-deep);
 }

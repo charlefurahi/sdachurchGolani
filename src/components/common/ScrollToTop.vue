@@ -1,7 +1,7 @@
 <template>
   <Transition name="scale">
     <button v-if="isVisible" @click="scrollTop" aria-label="Scroll to top"
-      class="fixed bottom-6 right-6 z-30 w-12 h-12 bg-primary-600 hover:bg-gold-500 text-white rounded-full shadow-xl flex items-center justify-center transition-all duration-300 animate-pulse-gold">
+      class="fixed bottom-6 right-6 z-30 w-12 h-12 bg-primary-600 hover:bg-blue-700 text-white rounded-full shadow-xl flex items-center justify-center transition-all duration-300 animate-pulse-gold">
       <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 15l7-7 7 7"/></svg>
     </button>
   </Transition>

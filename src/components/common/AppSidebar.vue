@@ -1,0 +1,298 @@
+<template>
+  <!-- Overlay (mobile) -->
+  <Transition name="overlay-fade">
+    <div
+      v-if="appStore.isSidebarOpen && !appStore.isSidebarPinned"
+      class="sidebar-overlay"
+      @click="appStore.closeSidebar()"
+    />
+  </Transition>
+
+  <!-- Sidebar panel -->
+  <Transition name="sidebar-slide">
+    <aside
+      v-if="appStore.isSidebarOpen || appStore.isSidebarPinned"
+      id="golani-sidebar"
+      class="golani-sidebar"
+      :class="{ 'golani-sidebar--pinned': appStore.isSidebarPinned }"
+      aria-label="Navigation sidebar"
+    >
+      <!-- Header -->
+      <div class="sidebar__header">
+        <div class="sidebar__brand">
+          <img src="@/assets/logos/logo.png" alt="GolaniSDA" class="sidebar__logo" />
+          <div>
+            <p class="sidebar__brand-name">Golani</p>
+            <p class="sidebar__brand-sub">Seventh-Day Adventist Church</p>
+          </div>
+        </div>
+        <div class="sidebar__header-actions">
+          <button
+            @click="appStore.toggleSidebarPin()"
+            class="sidebar__pin-btn"
+            :class="{ 'sidebar__pin-btn--active': appStore.isSidebarPinned }"
+            title="Pin sidebar"
+            aria-label="Pin sidebar"
+          >
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="12" y1="17" x2="12" y2="22"/><path d="M5 17h14v-1.76a2 2 0 0 0-1.11-1.79l-1.78-.9A2 2 0 0 1 15 10.76V6h1a2 2 0 0 0 0-4H8a2 2 0 0 0 0 4h1v4.76a2 2 0 0 1-1.11 1.79l-1.78.9A2 2 0 0 0 5 15.24Z"/>
+            </svg>
+          </button>
+          <button @click="appStore.closeSidebar()" class="sidebar__close-btn" title="Close" aria-label="Close menu">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+              <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Scrollable body -->
+      <div class="sidebar__body">
+        <p class="sidebar__section-label">Menu</p>
+        <nav class="sidebar__nav">
+          <RouterLink
+            v-for="(link, i) in allLinks"
+            :key="link.to"
+            :to="link.to"
+            class="sidebar__nav-item"
+            :style="{ '--i': i }"
+            active-class="sidebar__nav-item--active"
+            exact-active-class="sidebar__nav-item--exact"
+            @click="handleNavClick"
+          >
+            <span class="sidebar__nav-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path :d="link.icon" /></svg>
+            </span>
+            <span class="sidebar__nav-label">{{ link.label }}</span>
+            <svg class="sidebar__nav-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+          </RouterLink>
+        </nav>
+
+        <RouterLink to="/dashboard" class="sidebar__account-link" @click="handleNavClick">
+          <span class="sidebar__nav-icon sidebar__nav-icon--gold">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round">
+              <circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-6 8-6s8 2 8 6"/>
+            </svg>
+          </span>
+          <span class="sidebar__account-text">
+            <b>My account</b>
+            <small>Sign in or open your dashboard</small>
+          </span>
+        </RouterLink>
+      </div>
+
+      <!-- Footer -->
+      <div class="sidebar__footer">
+        <div class="sidebar__contact">
+          <p class="sidebar__contact-label">Contact Us</p>
+          <div class="sidebar__contact-row">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 21s-7-6.1-7-11a7 7 0 0 1 14 0c0 4.9-7 11-7 11z"/>
+              <circle cx="12" cy="10" r="2.5"/>
+            </svg>
+            <span>{{ church.location }}</span>
+          </div>
+          <a v-if="churchLinks.email" :href="`mailto:${churchLinks.email}`" class="sidebar__contact-row">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="2" y="4" width="20" height="16" rx="2"/>
+              <path d="M2 6l10 7 10-7"/>
+            </svg>
+            <span>{{ churchLinks.email }}</span>
+          </a>
+          <a v-if="churchLinks.phone" :href="`tel:${churchLinks.phone}`" class="sidebar__contact-row">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 3a2 2 0 0 1-.5 2.1L8 10.1a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c1 .3 2 .5 3 .7a2 2 0 0 1 1.6 2z"/>
+            </svg>
+            <span>{{ churchLinks.phone }}</span>
+          </a>
+        </div>
+
+        <div class="sidebar__footer-row">
+          <div class="sidebar__socials">
+            <a v-if="churchLinks.facebook" :href="churchLinks.facebook" target="_blank" rel="noopener" class="sidebar__social" aria-label="Facebook">
+              <img src="@/assets/icons/facebook.png" alt="Facebook" />
+            </a>
+            <a v-if="churchLinks.instagram" :href="churchLinks.instagram" target="_blank" rel="noopener" class="sidebar__social" aria-label="Instagram">
+              <img src="@/assets/icons/instagram.png" alt="Instagram" />
+            </a>
+            <a v-if="churchLinks.youtube" :href="churchLinks.youtube" target="_blank" rel="noopener" class="sidebar__social" aria-label="YouTube">
+              <img src="@/assets/icons/youtube.png" alt="YouTube" />
+            </a>
+          </div>
+
+          <!-- Light / dark switch -->
+          <button
+            @click="appStore.toggleTheme()"
+            class="sidebar__theme-btn"
+            :class="{ 'is-dark': appStore.isDark }"
+            role="switch"
+            :aria-checked="appStore.isDark"
+            :title="appStore.isDark ? 'Switch to light mode' : 'Switch to dark mode'"
+          >
+            <span class="sidebar__theme-track">
+              <span class="sidebar__theme-thumb">
+                <svg v-if="appStore.isDark" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                <svg v-else width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+              </span>
+            </span>
+            <span class="sidebar__theme-text">{{ appStore.isDark ? 'Dark' : 'Light' }}</span>
+          </button>
+        </div>
+      </div>
+    </aside>
+  </Transition>
+</template>
+
+<script setup>
+import { onMounted, onBeforeUnmount } from 'vue'
+import { RouterLink } from 'vue-router'
+import { useAppStore } from '@/stores/app'
+import { churchLinks, church } from '@/constants/church'
+
+const appStore = useAppStore()
+
+// Flat, plain link list — no icons, no section headers, mirrors the
+// navbar's primary + "More" links in one continuous list.
+// Inline stroke icons (24x24 viewBox) so the sidebar needs no icon library.
+const allLinks = [
+  { to: '/',              label: 'Home',          icon: 'M3 11l9-8 9 8M5 10v10h5v-6h4v6h5V10' },
+  { to: '/about',         label: 'About',         icon: 'M12 8h.01M11 12h1v5h1M12 3a9 9 0 100 18 9 9 0 000-18z' },
+  { to: '/worship',       label: 'Worship',       icon: 'M12 3v18M7 8h10M5 21h14' },
+  { to: '/ministries',    label: 'Ministries',    icon: 'M16 11a3 3 0 100-6 3 3 0 000 6zM8 11a3 3 0 100-6 3 3 0 000 6zM2 20c0-3 3-5 6-5s6 2 6 5M14 15c3 0 8 1 8 5' },
+  { to: '/sermons',       label: 'Sermons',       icon: 'M12 14a3 3 0 003-3V6a3 3 0 00-6 0v5a3 3 0 003 3zM5 11a7 7 0 0014 0M12 18v3' },
+  { to: '/events',        label: 'Events',        icon: 'M4 6h16v14H4zM4 10h16M8 3v4M16 3v4' },
+  { to: '/leadership',    label: 'Leadership',    icon: 'M12 3l2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.3 6.8 19.1l1-5.8L3.5 9.2l5.9-.9z' },
+  { to: '/announcements', label: 'Announcements', icon: 'M4 10v4h3l7 4V6l-7 4zM18 9a4 4 0 010 6' },
+  { to: '/gallery',       label: 'Gallery',       icon: 'M3 5h18v14H3zM3 16l5-5 4 4 3-3 6 6M8.5 9.5h.01' },
+  { to: '/give',          label: 'Give / Donate', icon: 'M12 21s-8-5-8-11a4.5 4.5 0 018-2.8A4.5 4.5 0 0120 10c0 6-8 11-8 11z' },
+  { to: '/contact',       label: 'Contact',       icon: 'M3 6h18v12H3zM3 7l9 7 9-7' },
+]
+
+function handleNavClick() {
+  // On mobile, close after navigation
+  if (window.innerWidth < 1024) {
+    appStore.closeSidebar()
+  }
+}
+
+// Pinning is a desktop-only concept (the pin button itself is hidden below
+// 960px via CSS). If the window is resized down to mobile while pinned —
+// or the page loads there with a pin preference restored from a previous
+// session — unpin so we don't end up with a permanent rail eating half a
+// phone screen.
+function enforceMobilePin() {
+  if (appStore.isSidebarPinned && window.innerWidth <= 960) {
+    appStore.toggleSidebarPin()
+  }
+}
+
+onMounted(() => {
+  enforceMobilePin()
+  window.addEventListener('resize', enforceMobilePin)
+})
+
+onBeforeUnmount(() => {
+  window.removeEventListener('resize', enforceMobilePin)
+})
+</script>
+
+<style scoped>
+/* Overlay */
+.sidebar-overlay { position: fixed; inset: 0; z-index: 150; background: rgba(16, 38, 56, 0.45); backdrop-filter: blur(4px); }
+.overlay-fade-enter-active, .overlay-fade-leave-active { transition: opacity 0.3s; }
+.overlay-fade-enter-from, .overlay-fade-leave-to { opacity: 0; }
+
+/* Panel: light surface, navy text, gold accents */
+.golani-sidebar {
+  position: fixed; top: var(--nav-height); right: 0; bottom: 0; width: min(88vw, 330px); z-index: 151;
+  display: flex; flex-direction: column;
+  background: var(--color-surface); color: var(--color-text-main);
+  border-left: 1px solid var(--color-border);
+  border-radius: 22px 0 0 0;
+  box-shadow: -18px 0 50px rgba(16, 38, 56, 0.18);
+  overflow: hidden;
+}
+.golani-sidebar::before { /* gold hairline at the top edge */
+  content: ''; position: absolute; left: 0; right: 0; top: 0; height: 3px;
+  background: linear-gradient(90deg, var(--color-navy), var(--color-gold));
+}
+.golani-sidebar--pinned { border-radius: 0; box-shadow: none; }
+.sidebar-slide-enter-active, .sidebar-slide-leave-active { transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1); }
+.sidebar-slide-enter-from, .sidebar-slide-leave-to { transform: translateX(105%); }
+
+/* Header */
+.sidebar__header { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 18px 16px 14px 20px; }
+.sidebar__brand { display: flex; align-items: center; gap: 12px; min-width: 0; }
+.sidebar__logo { width: 42px; height: 42px; object-fit: contain; border-radius: 12px; background: var(--color-bg-alt); padding: 4px; }
+.sidebar__brand-name { margin: 0; font-weight: 700; font-size: 1.05rem; color: var(--color-heading); line-height: 1.1; }
+.sidebar__brand-sub { margin: 2px 0 0; font-size: 0.68rem; color: var(--color-text-muted); letter-spacing: 0.02em; }
+.sidebar__header-actions { display: flex; gap: 6px; }
+.sidebar__pin-btn, .sidebar__close-btn {
+  width: 36px; height: 36px; display: grid; place-items: center; border-radius: 50%; cursor: pointer;
+  background: var(--color-bg-alt); color: var(--color-heading);
+  transition: background 0.25s, color 0.25s, transform 0.25s;
+}
+.sidebar__pin-btn:hover, .sidebar__close-btn:hover { background: var(--color-gold); color: #16324a; transform: rotate(8deg); }
+.sidebar__pin-btn--active { background: var(--color-gold); color: #16324a; }
+@media (max-width: 960px) { .sidebar__pin-btn { display: none; } }
+
+/* Body */
+.sidebar__body { flex: 1; min-height: 0; overflow-y: auto; overscroll-behavior: contain; padding: 4px 12px 12px; }
+.sidebar__section-label { margin: 6px 10px 8px; font-size: 0.66rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--color-text-faint); }
+.sidebar__nav { display: grid; gap: 3px; }
+.sidebar__nav-item {
+  position: relative; display: flex; align-items: center; gap: 12px; min-height: 48px; padding: 6px 10px; border-radius: 14px;
+  color: var(--color-text-main); font-size: 0.93rem; font-weight: 500;
+  transition: background 0.25s, color 0.25s, transform 0.25s;
+  animation: sbIn 0.45s cubic-bezier(0.22, 1, 0.36, 1) both; animation-delay: calc(var(--i, 0) * 28ms + 80ms);
+}
+@keyframes sbIn { from { opacity: 0; transform: translateX(14px); } to { opacity: 1; transform: none; } }
+.sidebar__nav-icon {
+  width: 36px; height: 36px; flex-shrink: 0; display: grid; place-items: center; border-radius: 11px;
+  background: var(--color-bg-alt); color: var(--color-heading); transition: background 0.25s, color 0.25s;
+}
+.sidebar__nav-icon--gold { background: var(--color-gold); color: #16324a; }
+.sidebar__nav-label { flex: 1; }
+.sidebar__nav-arrow { opacity: 0; transform: translateX(-4px); transition: opacity 0.25s, transform 0.25s; color: var(--color-text-faint); }
+.sidebar__nav-item:hover { background: var(--color-bg-alt); }
+.sidebar__nav-item:hover .sidebar__nav-icon { background: var(--color-navy); color: #fff; }
+.sidebar__nav-item:hover .sidebar__nav-arrow { opacity: 1; transform: none; }
+.sidebar__nav-item--active { background: var(--color-bg-alt); color: var(--color-heading); font-weight: 600; }
+.sidebar__nav-item--active .sidebar__nav-icon { background: var(--color-navy); color: #fff; }
+.sidebar__nav-item--active::before { content: ''; position: absolute; left: -12px; top: 12px; bottom: 12px; width: 4px; border-radius: 0 4px 4px 0; background: var(--color-gold); }
+/* "/" would match every route, so only highlight Home when it is exact */
+.sidebar__nav-item[href='/']:not(.sidebar__nav-item--exact) { background: transparent; font-weight: 500; }
+.sidebar__nav-item[href='/']:not(.sidebar__nav-item--exact)::before { display: none; }
+.sidebar__nav-item[href='/']:not(.sidebar__nav-item--exact) .sidebar__nav-icon { background: var(--color-bg-alt); color: var(--color-heading); }
+.sidebar__nav-item[href='/']:not(.sidebar__nav-item--exact):hover { background: var(--color-bg-alt); }
+
+.sidebar__account-link {
+  display: flex; align-items: center; gap: 12px; margin-top: 14px; padding: 12px; border-radius: 16px;
+  background: var(--color-gold-10); border: 1px solid var(--color-gold-20); transition: transform 0.25s, box-shadow 0.25s;
+}
+.sidebar__account-link:hover { transform: translateY(-2px); box-shadow: var(--shadow-soft); }
+.sidebar__account-text { display: grid; line-height: 1.25; }
+.sidebar__account-text b { font-size: 0.9rem; color: var(--color-heading); }
+.sidebar__account-text small { font-size: 0.72rem; color: var(--color-text-muted); }
+
+/* Footer */
+.sidebar__footer { padding: 14px 18px 18px; border-top: 1px solid var(--color-border); background: var(--color-bg-alt); }
+.sidebar__contact-label { margin: 0 0 8px; font-size: 0.66rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--color-text-faint); }
+.sidebar__contact-row { display: flex; align-items: flex-start; gap: 9px; margin-bottom: 6px; font-size: 0.78rem; color: var(--color-text-muted); }
+.sidebar__contact-row svg { margin-top: 2px; flex-shrink: 0; color: var(--color-heading); }
+a.sidebar__contact-row:hover { color: var(--color-heading); }
+.sidebar__footer-row { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-top: 12px; }
+.sidebar__socials { display: flex; gap: 8px; }
+.sidebar__social { width: 34px; height: 34px; display: grid; place-items: center; border-radius: 50%; background: var(--color-surface); border: 1px solid var(--color-border); transition: transform 0.25s, border-color 0.25s; }
+.sidebar__social:hover { transform: translateY(-2px); border-color: var(--color-gold); }
+.sidebar__social img { width: 16px; height: 16px; object-fit: contain; }
+
+/* Theme switch */
+.sidebar__theme-btn { display: inline-flex; align-items: center; gap: 8px; padding: 4px 10px 4px 4px; border-radius: 999px; cursor: pointer; background: var(--color-surface); border: 1px solid var(--color-border); color: var(--color-text-main); font-size: 0.74rem; font-weight: 600; }
+.sidebar__theme-track { position: relative; width: 38px; height: 22px; border-radius: 999px; background: var(--color-border-strong); transition: background 0.3s; }
+.sidebar__theme-thumb { position: absolute; top: 2px; left: 2px; width: 18px; height: 18px; display: grid; place-items: center; border-radius: 50%; background: var(--color-gold); color: #16324a; transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1); }
+.sidebar__theme-btn.is-dark .sidebar__theme-track { background: var(--color-navy); }
+.sidebar__theme-btn.is-dark .sidebar__theme-thumb { transform: translateX(16px); }
+
+@media (prefers-reduced-motion: reduce) { .sidebar__nav-item { animation: none; } }
+</style>

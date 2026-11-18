@@ -1,0 +1,27 @@
+@media (max-width: 640px) {
+  :root {
+    --nav-height: 68px;
+  }
+
+  .site-section {
+    padding-block: 3.5rem;
+  }
+
+  .text-display {
+    font-size: clamp(2.35rem, 14vw, 4rem);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

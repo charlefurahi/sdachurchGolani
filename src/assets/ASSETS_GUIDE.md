@@ -46,10 +46,10 @@ src/assets/
 ### pastors/
 | Filename | Dimensions | Description |
 |----------|-----------|-------------|
-| pastor-main.jpg | 400x500 | Senior Pastor Emmanuel Golani |
-| elder-1.jpg | 400x500 | Elder David Mwaura |
-| elder-2.jpg | 400x500 | Elder James Omondi |
-| deaconess-1.jpg | 400x500 | Deaconess Sarah Nkirote |
+| pastor-main.jpg | 400x500 | Senior Pastor Emmanuel Kamba |
+| elder-1.jpg | 400x500 | Elder Simon Makoye |
+| elder-2.jpg | 400x500 | Elder Mike Ntimbwa |
+| deaconess-1.jpg | 400x500 | Deaconess  |
 
 ### gallery/
 | Filename | Dimensions | Description |
@@ -81,7 +81,7 @@ src/assets/
 
 Place sermon MP3 files in audio/ directory:
 - Format: MP3 (128kbps minimum, 192kbps recommended)
-- Naming: sermon-YYYY-MM-DD.mp3
+- Naming : sermon-YYYY-MM-DD.mp3
 - Maximum: 100MB per file (consider cloud storage for large archives)
 
 ## Video

@@ -1,0 +1,94 @@
+:root {
+  /*
+   * Golani SDA brand palette (final):
+   *   Main background  #FAFBFC   Primary navy   #16324A   Secondary bg #EFF4F7
+   *   Accent gold      #F4D03F   Text           #1B2935   Footer       #102638
+   * Dark navy is reserved for the footer, text and the hero/banner shade.
+   * Cards, panels and sections stay light.
+   */
+  --color-navy-deep: #102638;   /* footer background, deepest navy */
+  --color-navy: #16324a;        /* primary brand navy */
+  --color-navy-dark: #0c1d2b;
+  --color-navy-soft: #2c4a63;
+
+  --color-gold: #f4d03f;
+  --color-gold-dark: #d4af1f;
+  --color-gold-soft: #f7dd6d;
+  --color-gold-ink: #8a6d00;    /* gold-family text that is readable on light backgrounds */
+
+  --color-white: #ffffff;
+
+  --color-navy-05: rgba(22, 50, 74, 0.05);
+  --color-navy-10: rgba(22, 50, 74, 0.10);
+  --color-navy-20: rgba(22, 50, 74, 0.20);
+  --color-gold-10: rgba(244, 208, 63, 0.12);
+  --color-gold-20: rgba(244, 208, 63, 0.24);
+
+  /* ── Semantic / theme-aware tokens (prefer these in components) ─────── */
+  --color-bg: #fafbfc;
+  --color-bg-alt: #eff4f7;
+  --color-surface: #ffffff;       /* cards: always light in light mode */
+  --color-surface-alt: #eff4f7;
+  --color-text-main: #1b2935;
+  --color-text-muted: rgba(27, 41, 53, 0.70);
+  --color-text-faint: rgba(27, 41, 53, 0.50);
+  --color-heading: #16324a;
+  --color-border: rgba(22, 50, 74, 0.12);
+  --color-border-strong: rgba(22, 50, 74, 0.22);
+  --color-footer: #102638;   /* reserved for the footer and text accents */
+  --color-on-footer: rgba(255, 255, 255, 0.88);
+
+  --font-sans: "Poppins", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-display: "Outfit", "Poppins", system-ui, sans-serif;
+
+  --container-width: 1200px;
+  --gutter: clamp(1rem, 3vw, 2rem);
+
+  --radius-sm: 0.4rem;
+  --radius-md: 0.65rem;
+  --radius-lg: 0.85rem;
+  --radius-xl: 1.1rem;
+
+  --shadow-soft: 0 12px 35px rgba(22, 50, 74, 0.08);
+  --shadow-lift: 0 18px 50px rgba(22, 50, 74, 0.14);
+
+  --nav-height: 76px;
+
+  --ease-standard: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --duration-fast: 180ms;
+  --duration-standard: 300ms;
+
+  /* Legacy name kept so existing inline styles keep working, but it is now a LIGHT card tint. */
+  --gradient-card-dark: linear-gradient(135deg, #ffffff 0%, #eff4f7 100%);
+  --gradient-card-light: linear-gradient(135deg, #ffffff 0%, #eff4f7 100%);
+  --gradient-navy: linear-gradient(135deg, #16324a 0%, #102638 100%);
+  --wave-fill: var(--color-bg);
+  --gradient-page-hero: linear-gradient(135deg, #fffdf7 0%, #eff4f7 100%);
+}
+
+/* ── Dark theme ────────────────────────────────────────────────────────────
+   Toggled by adding `.dark` to <html> (see stores/app.js). Every surface gets
+   an intentional value; nothing is simply inverted. */
+:root.dark {
+  --color-bg: #0e1b27;
+  --color-bg-alt: #12263a;
+  --color-surface: #172f45;
+  --color-surface-alt: #1c3750;
+  --color-text-main: #eef3f7;
+  --color-text-muted: rgba(238, 243, 247, 0.76);
+  --color-text-faint: rgba(238, 243, 247, 0.55);
+  --color-heading: #ffffff;
+  --color-border: rgba(255, 255, 255, 0.12);
+  --color-border-strong: rgba(255, 255, 255, 0.22);
+  --color-footer: #183d58;
+  --color-gold-ink: #f4d03f;
+  --color-navy-05: rgba(255, 255, 255, 0.05);
+  --color-navy-10: rgba(255, 255, 255, 0.10);
+  --color-navy-20: rgba(255, 255, 255, 0.20);
+
+  --gradient-card-dark: linear-gradient(135deg, #172f45 0%, #1c3750 100%);
+  --gradient-card-light: linear-gradient(135deg, #172f45 0%, #1c3750 100%);
+
+  --shadow-soft: 0 12px 35px rgba(0, 0, 0, 0.35);
+  --shadow-lift: 0 18px 50px rgba(0, 0, 0, 0.45);
+}

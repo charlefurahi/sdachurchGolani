@@ -1,6 +1,11 @@
 export function formatDate(dateStr, options = {}) {
+  if (!dateStr) return ''
+  // If it's a date-only string (YYYY-MM-DD), append noon UTC to avoid timezone shift
+  const normalized = /^\d{4}-\d{2}-\d{2}$/.test(dateStr) ? dateStr + 'T12:00:00Z' : dateStr
+  const d = new Date(normalized)
+  if (isNaN(d.getTime())) return ''
   const defaults = { year: 'numeric', month: 'long', day: 'numeric' }
-  return new Date(dateStr).toLocaleDateString('en-KE', { ...defaults, ...options })
+  return d.toLocaleDateString('en-TZ', { ...defaults, ...options })
 }
 
 export function formatTime(timeStr) {
@@ -15,8 +20,8 @@ export function truncate(text, length = 120) {
   return text.length > length ? text.slice(0, length) + '...' : text
 }
 
-export function formatCurrency(amount, currency = 'KES') {
-  return new Intl.NumberFormat('en-KE', { style: 'currency', currency }).format(amount)
+export function formatCurrency(amount, currency = 'TZS') {
+  return new Intl.NumberFormat('en-TZ', { style: 'currency', currency }).format(amount)
 }
 
 export function progressPercent(raised, goal) {

@@ -1,8 +1,9 @@
 import api from './api'
 
 export default {
-  getCampaigns: ()      => api.get('/donations/campaigns'),
-  donate:       (data)  => api.post('/donations/give', data),
-  getReceipt:   (id)    => api.get(`/donations/receipt/${id}`),
-  getHistory:   ()      => api.get('/donations/history'),
+  getAll:       (params) => api.get('/donations/', { params }),
+  create:       (data)   => api.post('/donations/', data),
+  getStats:     ()       => api.get('/donations/stats/'),
+  verify:       (ref)    => api.post('/donations/verify/', { reference: ref }),
+  getCampaigns: (params) => api.get('/donations/campaigns/', { params }),
 }

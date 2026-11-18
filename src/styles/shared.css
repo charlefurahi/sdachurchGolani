@@ -1,0 +1,274 @@
+/*
+ * Shared component classes.
+ *
+ * A number of pages (Events, Sermons, Contact, About, Leadership,
+ * Announcements, Gallery, Donations, MinistryDetail, auth pages) already
+ * reference class names like .page-hero, .container-custom, .card-hover,
+ * .btn-primary, .section-tag, .divider-blue-center, .input/.select/.textarea,
+ * .badge-primary — none of which were defined anywhere in the project.
+ * This file defines them once, on the brand tokens, with light + dark
+ * variants, so every page that already uses these names picks up real
+ * styling without needing markup changes.
+ */
+
+/* ── Layout helpers ────────────────────────────────────────────────────── */
+
+.container-custom {
+  width: min(calc(100% - 2.5rem), var(--container-width));
+  margin-inline: auto;
+}
+
+@media (max-width: 480px) {
+  .container-custom {
+    width: min(calc(100% - 2rem), var(--container-width));
+  }
+}
+
+.section {
+  padding-block: clamp(3rem, 6vw, 5rem);
+}
+
+/* ── Page hero / breadcrumb header ────────────────────────────────────────
+   Compact by design: a tall photographic hero was previously used here
+   (min-height: 68vh, up to 144px headings) which is what the brief calls
+   out directly. This version matches the reference screenshots: a short
+   navy band with a breadcrumb + a controlled title size. */
+
+.page-hero {
+  position: relative;
+  padding: clamp(2.5rem, 6vw, 3.5rem) 0 clamp(1.75rem, 4vw, 2.5rem);
+  background: var(--gradient-page-hero);
+  color: var(--color-text-main);
+  overflow: hidden;
+}
+
+.page-hero__inner {
+  position: relative;
+  z-index: 1;
+}
+
+.page-hero .section-tag {
+  color: var(--color-gold-ink);
+}
+
+.page-hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2.25rem, 4.8vw, 3.6rem);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  color: var(--color-footer);
+}
+
+.page-hero p {
+  color: var(--color-text-muted);
+}
+
+.page-hero__breadcrumb {
+  margin-bottom: 0.85rem;
+  font-size: 0.78rem;
+}
+
+.page-hero__breadcrumb a,
+.page-hero__breadcrumb span {
+  color: var(--color-text-muted);
+}
+
+.page-hero__breadcrumb a:hover {
+  color: var(--color-gold);
+}
+
+.page-hero__breadcrumb .current {
+  color: var(--color-footer);
+  font-weight: 500;
+}
+
+/* ── Eyebrow / kicker labels ──────────────────────────────────────────── */
+
+.section-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-gold-dark);
+}
+
+.dark .section-tag {
+  color: var(--color-gold);
+}
+
+.divider-blue-center {
+  width: 44px;
+  height: 3px;
+  margin-inline: auto;
+  background: var(--color-gold);
+  border-radius: 2px;
+}
+
+/* ── Cards ─────────────────────────────────────────────────────────────── */
+
+.card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-soft);
+  transition: box-shadow var(--duration-standard) var(--ease-standard),
+    transform var(--duration-standard) var(--ease-standard),
+    border-color var(--duration-standard) var(--ease-standard);
+}
+
+.card-hover {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-soft);
+  transition: box-shadow var(--duration-standard) var(--ease-standard),
+    transform var(--duration-standard) var(--ease-standard),
+    border-color var(--duration-standard) var(--ease-standard);
+}
+
+.card-hover:hover {
+  box-shadow: var(--shadow-lift);
+  border-color: var(--color-border-strong);
+  transform: translateY(-3px);
+}
+
+/* ── Buttons ───────────────────────────────────────────────────────────── */
+
+.btn-primary,
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-height: 42px;
+  padding: 0.65rem 1.2rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.86rem;
+  font-weight: 600;
+  border: 1px solid transparent;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color var(--duration-fast) var(--ease-standard),
+    color var(--duration-fast) var(--ease-standard),
+    border-color var(--duration-fast) var(--ease-standard),
+    transform var(--duration-fast) var(--ease-standard);
+}
+
+.btn-primary {
+  background: var(--color-navy-deep);
+  color: var(--color-white);
+}
+
+.btn-primary:hover {
+  background: var(--color-navy);
+  transform: translateY(-1px);
+}
+
+.dark .btn-primary {
+  background: var(--color-gold);
+  color: var(--color-navy-deep);
+}
+
+.dark .btn-primary:hover {
+  background: var(--color-gold-soft);
+}
+
+.btn-secondary {
+  background: transparent;
+  border-color: var(--color-border-strong);
+  color: var(--color-text-main);
+}
+
+.btn-secondary:hover {
+  border-color: var(--color-navy-deep);
+}
+
+.dark .btn-secondary:hover {
+  border-color: var(--color-gold);
+  color: var(--color-gold);
+}
+
+/* ── Badges ────────────────────────────────────────────────────────────── */
+
+.badge-primary {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.3rem 0.7rem;
+  border-radius: 100px;
+  background: var(--color-gold);
+  color: var(--color-navy-deep);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+/* ── Form fields ───────────────────────────────────────────────────────── */
+
+.label {
+  display: block;
+  margin-bottom: 0.4rem;
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--color-text-main);
+}
+
+.input,
+.select,
+.textarea {
+  width: 100%;
+  padding: 0.7rem 0.85rem;
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-sm);
+  background: var(--color-surface);
+  color: var(--color-text-main);
+  font: inherit;
+  font-size: 0.92rem;
+  transition: border-color var(--duration-fast) var(--ease-standard);
+}
+
+.textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.input:focus,
+.select:focus,
+.textarea:focus {
+  outline: none;
+  border-color: var(--color-gold-dark);
+}
+
+.dark .input:focus,
+.dark .select:focus,
+.dark .textarea:focus {
+  border-color: var(--color-gold);
+}
+
+.input::placeholder,
+.textarea::placeholder {
+  color: var(--color-text-faint);
+}
+
+/* ── Skeleton loading state ───────────────────────────────────────────── */
+
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--color-surface-alt) 25%,
+    var(--color-border) 37%,
+    var(--color-surface-alt) 63%
+  );
+  background-size: 400% 100%;
+  animation: skeleton-loading 1.4s ease infinite;
+  border-radius: var(--radius-sm);
+}
+
+@keyframes skeleton-loading {
+  0% { background-position: 100% 50%; }
+  100% { background-position: 0 50%; }
+}

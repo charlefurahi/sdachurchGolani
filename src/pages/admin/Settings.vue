@@ -32,7 +32,7 @@
           <span>YouTube API</span><span class="badge-primary text-xs">Configure in .env</span>
         </div>
         <div class="flex items-center justify-between p-3 bg-gray-50 dark:bg-navy-800 rounded-xl">
-          <span>M-Pesa / Payment</span><span class="badge bg-gold-100 text-gold-700 text-xs">Pending integration</span>
+          <span>M-Pesa / Payment</span><span class="badge bg-blue-50 text-gold-700 text-xs">Pending integration</span>
         </div>
       </div>
     </div>

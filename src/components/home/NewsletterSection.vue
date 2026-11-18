@@ -1,21 +1,21 @@
 <template>
-  <section class="section-sm bg-gradient-to-br from-primary-700 via-primary-800 to-navy-900 relative overflow-hidden">
-    <div class="absolute inset-0 bg-hero-pattern opacity-20"></div>
+  <section class="section-sm relative overflow-hidden" style="background: var(--gradient-page-hero)">
+    <div class="absolute inset-0 bg-hero-pattern opacity-15"></div>
     <div class="container-custom relative">
       <div class="max-w-2xl mx-auto text-center">
-        <p class="section-tag text-gold-300 mb-3">Stay Updated</p>
+        <p class="section-tag !text-gold-400 mb-3">Stay Updated</p>
         <h2 class="font-heading text-3xl md:text-4xl font-bold text-white mb-4">Join Our Weekly Newsletter</h2>
-        <p class="text-blue-200 mb-8">Receive sermon summaries, upcoming events, prayer requests, and church news delivered to your inbox every week.</p>
+        <p class="text-white/70 mb-8">Receive sermon summaries, upcoming events, prayer requests, and church news delivered to your inbox every week.</p>
         <form @submit.prevent="subscribe" class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
           <input v-model="email" type="email" placeholder="Enter your email address" required
-            class="flex-1 px-5 py-3.5 rounded-xl bg-white/10 backdrop-blur border border-white/20 text-white placeholder-blue-200 focus:outline-none focus:border-gold-400 transition-colors" />
+            class="flex-1 px-5 py-3.5 rounded-xl bg-white/10 backdrop-blur border border-white/20 text-white placeholder-white/60 focus:outline-none focus:border-gold-400 transition-colors" />
           <button type="submit" :disabled="loading"
-            class="px-6 py-3.5 bg-gold-500 hover:bg-gold-400 text-white font-semibold rounded-xl transition-all duration-200 disabled:opacity-60 flex-shrink-0">
+            class="px-6 py-3.5 bg-white text-navy-800 font-semibold rounded-xl transition-all duration-200 disabled:opacity-60 flex-shrink-0 hover:bg-navy-50">
             {{ loading ? 'Subscribing...' : 'Subscribe' }}
           </button>
         </form>
-        <p v-if="success" class="text-gold-300 mt-4 text-sm">You're subscribed! God bless you.</p>
-        <p class="text-blue-300 text-xs mt-4">No spam. Unsubscribe anytime. We respect your privacy.</p>
+        <p v-if="success" class="text-white/70 mt-4 text-sm">You're subscribed! God bless you. 🙏</p>
+        <p class="text-gold-400 text-xs mt-4">No spam. Unsubscribe anytime. We respect your privacy.</p>
       </div>
     </div>
   </section>

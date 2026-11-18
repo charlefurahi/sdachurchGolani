@@ -1,12 +1,12 @@
 export const formatDate = (dateStr, options = {}) => {
   const date = new Date(dateStr)
-  return date.toLocaleDateString('en-KE', {
+  return date.toLocaleDateString('en-TZ', {
     year: 'numeric', month: 'long', day: 'numeric', ...options
   })
 }
 
-export const formatCurrency = (amount, currency = 'KES') => {
-  return new Intl.NumberFormat('en-KE', { style: 'currency', currency }).format(amount)
+export const formatCurrency = (amount, currency = 'TZS') => {
+  return new Intl.NumberFormat('en-TZ', { style: 'currency', currency }).format(amount)
 }
 
 export const truncate = (text, length = 120) => {

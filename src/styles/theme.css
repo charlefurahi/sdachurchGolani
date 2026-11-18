@@ -1,0 +1,118 @@
+/* Light, image-led church identity. Deep navy is reserved for footer/text accents. */
+:root {
+  --color-footer: #102638;
+  --color-heading: #102638;
+  --color-navy: #315d78;
+  --color-navy-deep: #102638;
+  --color-bg: #fbfaf7;
+  --color-bg-alt: #f1f5f6;
+  --color-surface: #fff;
+  --color-surface-alt: #f7f8f6;
+  --color-gold: #edc64b;
+  --color-gold-dark: #a87812;
+  --color-border: rgba(16, 38, 56, .10);
+  --color-border-strong: rgba(16, 38, 56, .20);
+  --shadow-soft: 0 8px 28px rgba(16, 38, 56, .06);
+  --shadow-lift: 0 18px 42px rgba(16, 38, 56, .12);
+}
+
+html, body { background: var(--color-bg); }
+h1, h2, h3, h4, h5, h6 { font-family: var(--font-display); color: var(--color-footer); }
+.font-heading { font-family: var(--font-display) !important; }
+.page-hero { background: linear-gradient(135deg, #fffdf7, #eef4f5); color: var(--color-text-main); }
+.page-hero h1 { color: var(--color-footer) !important; }
+.page-hero p { color: var(--color-text-muted) !important; }
+.page-hero .section-tag { color: var(--color-gold-dark); }
+.page-hero .divider-blue-center { margin-inline: auto; }
+
+/* Restrained wave transitions on the homepage; content stays bright. */
+.home-section:not(#welcome), .home-worship, .home-next, .site-footer { position: relative; --wave-h: clamp(24px, 3.5vw, 48px); }
+.home-section:not(#welcome)::before, .home-worship::before, .home-next::before, .site-footer::before {
+  content: ''; position: absolute; left: 0; right: 0; height: var(--wave-h);
+  background: var(--wave-fill, var(--color-bg)); pointer-events: none;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 100' preserveAspectRatio='none'%3E%3Cpath d='M0 100V62C200 8 420 4 660 44s520 60 780-8V100Z'/%3E%3C/svg%3E") center / 100% 100% no-repeat;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 100' preserveAspectRatio='none'%3E%3Cpath d='M0 100V62C200 8 420 4 660 44s520 60 780-8V100Z'/%3E%3C/svg%3E") center / 100% 100% no-repeat;
+  top: 1px; transform: translateY(-100%);
+}
+.home-section:not(.home-section--alt) { background: var(--color-bg); --wave-fill: var(--color-bg); }
+.home-section--alt, .home-next { background: var(--color-bg-alt); --wave-fill: var(--color-bg-alt); }
+.home-worship { background: #edf3f3 !important; color: var(--color-text-main); --wave-fill: #edf3f3; }
+.home-worship h1, .home-worship h2, .home-worship h3 { color: var(--color-footer); }
+.home-worship p { color: var(--color-text-muted); }
+.site-section--navy, .site-section--deep { background: var(--color-bg-alt); color: var(--color-text-main); }
+.site-section--navy h1, .site-section--navy h2, .site-section--navy h3,
+.site-section--deep h1, .site-section--deep h2, .site-section--deep h3 { color: var(--color-footer); }
+.story-panel--navy { background: #edf3f3 !important; color: var(--color-text-main) !important; }
+.story-panel--navy .story-panel__title, .story-panel--navy .story-panel__copy { color: var(--color-footer) !important; }
+.story-panel--navy .section-tag { color: var(--color-gold-dark); }
+
+/* Cards and controls feel crisp at rest and lift subtly on hover. */
+.card, .card-hover, .sermon-card, .announcement-card, .event-card, .ec, .ministry-item,
+.leader-card, .donation-card, .project-card, .gallery-card {
+  background: var(--color-surface); color: var(--color-text-main); border-color: var(--color-border);
+  box-shadow: var(--shadow-soft); transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease;
+}
+.card:hover, .card-hover:hover, .sermon-card:hover, .announcement-card:hover, .event-card:hover,
+.ec:hover, .ministry-item:hover, .leader-card:hover, .donation-card:hover, .project-card:hover, .gallery-card:hover {
+  transform: translateY(-4px); box-shadow: var(--shadow-lift); border-color: rgba(16, 38, 56, .18);
+}
+.btn-primary, .button--primary { --lq-fill: var(--color-gold); --lq-ink: var(--color-footer); }
+.btn-primary:hover, .button--primary:hover { color: var(--color-footer); }
+.btn-secondary, .button--outline-light { --lq-fill: var(--color-footer); --lq-ink: #fff; }
+.site-footer { background: var(--color-footer) !important; color: var(--color-on-footer); --wave-fill: var(--color-footer); }
+.site-footer__brand, .site-footer h2 { color: #fff; }
+.site-footer__link, .site-footer__intro { color: var(--color-on-footer); }
+.site-footer__link:hover { color: var(--color-gold); }
+.site-footer__top { padding-top: clamp(2.5rem, 5vw, 4rem); }
+.site-header { background: rgba(251, 250, 247, .96); color: var(--color-footer); border-bottom: 1px solid var(--color-border); }
+.site-header--over-hero { background: rgba(251, 250, 247, .86); backdrop-filter: blur(14px); }
+.site-header--scrolled { background: rgba(251, 250, 247, .97); box-shadow: 0 8px 24px rgba(16, 38, 56, .08); }
+.site-nav__link { color: rgba(16, 38, 56, .8); }
+.site-nav__link:hover, .site-nav__link.router-link-active { color: var(--color-footer); }
+.site-menu-button { border-color: var(--color-border-strong); color: var(--color-footer); }
+.site-brand__sub { color: rgba(16, 38, 56, .62); }
+
+/* Dark mode keeps deep church tones while raising copy contrast. */
+:root.dark body { background: var(--color-bg); color: var(--color-text-main); }
+:root.dark h1, :root.dark h2, :root.dark h3, :root.dark h4, :root.dark h5, :root.dark h6 { color: #f2f6f8; }
+:root.dark .page-hero { background: linear-gradient(135deg, #172f45, #203d51); color: #f2f6f8; }
+:root.dark .page-hero h1, :root.dark .page-hero p { color: #f2f6f8 !important; }
+:root.dark .page-hero .section-tag { color: #f4d66e; }
+:root.dark .site-header { background: rgba(15, 35, 51, .97); color: #f2f6f8; border-color: rgba(255,255,255,.1); }
+:root.dark .site-header--over-hero { background: rgba(15, 35, 51, .82); }
+:root.dark .site-nav__link, :root.dark .site-brand__sub, :root.dark .site-menu-button { color: #eef3f7; }
+:root.dark .site-menu-button { border-color: rgba(255,255,255,.24); }
+:root.dark .home-section:not(.home-section--alt) { background: var(--color-bg); }
+:root.dark .home-worship, :root.dark .site-section--navy, :root.dark .site-section--deep { background: #12263a !important; color: #eef3f7; }
+:root.dark .home-worship h1, :root.dark .home-worship h2, :root.dark .home-worship h3,
+:root.dark .site-section--navy h1, :root.dark .site-section--navy h2, :root.dark .site-section--navy h3,
+:root.dark .site-section--deep h1, :root.dark .site-section--deep h2, :root.dark .site-section--deep h3 { color: #f2f6f8; }
+:root.dark .story-panel--navy { background: #12263a !important; color: #eef3f7 !important; }
+:root.dark .story-panel--navy .story-panel__title, :root.dark .story-panel--navy .story-panel__copy { color: #f2f6f8 !important; }
+:root.dark .site-footer { background: #102638 !important; color: #eef3f7; }
+:root.dark .card, :root.dark .card-hover, :root.dark .sermon-card, :root.dark .announcement-card,
+:root.dark .event-card, :root.dark .ec, :root.dark .ministry-item, :root.dark .leader-card,
+:root.dark .donation-card, :root.dark .project-card, :root.dark .gallery-card { background: var(--color-surface); color: var(--color-text-main); }
+:root.dark .text-gray-500, :root.dark .text-gray-600, :root.dark .text-gray-700,
+:root.dark .text-navy-700, :root.dark .text-navy-800 { color: #e2eaf0 !important; }
+:root.dark .text-gray-400 { color: #c0ccd5 !important; }
+:root.dark .text-blue-700, :root.dark .text-primary-600 { color: #9ac9e7 !important; }
+:root.dark input, :root.dark select, :root.dark textarea { background: var(--color-surface-alt); color: var(--color-text-main); border-color: var(--color-border-strong); }
+:root.dark input::placeholder, :root.dark textarea::placeholder { color: #aebdca; }
+
+/* Keep navigation legible over the home photography, then return to the
+   selected theme's regular surface as soon as the header scrolls. */
+.site-brand__mark { display:grid; width:42px; height:42px; flex:0 0 42px; place-items:center; overflow:hidden; border:1px solid rgba(16,38,56,.12); border-radius:50%; background:#edf2ef; }
+.site-brand__logo { width:100%; height:100%; padding:2px; border-radius:50%; object-fit:contain; filter:invert(1); transition:filter var(--duration-standard) var(--ease-standard); }
+:root.dark .site-brand__mark { border-color:rgba(255,255,255,.18); background:#16324a; }
+:root.dark .site-brand__logo { filter:none; }
+.mobile-menu { background:var(--color-surface); color:var(--color-text-main); box-shadow:var(--shadow-lift); }
+.mobile-menu__link { border-color:var(--color-border); }
+.site-header--over-hero:not(.site-header--scrolled) { background: rgba(16,38,56,.28); backdrop-filter: blur(10px); }
+.site-header--over-hero:not(.site-header--scrolled) .site-nav__link,
+.site-header--over-hero:not(.site-header--scrolled) .site-brand__sub,
+.site-header--over-hero:not(.site-header--scrolled) .site-menu-button { color:#fff; }
+.site-header--over-hero:not(.site-header--scrolled) .site-menu-button { border-color:rgba(255,255,255,.4); }
+:root.dark .site-header--over-hero:not(.site-header--scrolled) { background:rgba(10,24,35,.48); }
+
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; } }

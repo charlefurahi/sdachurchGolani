@@ -9,12 +9,12 @@ export function formatShortDate(dateStr) {
   return formatDate(dateStr, { month: 'short', day: 'numeric', year: 'numeric' })
 }
 
-export function formatCurrency(amount, currency = 'KES') {
-  return new Intl.NumberFormat('en-KE', { style: 'currency', currency }).format(amount)
+export function formatCurrency(amount, currency = 'TZS') {
+  return new Intl.NumberFormat('en-TZ', { style: 'currency', currency }).format(amount)
 }
 
 export function formatNumber(num) {
-  return new Intl.NumberFormat('en-KE').format(num)
+  return new Intl.NumberFormat('en-TZ').format(num)
 }
 
 export function progressPercent(raised, goal) {

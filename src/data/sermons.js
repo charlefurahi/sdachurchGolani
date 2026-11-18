@@ -1,4 +1,14 @@
-export const sermons = [
+/**
+ * Legacy sermon demo data.
+ *
+ * Not currently imported anywhere — the active sermon API-fallback data
+ * (matching the shape SermonCard.vue and sermonService.js expect, e.g.
+ * `sermon_date` / `duration_display`) lives in `sermons` below, in this
+ * same file, added when data/index.js was split by domain. This older
+ * set is kept for reference/reuse rather than deleted; give it its own
+ * name if you bring it back into use so it doesn't collide.
+ */
+export const sermonsLegacy = [
   {
     id: 1,
     title: 'The Power of Grace Renewed',
@@ -104,7 +114,7 @@ export const sermons = [
   }
 ]
 
-export const sermonTopics = [
+export const sermonTopicsLegacy = [
   'All Topics',
   'Grace & Salvation',
   'Sabbath',
@@ -117,11 +127,149 @@ export const sermonTopics = [
   'Holy Spirit'
 ]
 
-export const sermonSpeakers = [
+export const sermonSpeakersLegacy = [
   'All Speakers',
   'Pastor Emmanuel Golani',
   'Elder David Mwaura',
   'Elder James Omondi',
   'Deaconess Sarah Nkirote',
   'Youth Pastor Peter Kamau'
+]
+
+
+/**
+ * Active sermon demo/seed data — API-fallback only.
+ *
+ * pages/Home.vue and any sermon list call sermonService.js first; this
+ * supplies content only when the API has no records yet. Shape matches
+ * what SermonCard.vue and SermonDetail.vue read (sermon_date,
+ * duration_display, scripture_reference, is_featured, etc.).
+ */
+export const sermons = [
+  {
+    id:                 1,
+    title:              'Walking by Faith, Not by Sight',
+    speaker:            'Pastor John Msigwa',
+    topic:              'Faith',
+    scripture:          '2 Corinthians 5:7',
+    scripture_reference:'2 Corinthians 5:7',
+    description:        'In a world driven by what we can see and measure, God calls us to a different standard — a life anchored in trust and confident hope in His promises.',
+    date:               '2024-11-09',
+    sermon_date:        '2024-11-09',
+    duration:           '48:22',
+    duration_display:   '48:22',
+    views:              1240,
+    downloads:          87,
+    is_featured:        true,
+    featured:           true,
+    thumbnail:          null,
+    audio_file:         null,
+    video_url:          null,
+    tags:               'faith,trust,hope',
+  },
+  {
+    id:                 2,
+    title:              'The Power of the Resurrection',
+    speaker:            'Pastor Grace Kimani',
+    topic:              'Salvation',
+    scripture:          'Romans 6:4',
+    scripture_reference:'Romans 6:4',
+    description:        'The resurrection of Jesus Christ is not merely history — it is the foundation of our daily walk and the guarantee of our eternal hope.',
+    date:               '2024-10-26',
+    sermon_date:        '2024-10-26',
+    duration:           '52:10',
+    duration_display:   '52:10',
+    views:              980,
+    downloads:          64,
+    is_featured:        false,
+    featured:           false,
+    thumbnail:          null,
+    audio_file:         null,
+    video_url:          null,
+    tags:               'resurrection,salvation,easter',
+  },
+  {
+    id:                 3,
+    title:              'Sabbath: A Gift of Rest',
+    speaker:            'Elder Samuel Okonkwo',
+    topic:              'Sabbath',
+    scripture:          'Mark 2:27',
+    scripture_reference:'Mark 2:27',
+    description:        'God did not command the Sabbath as a burden but as a gift — a weekly invitation to rest in His love, reflect on His goodness, and reconnect with our Creator.',
+    date:               '2024-10-12',
+    sermon_date:        '2024-10-12',
+    duration:           '39:45',
+    duration_display:   '39:45',
+    views:              756,
+    downloads:          51,
+    is_featured:        false,
+    featured:           false,
+    thumbnail:          null,
+    audio_file:         null,
+    video_url:          null,
+    tags:               'sabbath,rest,worship',
+  },
+  {
+    id:                 4,
+    title:              'Bearing Fruit That Lasts',
+    speaker:            'Pastor John Msigwa',
+    topic:              'Discipleship',
+    scripture:          'John 15:16',
+    scripture_reference:'John 15:16',
+    description:        'Jesus chose us and appointed us to go and bear fruit — fruit that will last. Discover what it means to live a life of lasting spiritual impact in your family and community.',
+    date:               '2024-09-28',
+    sermon_date:        '2024-09-28',
+    duration:           '44:30',
+    duration_display:   '44:30',
+    views:              612,
+    downloads:          43,
+    is_featured:        false,
+    featured:           false,
+    thumbnail:          null,
+    audio_file:         null,
+    video_url:          null,
+    tags:               'discipleship,fruit,purpose',
+  },
+  {
+    id:                 5,
+    title:              'Prayer: Communicating with God',
+    speaker:            'Deacon David Mwangi',
+    topic:              'Prayer',
+    scripture:          'Philippians 4:6-7',
+    scripture_reference:'Philippians 4:6-7',
+    description:        'Prayer is not a religious ritual — it is a relationship. Learn how to cultivate a rich and consistent prayer life that transforms you from the inside out.',
+    date:               '2024-09-14',
+    sermon_date:        '2024-09-14',
+    duration:           '36:18',
+    duration_display:   '36:18',
+    views:              534,
+    downloads:          39,
+    is_featured:        false,
+    featured:           false,
+    thumbnail:          null,
+    audio_file:         null,
+    video_url:          null,
+    tags:               'prayer,peace,relationship',
+  },
+  {
+    id:                 6,
+    title:              'The Great Commission: Our Calling',
+    speaker:            'Pastor Grace Kimani',
+    topic:              'Evangelism',
+    scripture:          'Matthew 28:19-20',
+    scripture_reference:'Matthew 28:19-20',
+    description:        'Every believer has been commissioned by Christ to make disciples. This message unpacks what that means practically for our church, families, and daily lives.',
+    date:               '2024-08-31',
+    sermon_date:        '2024-08-31',
+    duration:           '55:04',
+    duration_display:   '55:04',
+    views:              891,
+    downloads:          72,
+    is_featured:        false,
+    featured:           false,
+    thumbnail:          null,
+    audio_file:         null,
+    video_url:          null,
+    tags:               'evangelism,mission,great commission',
+  },
 ]
