@@ -47,9 +47,11 @@
         <SectionTitle tag="What We Believe" title="Fundamental Beliefs" subtitle="Seventh-day Adventists accept these fundamental beliefs as the teaching of Holy Scripture." />
         <div class="about-beliefs__grid">
           <article v-for="belief in fundamentalBeliefs" :key="belief.number" class="about-belief">
-            <div class="about-belief__image-wrap">
-              <img class="about-belief__image" :src="beliefImageCandidates(belief.number)[0]" :alt="belief.title" loading="lazy" @error="advanceBeliefImage($event, belief.number)" />
-              <span class="about-belief__number" :aria-label="`Belief ${belief.number}`">{{ String(belief.number).padStart(2, '0') }}</span>
+            <div class="about-belief__visual">
+              <span class="about-belief__number">{{ String(belief.number).padStart(2, '0') }}</span>
+              <div class="about-belief__image-wrap">
+                <img class="about-belief__image" :src="beliefImageCandidates(belief.number)[0]" :alt="belief.title" loading="lazy" @error="advanceBeliefImage($event, belief.number)" />
+              </div>
             </div>
             <div class="about-belief__body">
               <h3>{{ belief.title }}</h3>
@@ -210,10 +212,11 @@ const serviceTimes = [
 .about-foundation__icon svg { width:1.7rem; height:1.7rem; }
 .about-beliefs__grid,.about-leadership__grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); column-gap:clamp(1.5rem,4vw,3.5rem); row-gap:3.5rem; }
 .about-belief { min-width:0; text-align:center; }
+.about-belief__visual { display:flex; flex-direction:column; align-items:center; }
 .about-belief__image-wrap { position:relative; width:min(100%,12rem); aspect-ratio:1; margin:0 auto 1rem; overflow:hidden; border:8px solid #e1e4e1; border-radius:50%; background:#e8eeed; }
 .about-belief__image { width:100%; height:100%; object-fit:cover; border-radius:50%; transition:transform .45s ease; }
 .about-belief:hover .about-belief__image { transform:scale(1.06); }
-.about-belief__number { position:absolute; top:.35rem; left:.35rem; display:grid; place-items:center; width:2.25rem; height:2.25rem; border:2px solid var(--color-bg); border-radius:50%; background:var(--color-gold); color:var(--color-footer); font-size:.72rem; font-weight:700; box-shadow:0 2px 10px rgba(16,38,56,.2); }
+.about-belief__number { position:relative; z-index:1; display:inline-grid; place-items:center; min-width:2.4rem; height:2rem; margin:0 auto .65rem; padding:0 .65rem; border:1px solid rgba(16,38,56,.14); border-radius:999px; background:var(--color-gold); color:#102638; font-size:.76rem; font-weight:800; line-height:1; box-shadow:0 3px 10px rgba(16,38,56,.12); }
 .about-belief__body { max-width:22rem; margin-inline:auto; padding:.2rem .5rem; }
 .about-belief__body h3 { margin:0 0 .45rem; font-size:1.12rem; font-weight:700; color:var(--color-footer); }
 .about-belief__body p { color:var(--color-text-muted); font-size:.9rem; line-height:1.6; }
@@ -225,5 +228,14 @@ const serviceTimes = [
 :global(.dark) .about-belief__image-wrap,:global(.dark) .about-leader__portrait { border-color:#394548; }
 .about-leadership__empty { padding:2rem; border:1px solid var(--color-border); border-radius:1rem; background:var(--color-surface); color:var(--color-text-muted); text-align:center; }
 @media(max-width:900px) { .about-beliefs__grid,.about-leadership__grid { grid-template-columns:repeat(2,minmax(0,1fr)); gap:2.5rem 1rem; } .about-belief__image-wrap { width:min(100%,10rem); } }
-@media(max-width:560px) { .about-beliefs__grid,.about-leadership__grid { grid-template-columns:1fr; gap:2.5rem; } .about-belief__image-wrap { width:11rem; } }
+@media(max-width:560px) {
+  .about-beliefs__grid,.about-leadership__grid { grid-template-columns:1fr; gap:1rem; }
+  .about-belief { display:grid; grid-template-columns:6.5rem minmax(0,1fr); align-items:center; gap:.9rem; padding:1rem; border:1px solid var(--color-border); border-radius:1rem; background:var(--color-surface); box-shadow:var(--shadow-soft); text-align:left; }
+  .about-belief__visual { width:6.5rem; }
+  .about-belief__number { margin-bottom:.4rem; }
+  .about-belief__image-wrap { width:6.25rem; border-width:4px; margin:0; }
+  .about-belief__body { max-width:none; margin:0; padding:0; }
+  .about-belief__body h3 { font-size:1rem; }
+  .about-belief__body p { margin:0; font-size:.82rem; line-height:1.5; }
+}
 </style>

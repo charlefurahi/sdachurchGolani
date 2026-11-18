@@ -39,7 +39,7 @@ export const useAppStore = defineStore('app', () => {
 
     const favicon = document.getElementById('site-favicon')
     if (favicon) {
-      favicon.href = `${import.meta.env.BASE_URL}favicon${isDark.value ? '-dark' : ''}.svg`
+      favicon.href = `${import.meta.env.BASE_URL}favicon${isDark.value ? '-dark' : ''}.svg?v=2`
     }
 
     const themeColor = document.getElementById('site-theme-color')
