@@ -1,7 +1,11 @@
 import axios from 'axios'
 import { OFFLINE_DEMO, offlineAdapter } from './offline'
 
-const BASE = import.meta.env.VITE_API_BASE_URL || 'http://127.0.0.1:8000/api/v1'
+const configuredBase = (import.meta.env.VITE_API_BASE_URL || 'http://127.0.0.1:8000/api/v1').replace(/\/+$/, '')
+// Accept either the API root (https://backend.example.com/api/v1) or just
+// the backend origin (https://backend.example.com) in deployment settings.
+const BASE = /\/api\/v1$/i.test(configuredBase) ? configuredBase : `${configuredBase}/api/v1`
+export const API_ORIGIN = BASE.replace(/\/api\/v1$/i, '')
 
 export const MEDIA_BASE = BASE.replace(/\/api\/v1\/?$/, '')
 

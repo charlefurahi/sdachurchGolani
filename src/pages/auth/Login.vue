@@ -113,6 +113,7 @@
 </template>
 
 <script setup>
+import { API_ORIGIN } from '@/services/api'
 import { ref } from 'vue'
 import { useRouter, useRoute, RouterLink } from 'vue-router'
 import { useAuthStore } from '@/stores/auth'
@@ -158,10 +159,8 @@ async function handleGoogleLogin() {
   googleLoading.value = true
   error.value = ''
   try {
-    // Redirect to Django social-auth Google endpoint.
-    // In dev, Vite proxies /social-auth → Django (see vite.config.js).
-    // In production, this hits the backend directly via Nginx.
-    window.location.href = '/social-auth/login/google-oauth2/'
+    // Django social-auth is hosted with the backend, not the Vercel frontend.
+    window.location.href = `${API_ORIGIN}/social-auth/login/google-oauth2/`
   } catch {
     googleLoading.value = false
     error.value = 'Google sign-in is not available right now. Please use email and password.'
