@@ -85,6 +85,7 @@ import { computed, onMounted, ref } from 'vue'
 import AnnouncementCard from '@/components/home/AnnouncementCard.vue'
 import announcementService from '@/services/announcementService'
 import { API_ORIGIN } from '@/services/api'
+import { OFFLINE_DEMO } from '@/services/offline'
 import { announcements as demoAnnouncements, announcementCategories } from '@/data/announcements.js'
 
 const loading = ref(true)
@@ -142,10 +143,17 @@ async function loadAnnouncements() {
     })
 
     const results = response?.results ?? (Array.isArray(response) ? response : [])
-    announcements.value = results.length ? results : demoAnnouncements
+    announcements.value = results.length
+      ? results
+      : (OFFLINE_DEMO ? demoAnnouncements : [])
   } catch (error) {
-    console.warn('Unable to load announcements from API. Using demo data.', error)
-    announcements.value = demoAnnouncements
+    if (OFFLINE_DEMO) {
+      console.warn('Unable to load announcements from API. Using demo data.', error)
+      announcements.value = demoAnnouncements
+    } else {
+      console.error('Unable to load announcements from API.', error)
+      announcements.value = []
+    }
   } finally {
     loading.value = false
   }

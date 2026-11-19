@@ -317,6 +317,7 @@ import {
 } from '@/utils/index.js'
 
 import announcementService from '@/services/announcementService'
+import { OFFLINE_DEMO } from '@/services/offline'
 
 import {
   announcements as demoAnnouncements,
@@ -355,18 +356,11 @@ onMounted(async () => {
         route.params.id
       )
   } catch {
-    /*
-     * Backend unavailable or announcement
-     * doesn't exist in the API yet.
-     *
-     * Keep demo data fallback.
-     */
-    announcement.value =
-      demoAnnouncements.find(
-        (item) =>
-          String(item.id) ===
-          String(route.params.id)
-      ) || null
+    announcement.value = OFFLINE_DEMO
+      ? demoAnnouncements.find(
+          (item) => String(item.id) === String(route.params.id)
+        ) || null
+      : null
   } finally {
     loading.value = false
   }
