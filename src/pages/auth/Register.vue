@@ -92,6 +92,7 @@
 import { ref } from 'vue'
 import { useRouter, RouterLink } from 'vue-router'
 import { useAuthStore } from '@/stores/auth'
+import { API_ORIGIN } from '@/services/api'
 
 const router = useRouter()
 const authStore = useAuthStore()
@@ -131,7 +132,7 @@ async function handleGoogleSignup() {
   googleLoading.value = true
   error.value = ''
   try {
-    const API = (import.meta.env.VITE_API_BASE_URL || 'http://127.0.0.1:8000/api/v1').replace(/\/api.*$/, '')
+    const API = API_ORIGIN
     const redirectUrl = encodeURIComponent(window.location.origin + '/auth/google/callback')
     window.location.href = `${API}/auth/google/?redirect_uri=${redirectUrl}`
   } catch {

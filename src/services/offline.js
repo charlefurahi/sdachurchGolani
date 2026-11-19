@@ -8,7 +8,8 @@
  *
  * Leave the variable unset (or false) when the backend is live.
  */
-export const OFFLINE_DEMO = import.meta.env.VITE_OFFLINE_DEMO === 'true'
+// Keep the local demo switch for development only. Production must use the live API.
+export const OFFLINE_DEMO = !import.meta.env.PROD && import.meta.env.VITE_OFFLINE_DEMO === 'true'
 
 function offlineError() {
   const err = new Error('Offline demo mode: using sample data')

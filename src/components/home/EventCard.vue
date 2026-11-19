@@ -129,7 +129,8 @@
 import { ref, computed } from 'vue'
 import { RouterLink } from 'vue-router'
 
-const BASE_URL = import.meta.env.VITE_API_BASE_URL?.replace('/api/v1', '') || 'http://127.0.0.1:8000'
+import { API_ORIGIN } from '@/services/api'
+const BASE_URL = API_ORIGIN
 
 // Fallback category colours (keep same palette as before)
 // All categories share the single brand yellow — distinction comes

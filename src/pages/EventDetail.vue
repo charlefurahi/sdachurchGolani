@@ -213,10 +213,11 @@ import { ref, computed, onMounted } from 'vue'
 import { useRoute, RouterLink } from 'vue-router'
 import { formatDate } from '@/utils/index.js'
 import eventService from '@/services/eventService'
+import { API_ORIGIN } from '@/services/api'
 import Breadcrumbs from '@/components/common/Breadcrumbs.vue'
 import Modal from '@/components/common/Modal.vue'
 
-const BASE_URL = import.meta.env.VITE_API_BASE_URL?.replace('/api/v1', '') || 'http://127.0.0.1:8000'
+const BASE_URL = API_ORIGIN
 
 const route = useRoute()
 

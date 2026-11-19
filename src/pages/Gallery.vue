@@ -193,8 +193,9 @@
 import { ref, computed, onMounted } from 'vue'
 import { formatDate } from '@/utils/index.js'
 import galleryService from '@/services/galleryService'
+import { API_ORIGIN } from '@/services/api'
 
-const BASE_URL = (import.meta.env.VITE_API_BASE_URL || 'http://127.0.0.1:8000/api/v1').replace(/\/api.*$/, '')
+const BASE_URL = API_ORIGIN
 
 const albums         = ref([])
 const categories     = ref([])

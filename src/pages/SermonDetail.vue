@@ -911,14 +911,10 @@ import Pagination from '@/components/common/Pagination.vue'
 
 import { useAuthStore } from '@/stores/auth'
 import { sermons as demoSermons } from '@/data/sermons.js'
+import { API_BASE_URL, API_ORIGIN } from '@/services/api'
 
-
-const API = (
-  import.meta.env.VITE_API_BASE_URL ||
-  'http://127.0.0.1:8000/api/v1'
-).replace(/\/$/, '')
-
-const BASE_URL = API.replace(/\/api\/v\d+$/, '')
+const API = API_BASE_URL
+const BASE_URL = API_ORIGIN
 
 
 const authStore = useAuthStore()

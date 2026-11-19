@@ -203,6 +203,7 @@ import { RouterLink, useRouter } from 'vue-router'
 import sermonService from '@/services/sermonService'
 import eventService from '@/services/eventService'
 import announcementService from '@/services/announcementService'
+import { API_BASE_URL } from '@/services/api'
 
 const $router = useRouter()
 
@@ -306,7 +307,7 @@ async function loadAnnouncements() {
 
 async function loadGalleryCount() {
   try {
-    const API = (import.meta.env.VITE_API_BASE_URL || 'http://127.0.0.1:8000/api/v1').replace(/\/$/, '')
+    const API = API_BASE_URL
     const res = await fetch(`${API}/gallery/albums/?page_size=1`).then(r => r.ok ? r.json() : { count: 0 })
     liveStats.value.albums = res.count ?? 0
   } catch { /* non-fatal */ }

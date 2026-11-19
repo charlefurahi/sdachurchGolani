@@ -84,6 +84,7 @@
 import { computed, onMounted, ref } from 'vue'
 import AnnouncementCard from '@/components/home/AnnouncementCard.vue'
 import announcementService from '@/services/announcementService'
+import { API_ORIGIN } from '@/services/api'
 import { announcements as demoAnnouncements, announcementCategories } from '@/data/announcements.js'
 
 const loading = ref(true)
@@ -122,7 +123,7 @@ function getPdfUrl(item) {
   // Demo PDFs live in /public and must stay on the frontend origin.
   if (src.startsWith('/demo/')) return src
 
-  const base = import.meta.env.VITE_API_BASE_URL?.replace(/\/api\/v1\/?$/, '') || ''
+  const base = API_ORIGIN
   return `${base}${src.startsWith('/') ? src : `/${src}`}`
 }
 
