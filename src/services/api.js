@@ -1,12 +1,14 @@
 import axios from 'axios'
 import { OFFLINE_DEMO, offlineAdapter } from './offline'
 
-const defaultBase = import.meta.env.PROD ? '/backend/api/v1' : 'http://127.0.0.1:8000/api/v1'
-// Production API calls always go through Vercel's same-origin proxy. This
-// avoids browser CORS failures even if an old absolute Render URL is set in Vercel.
+const localBase = 'http://127.0.0.1:8000/api/v1'
+const productionBase = 'https://golanisdabackend-1.onrender.com/api/v1'
+const envBase = import.meta.env.VITE_API_BASE_URL
+// Production talks directly to Django. Ignore stale same-origin proxy paths
+// left in Vercel environment settings; keep user-supplied absolute API URLs.
 const configuredBase = (import.meta.env.PROD
-  ? defaultBase
-  : (import.meta.env.VITE_API_BASE_URL || defaultBase)
+  ? (/^https?:\/\//i.test(envBase || '') ? envBase : productionBase)
+  : (envBase || localBase)
 ).replace(/\/+$/, '')
 // Accept either the API root (https://backend.example.com/api/v1) or just
 // the backend origin (https://backend.example.com) in deployment settings.
